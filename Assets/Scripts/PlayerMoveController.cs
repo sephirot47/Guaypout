@@ -15,6 +15,9 @@ public class PlayerMoveController : MonoBehaviour
     public float floatingAmplitude;
     public float floatingSpeed;
 
+    [Header ("In Air")]
+    public float airHorizontalMoveForce;
+
     [Header ("References")]
     public TrackInformer trackInformer;
     private Rigidbody rb;
@@ -26,14 +29,14 @@ public class PlayerMoveController : MonoBehaviour
 
 	void FixedUpdate () 
     {
-        rb.velocity = Vector3.zero; // Reset rigidbody's velocity first
-
         // Get info about the track at the player position
         TrackInformer.TrackInfo trackInfo = GetTrackInfo();
 
         // Do some physics depending on whether the ship is over the track or not
         if (trackInfo.overTheTrack)
         {
+            rb.useGravity = false;
+            rb.velocity = Vector3.zero; // Reset rigidbody's velocity first
             HandleForwardMovement(trackInfo);
             HandleHorizontalMovement(trackInfo);
             HandleFloating(trackInfo); // Handle the floating over the track
@@ -42,6 +45,7 @@ public class PlayerMoveController : MonoBehaviour
         }
         else
         {
+            HandleAirMovement(trackInfo);
             ApplyGravity(); // When we are not over the track, apply gravity!
         }
 	}
@@ -85,12 +89,16 @@ public class PlayerMoveController : MonoBehaviour
         //Debug.DrawLine(desiredFloatingPoint, transform.position, Color.cyan, 0.0f, false);
     }
 
+    private void HandleAirMovement(TrackInformer.TrackInfo trackInfo)
+    {
+        float movRightSign = Input.GetKey(KeyCode.A) ? -1 : (Input.GetKey(KeyCode.D) ? 1 : 0);
+
+        rb.AddForce(transform.right * movRightSign * airHorizontalMoveForce);
+    }
+
     private void ApplyGravity()
     {
-        speed.x *= speedFadeout.x; // Decrease the speed a bit every frame
-        speed.z *= speedFadeout.z;
-        accumulatedGravity += Physics.gravity * Time.fixedDeltaTime;
-        rb.velocity = speed + accumulatedGravity;
+        rb.useGravity = true;
     }
 
     public TrackInformer.TrackInfo GetTrackInfo()

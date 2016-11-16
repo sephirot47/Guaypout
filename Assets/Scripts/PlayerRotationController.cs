@@ -19,6 +19,8 @@ public class PlayerRotationController : MonoBehaviour
 
     void Update () 
     {
+        float horiVelocity = Vector3.Dot(rb.velocity, transform.right);
+
         TrackInformer.TrackInfo trackInfo = GetComponent<PlayerMoveController>().GetTrackInfo();
         if (trackInfo.overTheTrack)
         {
@@ -27,7 +29,6 @@ public class PlayerRotationController : MonoBehaviour
             Quaternion alignWithTrack = Quaternion.LookRotation(Vector3.Cross(transform.right, trackInfo.normal), trackInfo.normal);
             rotEnd *= alignWithTrack;
 
-            float horiVelocity = Vector3.Dot(rb.velocity, transform.right);
             Quaternion tiltRot = Quaternion.AngleAxis(horiVelocity * tilt, transform.forward);
             rotEnd *= tiltRot;
 
@@ -35,6 +36,10 @@ public class PlayerRotationController : MonoBehaviour
             rotEnd *= movementRot;
 
             transform.rotation = Quaternion.Slerp(transform.rotation, rotEnd, rotationConvergenceSpeed * Time.deltaTime);
+        }
+        else
+        {
+            //transform.rotation *= Quaternion.AngleAxis(horiVelocity * Time.deltaTime, transform.forward);
         }
     }
 }

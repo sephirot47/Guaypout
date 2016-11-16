@@ -43,7 +43,7 @@ public class TrackInformer : MonoBehaviour
             if (Physics.Raycast(position, direction, out hitInfo, rayDistance, trackLayer.value))
             {
                 ++hitCount;
-                info.normal  += hitInfo.normal;
+                info.normal += hitInfo.normal;
             }
         }
 
@@ -53,6 +53,7 @@ public class TrackInformer : MonoBehaviour
         }
 
         // Get Distance to ground
+        //Debug.DrawRay(position, -up * rayDistance, Color.white, 0.0f);
         if (Physics.Raycast(position, -up, out hitInfo, rayDistance, trackLayer.value))
         {
             info.overTheTrack = true;
