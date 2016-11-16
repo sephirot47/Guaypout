@@ -8,7 +8,10 @@ public class PlayerMoveController : MonoBehaviour
     public Vector3 speedFadeout;
     public Vector3 acceleration;
     private Vector3 speed = Vector3.zero;
-    private Vector3 accumulatedGravity = Vector3.zero;
+
+    [Header ("Boost")]
+    public float boostFadeout;
+    private float currentBoost;
 
     [Header ("Floating")]
     public float floatingHeight;
@@ -36,17 +39,17 @@ public class PlayerMoveController : MonoBehaviour
         if (trackInfo.overTheTrack)
         {
             rb.useGravity = false;
-            rb.velocity = Vector3.zero; // Reset rigidbody's velocity first
+            rb.velocity = Vector3.zero;   // Reset rigidbody's velocity first
+            currentBoost = Mathf.Max(currentBoost * boostFadeout, 1.0f); // Fadeout boost
+
             HandleForwardMovement(trackInfo);
             HandleHorizontalMovement(trackInfo);
             HandleFloating(trackInfo); // Handle the floating over the track
-
-            accumulatedGravity = Vector3.zero; // Reset gravity
         }
         else
         {
             HandleAirMovement(trackInfo);
-            ApplyGravity(); // When we are not over the track, apply gravity!
+            rb.useGravity = true; // When we are not over the track, apply gravity!
         }
 	}
 
@@ -59,6 +62,7 @@ public class PlayerMoveController : MonoBehaviour
         {
             speed.z *= speedFadeout.z; 
         }
+        speed.z *= currentBoost;
         rb.velocity += transform.forward * speed.z;
     }
 
@@ -96,9 +100,9 @@ public class PlayerMoveController : MonoBehaviour
         rb.AddForce(transform.right * movRightSign * airHorizontalMoveForce);
     }
 
-    private void ApplyGravity()
+    public void ApplyBoost(float boostAmount)
     {
-        rb.useGravity = true;
+        currentBoost = Mathf.Max(currentBoost, boostAmount);
     }
 
     public TrackInformer.TrackInfo GetTrackInfo()
