@@ -115,13 +115,4 @@ public class PlayerMoveController : MonoBehaviour
 
         return trackInfo;
     }
-
-    public float GetRightSpeed() 
-    {
-        return speed.x;
-    } 
-    public float GetForwardSpeed() 
-    {
-        return speed.z;
-    } 
 }
