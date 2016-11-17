@@ -63,7 +63,7 @@ public class PlayerMoveController : MonoBehaviour
             speed.z *= speedFadeout.z; 
         }
         speed.z *= currentBoost;
-        rb.velocity += transform.forward * speed.z;
+        rb.velocity += trackInfo.forward * speed.z;
     }
 
     private void HandleHorizontalMovement(TrackInformer.TrackInfo trackInfo)
@@ -115,4 +115,13 @@ public class PlayerMoveController : MonoBehaviour
 
         return trackInfo;
     }
+
+    public float GetRightSpeed() 
+    {
+        return speed.x;
+    } 
+    public float GetForwardSpeed() 
+    {
+        return speed.z;
+    } 
 }
