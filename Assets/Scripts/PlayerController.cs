@@ -3,44 +3,58 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	private Rigidbody rb;
-	public LayerMask trackLayer;
+	Rigidbody rb;
 
-	public float trackRotationSpeed;
-	public float maxSpeed;
-	private float speed;
-	public float acceleration;
-	public float tilt;
+	public float fwdAcceleration = 100f;
+	public float bwdAcceleration = 25f;
+	float thrust = 0f;
 
-	public float height;
+	public float turnStrength = 10f;
+	float turn = 0f;
 
-	// Use this for initialization
-	void Start () {
+	public LayerMask layerMask;
+	public float hoverForce = 9f;
+	public float hoverHeight = 2f;
+	public GameObject[] hoverPoints;
+
+	void Start() {
 		rb = GetComponent<Rigidbody> ();
 	}
 
-	void Update () {
-		Quaternion rotationEnd = Quaternion.identity;
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
+	void Update() {
+		// Main thrust
+		float verticalAxis = Input.GetAxis ("Vertical");
+		if (verticalAxis > 0)
+			thrust = verticalAxis * fwdAcceleration;
+		else if (verticalAxis < 0)
+			thrust = verticalAxis * bwdAcceleration;
 
-		Vector3 movement = transform.forward * moveVertical + transform.right * moveHorizontal;
-		speed = Mathf.Min(speed + acceleration, maxSpeed);
-		rb.velocity = movement * speed;
+		// Turning
+		float horizontalAxis = Input.GetAxis("Horizontal");
+		if (horizontalAxis != 0)
+			turn = horizontalAxis;
+	}
 
-		//rb.rotation = Quaternion.Euler (0.0f, 0.0f, rb.velocity.x * -tilt);
-
-		RaycastHit hitInfo;
-		Vector3 rayOrigin = transform.position + transform.forward;
-		if (Physics.Raycast (rayOrigin, -transform.up, out hitInfo, 999.9f, trackLayer.value)) {
-			Vector3 lookDir = Vector3.Cross(transform.right, hitInfo.normal);
-			rotationEnd = Quaternion.LookRotation(lookDir, hitInfo.normal);
-			Vector3 newPosition = transform.position;
-			newPosition.y = (hitInfo.point + hitInfo.normal * height).y;
-			rb.MovePosition (newPosition);
+	void FixedUpdate() {
+		// Hover force
+		RaycastHit hit;
+		for (int i = 0; i < hoverPoints.Length; ++i) {
+			GameObject hoverPoint = hoverPoints[i];
+			Ray ray = new Ray(hoverPoint.transform.position, -Vector3.up);
+			Debug.DrawRay (ray.origin, ray.direction, Color.red, 0.05f);
+			if (Physics.Raycast (ray, out hit, hoverHeight, layerMask)) {
+				float proportionalHeight = (hoverHeight - hit.distance) / hoverHeight;
+				rb.AddForceAtPosition (Vector3.up * hoverForce * proportionalHeight, hoverPoint.transform.position);
+				Debug.DrawRay (ray.origin, ray.direction, Color.green, 0.05f);
+			}
 		}
 
-		transform.rotation = Quaternion.Slerp (transform.rotation, rotationEnd, trackRotationSpeed * Time.deltaTime);
-		Debug.DrawLine (rayOrigin, transform.position - transform.up * 999.9f, Color.green, 0.05f, true);
+		// Forward
+		if (thrust != 0)
+			rb.AddForce (transform.forward * thrust);
+
+		// Turn
+		if (turn != 0)
+			rb.AddRelativeTorque (transform.up * turn * turnStrength);
 	}
 }
