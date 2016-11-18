@@ -13,6 +13,6 @@ public class Camera : MonoBehaviour {
 	void Update () {
 		Vector3 offsetDir = Vector3.Normalize(-player.transform.forward + player.transform.up * 0.5f);
 		transform.position = player.transform.position + offsetDir * distance;
-		transform.LookAt (player.transform);
+		transform.LookAt (player.transform, player.transform.up);
 	}
 }

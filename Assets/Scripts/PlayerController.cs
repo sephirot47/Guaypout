@@ -12,14 +12,19 @@ public class PlayerController : MonoBehaviour {
 	public float turnStrength = 10f;
 	float turn = 0f;
 
+	public float tilt = 30f;
+
 	public LayerMask layerMask;
 	public float hoverForce = 9f;
 	public float hoverHeight = 2f;
 	public GameObject[] hoverPoints;
 	public TrackInformer trackInformer;
 
+	private GameObject model;
+
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
+		model = transform.FindChild("PlayerModel").gameObject;
 	}
 
 	void Update() {
@@ -60,8 +65,18 @@ public class PlayerController : MonoBehaviour {
 
 		// Lock the forward vector
 		TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo (transform.position, transform.right, transform.up, hoverHeight * 2);
-		Quaternion endRotation = Quaternion.LookRotation (trackInfo.forward, trackInfo.normal);
-		//transform.rotation = endRotation;
-		transform.rotation = Quaternion.Slerp (transform.rotation, endRotation, 5*Time.deltaTime);
+		if (trackInfo.overTheTrack) {
+			Quaternion endRotation = Quaternion.LookRotation (trackInfo.forward, trackInfo.normal);
+			transform.rotation = Quaternion.Slerp (transform.rotation, endRotation, 5 * Time.deltaTime);
+		} 
+		else { 
+			// Falling
+			Quaternion endRotation = Quaternion.FromToRotation(transform.up, Vector3.up) * transform.rotation;
+			transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, 0.2f * Time.deltaTime);
+		}
+
+		// Tilt
+		Quaternion endTilt = Quaternion.AngleAxis (-turn * tilt, transform.forward);
+		model.transform.rotation = endTilt * transform.rotation;
 	}
 }
