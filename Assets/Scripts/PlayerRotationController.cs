@@ -39,6 +39,8 @@ public class PlayerRotationController : MonoBehaviour
         }
         else
         {
+            Quaternion rotEnd = Quaternion.LookRotation(rb.velocity, transform.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotEnd, rotationConvergenceSpeed * Time.deltaTime);
             //transform.rotation *= Quaternion.LookRotation(rb.velocity, transform.up); //horiVelocity * Time.deltaTime, transform.forward);
         }
     }

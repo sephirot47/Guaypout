@@ -10,6 +10,7 @@ public class SpeedBooster : MonoBehaviour
         if (col.CompareTag("Player")) // If it's the player
         {
             PlayerMoveController player = col.GetComponent<PlayerMoveController>();
+            player.GetComponentInChildren<Animator>().SetTrigger("Boosting");
             player.ApplyBoost(boost);
         }
     }
