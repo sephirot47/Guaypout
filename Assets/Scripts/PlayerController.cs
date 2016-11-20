@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float tilt = 30f;
 
-	public LayerMask layerMask;
+	public LayerMask trackLayer;
 	public float hoverForce = 9f;
 	public float hoverHeight = 2f;
 	public GameObject[] hoverPoints;
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour {
 			GameObject hoverPoint = hoverPoints[i];
 			Ray ray = new Ray(hoverPoint.transform.position, -transform.up);
 			Debug.DrawRay (ray.origin, ray.direction, Color.red, 0f);
-			if (Physics.Raycast (ray, out hit, hoverHeight, layerMask)) {
+			if (Physics.Raycast (ray, out hit, hoverHeight, trackLayer)) {
 				float proportionalHeight = (hoverHeight - hit.distance) / hoverHeight;
 				rb.AddForceAtPosition (transform.up * hoverForce * proportionalHeight, hoverPoint.transform.position);
 				Debug.DrawRay (ray.origin, ray.direction, Color.green, 0f);
@@ -78,5 +78,10 @@ public class PlayerController : MonoBehaviour {
 		// Tilt
 		Quaternion endTilt = Quaternion.AngleAxis (-turn * tilt, transform.forward);
 		model.transform.rotation = endTilt * transform.rotation;
+	}
+
+	public void ApplyBoost(float boost, Vector3 direction)
+	{
+		rb.AddForce (direction * boost, ForceMode.Impulse);
 	}
 }
