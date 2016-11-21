@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
 			rb.AddRelativeTorque (transform.up * turn * turnStrength);
 
 		// Lock the forward vector
-		TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo (transform.position, transform.right, transform.up, hoverHeight * 2);
+		TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo (transform.position, transform.right, transform.up, hoverHeight);
 		if (trackInfo.overTheTrack) {
 			Quaternion endRotation = Quaternion.LookRotation (trackInfo.forward, trackInfo.normal);
 			transform.rotation = Quaternion.Slerp (transform.rotation, endRotation, 5 * Time.deltaTime);
