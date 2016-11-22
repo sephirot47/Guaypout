@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 		for (int i = 0; i < hoverPoints.Length; ++i) {
 			GameObject hoverPoint = hoverPoints[i];
 			Ray ray = new Ray(hoverPoint.transform.position, -transform.up);
-			Debug.DrawRay (ray.origin, ray.direction, Color.red, 0f);
+            Debug.DrawRay (ray.origin, ray.direction, Color.red, 0f);
 			if (Physics.Raycast (ray, out hit, hoverHeight, trackLayer)) {
 				float proportionalHeight = (hoverHeight - hit.distance) / hoverHeight;
 				rb.AddForceAtPosition (transform.up * hoverForce * proportionalHeight, hoverPoint.transform.position);
@@ -57,11 +57,11 @@ public class PlayerController : MonoBehaviour {
 
 		// Forward
 		if (thrust != 0)
-			rb.AddForce (transform.forward * thrust);
+            rb.AddForce (transform.forward * thrust, ForceMode.Acceleration);
 
 		// Turn
 		if (turn != 0)
-			rb.AddRelativeTorque (transform.up * turn * turnStrength);
+        	rb.AddRelativeTorque (transform.up * turn * turnStrength);
 
 		// Lock the forward vector
 		TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo (transform.position, transform.right, transform.up, hoverHeight);
@@ -87,4 +87,18 @@ public class PlayerController : MonoBehaviour {
 	{
 		rb.AddForce (direction * boost, ForceMode.Impulse);
 	}
+
+    public void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.layer == LayerMask.NameToLayer("TrackBoundaries"))
+        {
+            Vector3 newForward = Vector3.Cross(col.contacts[0].normal, Vector3.up);
+            if (Vector3.Dot(newForward, transform.forward) < 0) newForward *= -1;
+            Quaternion endFixRotation = Quaternion.LookRotation(newForward, transform.up);
+            float sign = Mathf.Sign(Vector2.Angle(transform.forward, newForward));
+            //rb.velocity = rb.velocity.magnitude * col.contacts[0].normal * 0.5f;
+            //rb.AddRelativeTorque (transform.up * sign * 30);
+            //transform.rotation = endFixRotation;
+        }
+    }
 }

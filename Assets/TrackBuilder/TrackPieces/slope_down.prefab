@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011287675576}
   - 65: {fileID: 65000010744873748}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013489936778}
   - 65: {fileID: 65000010990446358}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013725040030}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55.05451, y: 72.45345, z: 113.170395}
+  m_LocalPosition: {x: -1.4706644, y: -1.8153079, z: -2.3658142}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_Children:

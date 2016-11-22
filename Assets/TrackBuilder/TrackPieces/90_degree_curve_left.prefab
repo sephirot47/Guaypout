@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000014134874156}
   - 64: {fileID: 64000013454525000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: boundary_exterior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011501544142}
   - 64: {fileID: 64000013532217984}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: boundary_interior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012486330672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.941, y: 28.53418, z: 20.938}
+  m_LocalPosition: {x: -4.7908287, y: -3.149655, z: -3.9103227}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:

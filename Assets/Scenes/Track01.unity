@@ -153,6 +153,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!4 &440064657 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000010731430974, guid: 9c698c67cdd39704a8486f319433fed3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1057251131}
 --- !u!114 &506130369 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000012072458962, guid: 01599c173b40dfe4aa3835821cec65fa,
@@ -272,19 +277,68 @@ Prefab:
     - target: {fileID: 114000014207154170, guid: 9c698c67cdd39704a8486f319433fed3,
         type: 2}
       propertyPath: fwdAcceleration
-      value: 170
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 114000014207154170, guid: 9c698c67cdd39704a8486f319433fed3,
         type: 2}
       propertyPath: turnStrength
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114000014207154170, guid: 9c698c67cdd39704a8486f319433fed3,
         type: 2}
       propertyPath: bwdAcceleration
       value: 30
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114000014207154170, guid: 9c698c67cdd39704a8486f319433fed3,
+        type: 2}
+      propertyPath: hoverHeight
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014207154170, guid: 9c698c67cdd39704a8486f319433fed3,
+        type: 2}
+      propertyPath: hoverForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000012260659158, guid: 9c698c67cdd39704a8486f319433fed3,
+        type: 2}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000012260659158, guid: 9c698c67cdd39704a8486f319433fed3,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012011926824, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013527475272, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011989211754, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013238364438, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013064452338, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013064452338, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013064452338, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64000013473160472, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1153218571
@@ -389,24 +443,13 @@ MonoBehaviour:
   player: {fileID: 1773784284}
   minDistance: 3
   maxDistance: 5
+  moveSpeed: 10
+  rotSpeed: 15
 --- !u!1 &1773784284 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000012821945606, guid: 9c698c67cdd39704a8486f319433fed3,
     type: 2}
   m_PrefabInternal: {fileID: 1057251131}
---- !u!136 &1773784285
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1773784284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.41
-  m_Height: 1.99
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2008086275
 Prefab:
   m_ObjectHideFlags: 0
@@ -449,13 +492,68 @@ Prefab:
     - target: {fileID: 114000012072458962, guid: 01599c173b40dfe4aa3835821cec65fa,
         type: 2}
       propertyPath: showRays
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000012072458962, guid: 01599c173b40dfe4aa3835821cec65fa,
         type: 2}
       propertyPath: showForwardAndNormal
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01599c173b40dfe4aa3835821cec65fa, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2145607136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2145607137}
+  - 64: {fileID: 2145607138}
+  - 136: {fileID: 2145607139}
+  m_Layer: 0
+  m_Name: ModelCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2145607137
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2145607136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0000000010685, y: 0.00024478, z: -0.0044005}
+  m_LocalScale: {x: 1.2942106, y: 1.2942103, z: 1.2942103}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 440064657}
+  m_RootOrder: 1
+--- !u!64 &2145607138
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2145607136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 4300002, guid: 5282f20eba4d44213820e21af8481932, type: 3}
+--- !u!136 &2145607139
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2145607136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1.39
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
