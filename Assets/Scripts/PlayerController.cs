@@ -56,8 +56,10 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		// Forward
-		if (thrust != 0)
-            rb.AddForce (transform.forward * thrust, ForceMode.Acceleration);
+        if (thrust != 0)
+        {
+            rb.AddForce(transform.forward * thrust, ForceMode.Acceleration);
+        }
 
 		// Turn
 		if (turn != 0)
@@ -92,13 +94,16 @@ public class PlayerController : MonoBehaviour {
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("TrackBoundaries"))
         {
-            Vector3 newForward = Vector3.Cross(col.contacts[0].normal, Vector3.up);
+            Vector3 contactNormal = col.contacts[0].normal;
+            //Vector3 newForward = Vector3.Cross(contactNormal, Vector3.up);
+            Vector3 newForward = Vector3.Reflect(transform.forward, contactNormal);
             if (Vector3.Dot(newForward, transform.forward) < 0) newForward *= -1;
-            Quaternion endFixRotation = Quaternion.LookRotation(newForward, transform.up);
-            float sign = Mathf.Sign(Vector2.Angle(transform.forward, newForward));
+            //Quaternion endFixRotation = Quaternion.LookRotation(newForward, transform.up);
             //rb.velocity = rb.velocity.magnitude * col.contacts[0].normal * 0.5f;
-            //rb.AddRelativeTorque (transform.up * sign * 30);
             //transform.rotation = endFixRotation;
+
+            transform.forward = newForward + transform.forward * 2.0f;
+            //rb.velocity = Vector3.Reflect(rb.velocity, contactNormal);
         }
     }
 }
