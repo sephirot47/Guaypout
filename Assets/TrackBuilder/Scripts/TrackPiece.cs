@@ -3,11 +3,26 @@ using System.Collections;
 
 public class TrackPiece : MonoBehaviour 
 {
+    public GameObject speedBoosterPrefab;
+
     [SerializeField]
     private Waypoint[] waypoints;
 
+    [SerializeField]
+    [Range (0,1)]
+    private float speedBoosterChance;
+    private GameObject speedBooster;
+
 	void Start () 
     {
+        if (Random.Range(0.0f, 1.0f) < speedBoosterChance)
+        {
+            speedBooster = GameObject.Instantiate(
+                speedBoosterPrefab, 
+                waypoints[0].transform.position + transform.up * 0.7f,
+                waypoints[0].transform.rotation) as GameObject;
+            speedBooster.transform.parent = transform;
+        }
 	}
 	
 	void Update () 

@@ -277,12 +277,12 @@ Prefab:
     - target: {fileID: 114000014207154170, guid: 9c698c67cdd39704a8486f319433fed3,
         type: 2}
       propertyPath: fwdAcceleration
-      value: 60
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 114000014207154170, guid: 9c698c67cdd39704a8486f319433fed3,
         type: 2}
       propertyPath: turnStrength
-      value: 30
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 114000014207154170, guid: 9c698c67cdd39704a8486f319433fed3,
         type: 2}
@@ -292,12 +292,12 @@ Prefab:
     - target: {fileID: 114000014207154170, guid: 9c698c67cdd39704a8486f319433fed3,
         type: 2}
       propertyPath: hoverHeight
-      value: 2.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114000014207154170, guid: 9c698c67cdd39704a8486f319433fed3,
         type: 2}
       propertyPath: hoverForce
-      value: 30
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 54000012260659158, guid: 9c698c67cdd39704a8486f319433fed3,
         type: 2}
