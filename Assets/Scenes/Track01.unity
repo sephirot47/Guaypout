@@ -337,6 +337,30 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010222782782, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013643593706, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011666987922, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010937323218, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011292232856, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011031344824, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64000013473160472, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
@@ -514,7 +538,7 @@ GameObject:
   - 136: {fileID: 2145607139}
   m_Layer: 0
   m_Name: ModelCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

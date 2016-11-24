@@ -27,7 +27,8 @@ public class PlayerController : MonoBehaviour {
 		model = transform.FindChild("PlayerModel").gameObject;
 	}
 
-	void Update() {
+	void Update() 
+    {
 		// Main thrust
 		float verticalAxis = Input.GetAxis ("Vertical");
 		if (verticalAxis > 0)
@@ -90,7 +91,7 @@ public class PlayerController : MonoBehaviour {
 		rb.AddForce (direction * boost, ForceMode.Impulse);
 	}
 
-    public void OnCollisionEnter(Collision col)
+    public void OnCollisionStay(Collision col)
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("TrackBoundaries"))
         {
@@ -102,7 +103,12 @@ public class PlayerController : MonoBehaviour {
             //rb.velocity = rb.velocity.magnitude * col.contacts[0].normal * 0.5f;
             //transform.rotation = endFixRotation;
 
-            transform.forward = newForward + transform.forward * 2.0f;
+            if (thrust != 0.0f && rb.velocity.magnitude < 1.0f)
+            {
+               // rb.AddForce(contactNormal * 100.0f);
+            }
+            // transform.forward = newForward + transform.forward * 2.0f;
+            //rb.AddForce(contactNormal * 100.0f);
             //rb.velocity = Vector3.Reflect(rb.velocity, contactNormal);
         }
     }
