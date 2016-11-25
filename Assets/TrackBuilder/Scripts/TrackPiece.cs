@@ -19,7 +19,7 @@ public class TrackPiece : MonoBehaviour
         {
             speedBooster = GameObject.Instantiate(
                 speedBoosterPrefab, 
-                waypoints[0].transform.position + transform.up * 0.7f,
+                waypoints[0].transform.position + transform.up * 1.5f,
                 waypoints[0].transform.rotation) as GameObject;
             speedBooster.transform.parent = transform;
         }
