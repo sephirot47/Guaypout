@@ -7,11 +7,11 @@ public class SpeedBooster : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("Player")) // If it's the player
+		if (col.GetComponentInParent<ShipPhysicsController>()) // If it's a ship
         {
-			PlayerController player = col.GetComponentInParent<PlayerController>();
-            player.GetComponentInChildren<Animator>().SetTrigger("Boosting");
-			player.ApplyBoost(boost, transform.forward);
+			ShipPhysicsController ship = col.GetComponentInParent<ShipPhysicsController>();
+			ship.GetComponentInChildren<Animator>().SetTrigger("Boosting");
+			ship.ApplyBoost(boost, transform.forward);
         }
     }
 }

@@ -11,7 +11,6 @@ public class TrackBuilder : MonoBehaviour
     public TrackPiece initialPiece;
     public TrackPiece[] trackPiecesPrefabs;
 
-    private const int recentlyCreatedTrackPieceLayer = 31;
     private List<TrackPiece> trackPieces;
 
     void Start () 
