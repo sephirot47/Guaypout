@@ -48,4 +48,9 @@ public class TrackPiece : MonoBehaviour
     {
         return waypoints[waypoints.Length - 1];
     }
+
+	public Waypoint[] GetWaypoints()
+	{
+		return waypoints;
+	}
 }

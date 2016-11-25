@@ -9,6 +9,8 @@ public class TrackInformer : MonoBehaviour
 	public bool showRays;
 	public bool showForwardAndNormal;
 
+	public TrackBuilder trackBuilder;
+
 	public class TrackInfo
 	{
 		public Vector3 normal = Vector3.zero;
@@ -88,5 +90,17 @@ public class TrackInformer : MonoBehaviour
 			pts[k] = new Vector3(x, y, z);
 		}
 		return pts;
+	}
+
+	public float GetTrackProgress(Vector3 position) // Track progress in the passed position, [0.0, 1.0]
+	{
+		Waypoint closestWaypoint = GetClosestWaypoint(position);
+		List<Waypoint> waypoints = trackBuilder.GetWaypointsList();
+		return ((float) waypoints.IndexOf(closestWaypoint) + 1.0f) / waypoints.Count;
+	}
+
+	private Waypoint GetClosestWaypoint(Vector3 position)
+	{
+		return trackBuilder.GetClosestWaypoint(position);
 	}
 }

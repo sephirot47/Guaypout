@@ -120,8 +120,36 @@ public class TrackBuilder : MonoBehaviour
         return false;
     }
 
-    GameObject GetRandomTrackPiecePrefab()
+    private GameObject GetRandomTrackPiecePrefab()
     {
         return trackPiecesPrefabs[Random.Range(0, trackPiecesPrefabs.Length)].gameObject;
     }
+
+	public List<Waypoint> GetWaypointsList() // Returns the ordered list of waypoints
+	{
+		List<Waypoint> wpList = new List<Waypoint> ();
+		foreach (TrackPiece tp in trackPieces) {
+			foreach (Waypoint wp in tp.GetWaypoints()) {
+				wpList.Add (wp);
+			}
+		}
+		return wpList;
+	}
+
+	public Waypoint GetClosestWaypoint(Vector3 position)
+	{
+		Waypoint closestWaypoint = null;
+		float closestDistance = Mathf.Infinity;
+		List<Waypoint> waypoints = GetWaypointsList();
+		foreach (Waypoint wp in waypoints) 
+		{
+			float d = Vector3.Distance (position, wp.transform.position);
+			if (d < closestDistance) 
+			{
+				closestWaypoint = wp;
+				closestDistance = d;
+			}
+		}
+		return closestWaypoint;
+	}
 }
