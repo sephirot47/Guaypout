@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackScale: 30
-  numPieces: 10
+  numPieces: 15
   player: {fileID: 1773784284}
   initialPiece: {fileID: 114000012900897490, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1,
     type: 2}
