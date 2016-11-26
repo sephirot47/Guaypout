@@ -20,7 +20,7 @@ public class TrackBuilder : MonoBehaviour
 
     void Update () 
     {
-        while (trackPieces.Count < numPieces)
+        while (trackPieces.Count <= numPieces)
         {
             AddRandomPiece();
         }
@@ -152,4 +152,9 @@ public class TrackBuilder : MonoBehaviour
 		}
 		return closestWaypoint;
 	}
+
+    public List<TrackPiece> GetTrackPieces()
+    {
+        return trackPieces;
+    }
 }

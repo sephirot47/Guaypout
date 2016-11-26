@@ -92,12 +92,85 @@ public class TrackInformer : MonoBehaviour
 		return pts;
 	}
 
-	public float GetTrackProgress(Vector3 position) // Track progress in the passed position, [0.0, 1.0]
+    // Track progress in the passed position, and forward needed too
+    // Returns a value between [0.0, 1.0]
+    public float GetTrackProgress(Vector3 position) 
 	{
-		Waypoint closestWaypoint = GetClosestWaypoint(position);
-		List<Waypoint> waypoints = trackBuilder.GetWaypointsList();
-		return ((float) waypoints.IndexOf(closestWaypoint) + 1.0f) / waypoints.Count;
+        List<Waypoint> waypoints = trackBuilder.GetWaypointsList();
+        Waypoint closestWaypointBefore = GetClosestPointBefore(position);
+        int indexOfClosestWaypointBefore = waypoints.IndexOf(closestWaypointBefore);
+
+        // Get the travelled distance until the last waypoint before and 
+        // the total trackDistance
+        float travelledDistance = 0.0f;
+        float totalTrackDistance = 0.0f;
+        for (int i = 0; i < waypoints.Count - 1; ++i)
+        {
+            Waypoint wp1 = waypoints[i], wp2 = waypoints[i + 1];
+            float dist =  Vector3.Distance(wp1.transform.position, wp2.transform.position);
+            if (i < indexOfClosestWaypointBefore) {  travelledDistance += dist; }
+            totalTrackDistance += dist;
+        } 
+
+        // Add the last bit of distance between the last point behind and the ship
+        travelledDistance += Vector3.Distance(closestWaypointBefore.transform.position, position);
+        return travelledDistance / totalTrackDistance;
 	}
+
+    public Waypoint GetClosestPointBefore(Vector3 position) { return GetClosestPointBeforeOrAfter(position, true);  }
+    public Waypoint GetClosestPointAfter(Vector3 position)  { return GetClosestPointBeforeOrAfter(position, false); }
+    private Waypoint GetClosestPointBeforeOrAfter(Vector3 position, bool before)
+    { 
+        // Find the two consecutive points such that the ship is between them.
+        // Amongst these, take the closest ones (there can be many, take only into
+        // those that belong to the track pieces around the player (before, over and after))
+
+        TrackPiece trackPieceBelow  = GetTrackPieceBelow(position);
+        TrackPiece trackPieceBefore = GetTrackPieceBefore(trackPieceBelow);
+        TrackPiece trackPieceAfter  = GetTrackPieceAfter(trackPieceBelow);
+
+        List<Waypoint> waypoints = trackBuilder.GetWaypointsList();
+
+        Waypoint wpBefore = waypoints[waypoints.Count - 1], wpAfter = wpBefore;
+        for (int i = 0; i < waypoints.Count - 1; ++i)
+        {
+            Waypoint wp1 = waypoints[i], wp2 = waypoints[i + 1];
+            bool wp1Before = Vector3.Dot(wp1.GetForward(), (position - wp1.transform.position)) > 0;
+            bool wp2After  = Vector3.Dot(wp2.GetForward(), (position - wp2.transform.position)) < 0; 
+            if (wp1Before && wp2After)
+            {
+                if (wp1.GetTrackPiece() == trackPieceBefore || 
+                    wp1.GetTrackPiece() == trackPieceBelow  || 
+                    wp1.GetTrackPiece() == trackPieceAfter)
+                {
+                    return before ? wp1 : wp2;
+                }
+            }
+        }
+        return waypoints[waypoints.Count - 1];
+    }
+
+    private TrackPiece GetTrackPieceBelow(Vector3 position)
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(position, Vector3.down, out hitInfo, 999.9f, trackLayer))
+        {
+            return hitInfo.collider.gameObject.GetComponentInParent<TrackPiece>();
+        }
+        return null;
+    }
+    private TrackPiece GetTrackPieceAfter(TrackPiece tp)
+    {
+        List<TrackPiece> trackPieces = trackBuilder.GetTrackPieces();
+        int i = trackPieces.IndexOf(tp);
+        return (i+1 < trackPieces.Count) ? trackPieces[i + 1] : null;
+    }
+    private TrackPiece GetTrackPieceBefore(TrackPiece tp)
+    {
+        List<TrackPiece> trackPieces = trackBuilder.GetTrackPieces();
+        int i = trackPieces.IndexOf(tp);
+        return (i-1 >= 0) ? trackPieces[i - 1] : null;
+    }
 
 	private Waypoint GetClosestWaypoint(Vector3 position)
 	{
