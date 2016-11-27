@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipPhysicsController: {fileID: 62877927}
+  turnSpeed: 1.5
 --- !u!1 &68097713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,7 +1478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fwdAcceleration: 65
   bwdAcceleration: 30
-  turnStrength: 25
+  turnStrength: 15
   tilt: 30
   trackLayer:
     serializedVersion: 2
