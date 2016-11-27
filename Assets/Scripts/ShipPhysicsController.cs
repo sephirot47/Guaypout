@@ -90,4 +90,8 @@ public class ShipPhysicsController : MonoBehaviour {
 		if (horizontalAxis != 0)
 			turn = horizontalAxis;
 	}
+
+	public Rigidbody getRigidBody() {
+		return rb;
+	}
 }
