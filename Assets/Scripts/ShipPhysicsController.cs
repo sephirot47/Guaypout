@@ -34,11 +34,11 @@ public class ShipPhysicsController : MonoBehaviour {
 		for (int i = 0; i < hoverPoints.Length; ++i) {
 			GameObject hoverPoint = hoverPoints[i];
 			Ray ray = new Ray(hoverPoint.transform.position, -transform.up);
-			Debug.DrawRay (ray.origin, ray.direction, Color.red, 0f);
+			//Debug.DrawRay (ray.origin, ray.direction, Color.red, 0f);
 			if (Physics.Raycast (ray, out hit, hoverHeight, trackLayer)) {
 				float proportionalHeight = (hoverHeight - hit.distance) / hoverHeight;
 				rb.AddForceAtPosition (transform.up * hoverForce * proportionalHeight, hoverPoint.transform.position);
-				Debug.DrawRay (ray.origin, ray.direction, Color.green, 0f);
+				//Debug.DrawRay (ray.origin, ray.direction, Color.green, 0f);
 			}
 		}
 
@@ -58,7 +58,7 @@ public class ShipPhysicsController : MonoBehaviour {
 			if (trackInfo.forward != Vector3.zero)
 			{
 				Quaternion endRotation = Quaternion.LookRotation(trackInfo.forward, trackInfo.normal);
-				transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, 5 * Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, 5.0f * Time.deltaTime);
 			}
 		} 
 		else { 
@@ -69,7 +69,7 @@ public class ShipPhysicsController : MonoBehaviour {
 
 		// Tilt
 		Quaternion endTilt = Quaternion.AngleAxis (-turn * tilt, transform.forward);
-		model.transform.rotation = endTilt * transform.rotation;
+		//model.transform.rotation = endTilt * transform.rotation;
 	}
 
 	public void ApplyBoost(float boost, Vector3 direction)

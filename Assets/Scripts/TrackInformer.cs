@@ -117,6 +117,18 @@ public class TrackInformer : MonoBehaviour
         return travelledDistance / totalTrackDistance;
 	}
 
+    public Waypoint GetPointAfter(Waypoint waypoint)
+    {
+        List<Waypoint> waypoints = trackBuilder.GetWaypointsList();
+        for (int i = 0; i < waypoints.Count; ++i)
+        {
+            if (waypoints[i] == waypoint)
+            {
+                return (i + 1 < waypoints.Count) ? waypoints[i + 1] : null;
+            }
+        }
+        return null;
+    }
     public Waypoint GetClosestPointBefore(Vector3 position) { return GetClosestPointBeforeOrAfter(position, true);  }
     public Waypoint GetClosestPointAfter(Vector3 position)  { return GetClosestPointBeforeOrAfter(position, false); }
     private Waypoint GetClosestPointBeforeOrAfter(Vector3 position, bool before)

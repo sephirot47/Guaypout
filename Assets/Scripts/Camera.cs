@@ -13,7 +13,7 @@ public class Camera : MonoBehaviour
 
 	void Update () 
     {
-		float endDistance = Mathf.Clamp(player.GetComponent<Rigidbody> ().velocity.magnitude * 0.5f, minDistance, maxDistance);
+		float endDistance = Mathf.Clamp(player.GetComponent<Rigidbody>().velocity.magnitude * 0.5f, minDistance, maxDistance);
 		distance = Mathf.Lerp (distance, endDistance, Time.deltaTime);
 
 		Vector3 offsetDir = Vector3.Normalize(-player.transform.forward + player.transform.up * 0.5f);
@@ -24,5 +24,8 @@ public class Camera : MonoBehaviour
         Vector3 lookPoint = player.transform.position + player.transform.forward;
         Quaternion endRotation = Quaternion.LookRotation(lookPoint - transform.position, player.transform.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, Time.deltaTime * rotSpeed);
+
+        //transform.position = player.transform.position + offsetDir * 5.0f;
+        //transform.LookAt(player.transform.position);
 	}
 }
