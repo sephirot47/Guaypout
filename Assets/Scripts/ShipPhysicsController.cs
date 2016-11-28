@@ -24,7 +24,7 @@ public class ShipPhysicsController : MonoBehaviour {
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
-		model = transform.FindChild("Model").gameObject;
+        model = transform.FindChild("ModelWrapper").gameObject;
 		trackInformer = GameObject.Find("TrackInformer").GetComponent<TrackInformer>();
 	}
 	
@@ -51,26 +51,30 @@ public class ShipPhysicsController : MonoBehaviour {
 		// Turn
 		if (turn != 0)
 			rb.AddRelativeTorque (transform.up * turn * turnStrength);
-
-		// Lock the forward vector
-		TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo (transform.position, transform.right, transform.up, hoverHeight);
-		if (trackInfo.overTheTrack) {
-			if (trackInfo.forward != Vector3.zero)
-			{
-				Quaternion endRotation = Quaternion.LookRotation(trackInfo.forward, trackInfo.normal);
-				transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, 5.0f * Time.deltaTime);
-			}
-		} 
-		else { 
-			// Falling
-			Quaternion endRotation = Quaternion.FromToRotation(transform.up, Vector3.up) * transform.rotation;
-			transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, 0.2f * Time.deltaTime);
-		}
-
-		// Tilt
-		Quaternion endTilt = Quaternion.AngleAxis (-turn * tilt, transform.forward);
-		//model.transform.rotation = endTilt * transform.rotation;
+        
 	}
+
+    void Update()
+    {
+        // Lock the forward vector
+        TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo (transform.position, transform.right, transform.up, hoverHeight);
+        if (trackInfo.overTheTrack) {
+            if (trackInfo.forward != Vector3.zero)
+            {
+                Quaternion endRotation = Quaternion.LookRotation(trackInfo.forward, trackInfo.normal);
+                rb.rotation = Quaternion.Slerp(rb.rotation, endRotation, 5.0f * Time.deltaTime);
+            }
+        } 
+        else { 
+            // Falling
+            Quaternion endRotation = Quaternion.FromToRotation(transform.up, Vector3.up) * rb.rotation;
+            rb.rotation = Quaternion.Slerp(rb.rotation, endRotation, 0.2f * Time.deltaTime);
+        }
+
+        // Tilt
+        Quaternion endTilt = Quaternion.AngleAxis (rb.angularVelocity.y * -tilt, Vector3.forward);
+        model.transform.localRotation = endTilt;
+    }
 
 	public void ApplyBoost(float boost, Vector3 direction)
 	{
