@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
     {
 		float verticalAxis = Input.GetAxis ("Vertical");
 		float horizontalAxis = Input.GetAxis("Horizontal");
-		shipPhysicsController.setThrust (verticalAxis);
-		shipPhysicsController.setTurn (horizontalAxis);
+		shipPhysicsController.SetThrust (verticalAxis);
+		shipPhysicsController.SetTurn (horizontalAxis);
 	}
 }

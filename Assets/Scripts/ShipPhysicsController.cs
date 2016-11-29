@@ -22,7 +22,8 @@ public class ShipPhysicsController : MonoBehaviour {
 	private TrackInformer trackInformer;
 	private GameObject model;
 
-	void Start() {
+	void Start() 
+    {
 		rb = GetComponent<Rigidbody> ();
         model = transform.FindChild("ModelWrapper").gameObject;
 		trackInformer = GameObject.Find("TrackInformer").GetComponent<TrackInformer>();
@@ -81,7 +82,7 @@ public class ShipPhysicsController : MonoBehaviour {
 		rb.AddForce (direction * boost, ForceMode.Impulse);
 	}
 
-	public void setThrust(float verticalAxis) {
+	public void SetThrust(float verticalAxis) {
 		// Main thrust
 		if (verticalAxis > 0)
 			thrust = verticalAxis * fwdAcceleration;
@@ -89,13 +90,13 @@ public class ShipPhysicsController : MonoBehaviour {
 			thrust = verticalAxis * bwdAcceleration;
 	}
 
-	public void setTurn(float horizontalAxis) {
+	public void SetTurn(float horizontalAxis) {
 		// Turning
 		if (horizontalAxis != 0)
 			turn = horizontalAxis;
 	}
 
-	public Rigidbody getRigidBody() {
-		return rb;
+	public Rigidbody GetRigidbody() {
+        return GetComponent<Rigidbody> ();
 	}
 }

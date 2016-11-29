@@ -96,25 +96,7 @@ public class TrackInformer : MonoBehaviour
     // Returns a value between [0.0, 1.0]
     public float GetTrackProgress(Vector3 position) 
 	{
-        List<Waypoint> waypoints = trackBuilder.GetWaypointsList();
-        Waypoint closestWaypointBefore = GetClosestPointBefore(position);
-        int indexOfClosestWaypointBefore = waypoints.IndexOf(closestWaypointBefore);
-
-        // Get the travelled distance until the last waypoint before and 
-        // the total trackDistance
-        float travelledDistance = 0.0f;
-        float totalTrackDistance = 0.0f;
-        for (int i = 0; i < waypoints.Count - 1; ++i)
-        {
-            Waypoint wp1 = waypoints[i], wp2 = waypoints[i + 1];
-            float dist =  Vector3.Distance(wp1.transform.position, wp2.transform.position);
-            if (i < indexOfClosestWaypointBefore) {  travelledDistance += dist; }
-            totalTrackDistance += dist;
-        } 
-
-        // Add the last bit of distance between the last point behind and the ship
-        travelledDistance += Vector3.Distance(closestWaypointBefore.transform.position, position);
-        return travelledDistance / totalTrackDistance;
+        return GetTravelledDistance(position) / GetTotalTrackDistance();
 	}
 
     public Waypoint GetPointAfter(Waypoint waypoint)
@@ -160,6 +142,39 @@ public class TrackInformer : MonoBehaviour
             }
         }
         return waypoints[waypoints.Count - 1];
+    }
+
+    // Returns the travelled distance on the track (considering waypoints)
+    public float GetTravelledDistance(Vector3 position)
+    {
+        List<Waypoint> waypoints = trackBuilder.GetWaypointsList();
+        float travelledDistance = 0.0f;
+        Waypoint closestWaypointBefore = GetClosestPointBefore(position);
+        int indexOfClosestWaypointBefore = waypoints.IndexOf(closestWaypointBefore);
+        for (int i = 0; i < waypoints.Count - 1; ++i)
+        {
+            if (i >= indexOfClosestWaypointBefore) break;
+            Waypoint wp1 = waypoints[i], wp2 = waypoints[i + 1];
+            float dist =  Vector3.Distance(wp1.transform.position, wp2.transform.position);
+            travelledDistance += dist;
+        } 
+
+        // Add the last bit of distance between the last point behind and position
+        travelledDistance += Vector3.Distance(closestWaypointBefore.transform.position, position);
+        return travelledDistance;
+    }
+
+    public float GetTotalTrackDistance()
+    {
+        List<Waypoint> waypoints = trackBuilder.GetWaypointsList();
+        float totalTrackDistance = 0.0f;
+        for (int i = 0; i < waypoints.Count - 1; ++i)
+        {
+            Waypoint wp1 = waypoints[i], wp2 = waypoints[i + 1];
+            float dist =  Vector3.Distance(wp1.transform.position, wp2.transform.position);
+            totalTrackDistance += dist;
+        } 
+        return totalTrackDistance;
     }
 
     private TrackPiece GetTrackPieceBelow(Vector3 position)

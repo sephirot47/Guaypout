@@ -11,8 +11,9 @@ public class EnemyController : MonoBehaviour {
 	private TrackInformer trackInformer;
     private TrackInformer.TrackInfo info;
 
-	void Start() {
-		rb = shipPhysicsController.getRigidBody ();
+	void Start() 
+    {
+        rb = shipPhysicsController.GetRigidbody ();
 		trackInformer = GameObject.Find("TrackInformer").GetComponent<TrackInformer>();
 	}
 
@@ -65,10 +66,10 @@ public class EnemyController : MonoBehaviour {
 
         float turn = 1.0f - Vector3.Dot(direction, transform.forward);
         turn *= Mathf.Sign( AngleAroundAxis(transform.forward, direction, transform.up) );
-        shipPhysicsController.setTurn(turn * 8.0f);
+        shipPhysicsController.SetTurn(turn * 8.0f);
 
         // Thrust
-        shipPhysicsController.setThrust(1f);
+        shipPhysicsController.SetThrust(1f);
         //float gravity = rb.velocity.y;
         //rb.velocity = transform.forward * 50f;
         //rb.velocity = new Vector3(rb.velocity.x, gravity, rb.velocity.z);

@@ -16,14 +16,14 @@ public class TrackBuilder : MonoBehaviour
     void Start () 
     {
         trackPieces = new List<TrackPiece>();
-    }
-
-    void Update () 
-    {
         while (trackPieces.Count <= numPieces)
         {
             AddRandomPiece();
         }
+    }
+
+    void Update () 
+    {
     }
 
     void AddRandomPiece()
