@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class Classification : MonoBehaviour 
 {
     public float rowsMoveSpeed;
+    public Text positionText;
     public TrackInformer trackInformer;
 
     private bool firstFrame = true;
     private List<Vector2> classificationRowsPositions = null;
     private List<ClassificationRow> classificationRows = null;
+    private string[] positionOrdinals = {"1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"};
 
 	void Start () 
     {
@@ -32,9 +35,11 @@ public class Classification : MonoBehaviour
             }
         );
 
+        int playerPosition = 0;
         for (int i = 0; i < classificationRows.Count; ++i)
         {
             ClassificationRow cr = classificationRows[i];
+            if (cr.ship.CompareTag("Player")) { playerPosition = i; }
 
             Vector2 destPos = classificationRowsPositions[i];
             RectTransform rTrans = cr.GetComponent<RectTransform>();
@@ -48,6 +53,8 @@ public class Classification : MonoBehaviour
                     Vector2.Lerp(rTrans.anchoredPosition, destPos, Time.deltaTime * rowsMoveSpeed);
             }
         }
+
+        positionText.text = positionOrdinals[playerPosition];
     }
 
 	void Update () 
