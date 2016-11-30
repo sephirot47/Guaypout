@@ -24,7 +24,7 @@ public class Camera : MonoBehaviour
 
         Vector3 lookPoint = player.transform.position + player.transform.forward * 2.0f;
         Quaternion endRotation = Quaternion.LookRotation(lookPoint - transform.position, player.transform.up);
-        transform.rotation = endRotation;// Quaternion.Slerp(transform.rotation, endRotation, Time.fixedDeltaTime * rotSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, Time.fixedDeltaTime * rotSpeed);
 
 	}
 }
