@@ -596,7 +596,7 @@ MonoBehaviour:
   - {fileID: 114000011992157676}
   - {fileID: 114000012230028506}
   - {fileID: 114000013588671002}
-  speedBoosterChance: 0.2
+  speedBoosterChance: 1
 --- !u!114 &114000013276121684
 MonoBehaviour:
   m_ObjectHideFlags: 1

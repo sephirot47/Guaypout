@@ -123,23 +123,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1000012586956724
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000013554340162}
-  - 64: {fileID: 64000012317862368}
-  - 136: {fileID: 136000013707851626}
-  m_Layer: 0
-  m_Name: ModelCollider
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1000012821945606
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +204,7 @@ Transform:
   - {fileID: 4000012626076090}
   - {fileID: 4000012231426488}
   m_Father: {fileID: 4000013064452338}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!4 &4000011748672628
 Transform:
   m_ObjectHideFlags: 1
@@ -318,7 +301,6 @@ Transform:
   - {fileID: 4000011989211754}
   - {fileID: 4000013527475272}
   - {fileID: 4000012011926824}
-  - {fileID: 4000013554340162}
   - {fileID: 4000010731430974}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -348,19 +330,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000013064452338}
   m_RootOrder: 2
---- !u!4 &4000013554340162
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012586956724}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.153, z: -0.0044005}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 4000013064452338}
-  m_RootOrder: 4
 --- !u!4 &4000013784155536
 Transform:
   m_ObjectHideFlags: 1
@@ -426,18 +395,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 2
---- !u!64 &64000012317862368
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012586956724}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 4300002, guid: 5282f20eba4d44213820e21af8481932, type: 3}
 --- !u!64 &64000012559894024
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -504,19 +461,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipPhysicsController: {fileID: 114000010364709244}
---- !u!136 &136000013707851626
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012586956724}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.35
-  m_Height: 1.39
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136000013779201076
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -580,7 +524,7 @@ ParticleSystem:
   moveWithTransform: 0
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -1196014065
+  randomSeed: -391935159
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -2329,7 +2273,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -54417253
+  randomSeed: 1409850641
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -4088,7 +4032,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -960801304
+  randomSeed: 1779140900
   InitialModule:
     serializedVersion: 2
     enabled: 1

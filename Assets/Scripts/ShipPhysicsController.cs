@@ -73,7 +73,8 @@ public class ShipPhysicsController : MonoBehaviour {
         }
 
         // Tilt
-        Quaternion endTilt = Quaternion.AngleAxis (rb.angularVelocity.y * -tilt, Vector3.forward);
+       // Quaternion endTilt = Quaternion.AngleAxis (rb.angularVelocity.y * -tilt, Vector3.forward);
+        Quaternion endTilt = Quaternion.AngleAxis (turn * -tilt, Vector3.forward);
         model.transform.localRotation = endTilt;
     }
 
@@ -96,7 +97,8 @@ public class ShipPhysicsController : MonoBehaviour {
 			turn = horizontalAxis;
 	}
 
-	public Rigidbody GetRigidbody() {
+	public Rigidbody GetRigidbody() 
+    {
         return GetComponent<Rigidbody> ();
 	}
 }
