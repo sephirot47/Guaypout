@@ -1026,62 +1026,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 570679086}
---- !u!1 &685647500 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000013139770892, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
-    type: 2}
-  m_PrefabInternal: {fileID: 2100337626}
---- !u!114 &685647501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 685647500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64fdadc614d0561439d0ace7fb4ccc9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipPhysicsController: {fileID: 685647503}
-  turnSpeed: 1.5
-  tilt: 30
-  turnSmoothing: 5
-  nextWPOrthogonalityTresh: 0.5
-  forwardPredictionDistance: 2
---- !u!114 &685647503 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000013454588280, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
-    type: 2}
-  m_PrefabInternal: {fileID: 2100337626}
-  m_Script: {fileID: 11500000, guid: b640616763914e5438b1fd1b8a50a929, type: 3}
---- !u!1 &699344622 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000013139770892, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
-    type: 2}
-  m_PrefabInternal: {fileID: 1719408432}
---- !u!114 &699344623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 699344622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64fdadc614d0561439d0ace7fb4ccc9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipPhysicsController: {fileID: 699344625}
-  turnSpeed: 1.5
-  tilt: 30
-  turnSmoothing: 5
-  nextWPOrthogonalityTresh: 0.5
-  forwardPredictionDistance: 2
---- !u!114 &699344625 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000013454588280, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
-    type: 2}
-  m_PrefabInternal: {fileID: 1719408432}
-  m_Script: {fileID: 11500000, guid: b640616763914e5438b1fd1b8a50a929, type: 3}
 --- !u!1001 &779060529
 Prefab:
   m_ObjectHideFlags: 0
@@ -1155,6 +1099,11 @@ Prefab:
         type: 2}
       propertyPath: tilt
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010262886250, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
+        type: 2}
+      propertyPath: numWPForward
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23fdbf52d37ec5e49a0a1b20bd558fde, type: 2}
@@ -1344,6 +1293,11 @@ Prefab:
       propertyPath: forwardPredictionDistance
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010262886250, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
+        type: 2}
+      propertyPath: numWPForward
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 23fdbf52d37ec5e49a0a1b20bd558fde, type: 2}
@@ -1359,23 +1313,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 889728557}
   m_Script: {fileID: 11500000, guid: b640616763914e5438b1fd1b8a50a929, type: 3}
---- !u!114 &889728561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 889728558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64fdadc614d0561439d0ace7fb4ccc9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipPhysicsController: {fileID: 889728559}
-  turnSpeed: 1.5
-  tilt: 30
-  turnSmoothing: 5
-  nextWPOrthogonalityTresh: 0.5
-  forwardPredictionDistance: 2
 --- !u!1 &935105737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2393,6 +2330,11 @@ Prefab:
       propertyPath: forwardPredictionDistance
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010262886250, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
+        type: 2}
+      propertyPath: numWPForward
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 23fdbf52d37ec5e49a0a1b20bd558fde, type: 2}
@@ -2916,6 +2858,11 @@ Prefab:
         type: 2}
       propertyPath: forwardPredictionDistance
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010262886250, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
+        type: 2}
+      propertyPath: numWPForward
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

@@ -8,8 +8,8 @@ public class EnemyController : MonoBehaviour {
 	public float turnSpeed = 1.5f;
     public float tilt = 30f;
     public float turnSmoothing = 5.0f;
-    public float nextWPOrthogonalityTresh = 0.5f;
-    public float forwardPredictionDistance = 2.0f;
+    public float nextWPOrthogonalityTresh = 0.98f;
+    public int numWPForward = 6;
 
 	private Rigidbody rb;
 	private TrackInformer trackInformer;
@@ -21,10 +21,6 @@ public class EnemyController : MonoBehaviour {
 		trackInformer = GameObject.Find("TrackInformer").GetComponent<TrackInformer>();
 	}
 
-	void Update () {
-		
-	}
-
     public static float AngleAroundAxis(Vector3 dirA, Vector3 dirB, Vector3 axis)
     {
         dirA = dirA - Vector3.Project(dirA, axis);
@@ -33,21 +29,18 @@ public class EnemyController : MonoBehaviour {
         return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
     }
 
-
     void FixedUpdate()
     {
         info = trackInformer.GetTrackInfo(transform.position, transform.right, transform.up, 100f);
         if (!info.overTheTrack) return;
 
-        List<Waypoint> waypointsAfter = trackInformer.GetNPointsAfter(transform.position, 4);
-
-        Vector3 forwardedPosition = (waypointsAfter[2].transform.position + waypointsAfter[3].transform.position) / 2.0f; // transform.position + transform.forward * forwardPredictionDistance;
-        forwardedPosition += Vector3.up * 10.0f; // Move up a bit
-
-        Waypoint targetAfterWP = trackInformer.GetPointAfter(forwardedPosition);
-        Waypoint targetAfterAfterWP = trackInformer.GetPointAfter(targetAfterWP);
+        List<Waypoint> waypointsAfter = trackInformer.GetNPointsAfter(transform.position, numWPForward);
+        Waypoint targetAfterWP = waypointsAfter[numWPForward - 1];
+        Waypoint targetAfterAfterWP = waypointsAfter[numWPForward - 2];
         Vector3 targetAfter = targetAfterWP.transform.position;
         Vector3 targetAfterAfter = targetAfterAfterWP.transform.position;
+        Vector3 forwardedPosition = Vector3.Lerp(targetAfter, targetAfterAfter, 0.5f);
+
         if (Vector3.Distance(targetAfter, targetAfterAfter) < 0.5f)
         {
             targetAfterAfterWP = trackInformer.GetPointAfter(targetAfterAfterWP);
@@ -66,21 +59,11 @@ public class EnemyController : MonoBehaviour {
         //Debug.DrawLine(transform.position, transform.position + v2*5f, Color.green, 0.0f, false);
         Debug.DrawLine(transform.position, target, Color.blue, 0.0f, false);
 
-        // Turn
-        //Quaternion rotation = Quaternion.LookRotation(direction, info.normal);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
-        //transform.forward = direction;
-
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position,  transform.right, out hitInfo, 999.9f, shipPhysicsController.trackLayer))
-        {
             rb.AddForce(hitInfo.normal * 8.0f * (1.0f / hitInfo.distance));
-        }
-
         if (Physics.Raycast(transform.position, -transform.right, out hitInfo, 999.9f, shipPhysicsController.trackLayer))
-        {
             rb.AddForce(hitInfo.normal * 8.0f * (1.0f / hitInfo.distance));
-        }
 
         float prevTurn = shipPhysicsController.getTurn();
         float s = Mathf.Sign(AngleAroundAxis(transform.forward, direction, transform.up));
@@ -88,10 +71,6 @@ public class EnemyController : MonoBehaviour {
         float turn = Mathf.Lerp(prevTurn, endTurn, Time.fixedDeltaTime * turnSmoothing);
         shipPhysicsController.SetTurn(turn);
 
-        // Thrust
         shipPhysicsController.SetThrust(1f);
-        //float gravity = rb.velocity.y;
-        //rb.velocity = transform.forward * 50f;
-        //rb.velocity = new Vector3(rb.velocity.x, gravity, rb.velocity.z);
     }
 }

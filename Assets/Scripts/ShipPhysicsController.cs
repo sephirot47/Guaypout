@@ -46,9 +46,7 @@ public class ShipPhysicsController : MonoBehaviour {
 
 		// Forward
 		if (thrust != 0)
-		{
 			rb.AddForce(transform.forward * thrust, ForceMode.Acceleration);
-		}
 
 		// Turn
 		if (turn != 0)
@@ -74,7 +72,7 @@ public class ShipPhysicsController : MonoBehaviour {
         }
 
         // Tilt
-       // Quaternion endTilt = Quaternion.AngleAxis (rb.angularVelocity.y * -tilt, Vector3.forward);
+        // Quaternion endTilt = Quaternion.AngleAxis (rb.angularVelocity.y * -tilt, Vector3.forward);
         Quaternion endTilt = Quaternion.AngleAxis (turn * -tilt, Vector3.forward);
         model.transform.localRotation = Quaternion.Slerp(model.transform.localRotation, endTilt, Time.deltaTime * tiltSmooth);
     }
