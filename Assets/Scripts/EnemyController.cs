@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour {
 
@@ -38,7 +39,11 @@ public class EnemyController : MonoBehaviour {
         info = trackInformer.GetTrackInfo(transform.position, transform.right, transform.up, 100f);
         if (!info.overTheTrack) return;
 
-        Vector3 forwardedPosition = transform.position + transform.forward * forwardPredictionDistance;
+        List<Waypoint> waypointsAfter = trackInformer.GetNPointsAfter(transform.position, 4);
+
+        Vector3 forwardedPosition = (waypointsAfter[2].transform.position + waypointsAfter[3].transform.position) / 2.0f; // transform.position + transform.forward * forwardPredictionDistance;
+        forwardedPosition += Vector3.up * 10.0f; // Move up a bit
+
         Waypoint targetAfterWP = trackInformer.GetPointAfter(forwardedPosition);
         Waypoint targetAfterAfterWP = trackInformer.GetPointAfter(targetAfterWP);
         Vector3 targetAfter = targetAfterWP.transform.position;
@@ -52,7 +57,6 @@ public class EnemyController : MonoBehaviour {
         Vector3 v1 = Vector3.ProjectOnPlane(targetAfterAfter - targetAfter, Vector3.up).normalized;
         Vector3 v2 = Vector3.ProjectOnPlane(targetAfter - forwardedPosition, Vector3.up).normalized;
         float nextWPOrthogonality = Vector3.Dot(v1, v2);
-        if (!name.Contains("1")) { Debug.Log(nextWPOrthogonality); }
 
         Vector3 target = nextWPOrthogonality < nextWPOrthogonalityTresh ? targetAfterAfter : targetAfter;
         Vector3 direction = target - transform.position;
@@ -60,7 +64,7 @@ public class EnemyController : MonoBehaviour {
         direction.Normalize();
         //Debug.DrawLine(transform.position, transform.position + v1 * 5f, Color.red, 0.0f, false);
         //Debug.DrawLine(transform.position, transform.position + v2*5f, Color.green, 0.0f, false);
-       // Debug.DrawLine(transform.position, target, Color.blue, 0.0f, false);
+        Debug.DrawLine(transform.position, target, Color.blue, 0.0f, false);
 
         // Turn
         //Quaternion rotation = Quaternion.LookRotation(direction, info.normal);
