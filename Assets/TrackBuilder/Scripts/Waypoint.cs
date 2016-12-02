@@ -14,9 +14,8 @@ public class Waypoint : MonoBehaviour
 
         parentTrackPiece = GetComponentInParent<TrackPiece>();
 	}
-	
+
 	void Update () {
-	
 	}
 
     // Returns the track piece the waypoint is in
@@ -28,5 +27,11 @@ public class Waypoint : MonoBehaviour
     public Vector3 GetForward()
     {
         return transform.forward;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+      //  Gizmos.DrawSphere(transform.position, 3.0f);
     }
 }

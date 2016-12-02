@@ -20,7 +20,7 @@ public class Camera : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, 
                                           player.transform.position + offsetDir * distance,
                                           Time.fixedDeltaTime * moveSpeed);
-        transform.position = player.transform.position + offsetDir * distance;
+        //transform.position = player.transform.position + offsetDir * distance;
 
         Vector3 lookPoint = player.transform.position + player.transform.forward * 2.0f;
         Quaternion endRotation = Quaternion.LookRotation(lookPoint - transform.position, player.transform.up);

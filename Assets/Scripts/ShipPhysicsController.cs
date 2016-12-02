@@ -12,7 +12,8 @@ public class ShipPhysicsController : MonoBehaviour {
 	public float turnStrength = 25f;
 	private float turn = 0f;
 
-	public float tilt = 30f;
+    public float tilt = 30f;
+    public float tiltSmooth;
 
 	public LayerMask trackLayer;
 	public float hoverForce = 40f;
@@ -75,7 +76,7 @@ public class ShipPhysicsController : MonoBehaviour {
         // Tilt
        // Quaternion endTilt = Quaternion.AngleAxis (rb.angularVelocity.y * -tilt, Vector3.forward);
         Quaternion endTilt = Quaternion.AngleAxis (turn * -tilt, Vector3.forward);
-        model.transform.localRotation = endTilt;
+        model.transform.localRotation = Quaternion.Slerp(model.transform.localRotation, endTilt, Time.deltaTime * tiltSmooth);
     }
 
 	public void ApplyBoost(float boost, Vector3 direction)
@@ -101,4 +102,9 @@ public class ShipPhysicsController : MonoBehaviour {
     {
         return GetComponent<Rigidbody> ();
 	}
+
+    public float getTurn()
+    {
+        return turn;
+    }
 }

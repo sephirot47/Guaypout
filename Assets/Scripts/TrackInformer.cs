@@ -111,45 +111,63 @@ public class TrackInformer : MonoBehaviour
         }
         return null;
     }
-    public Waypoint GetClosestPointBefore(Vector3 position) { return GetClosestPointBeforeOrAfter(position, true);  }
-    public Waypoint GetClosestPointAfter(Vector3 position)  { return GetClosestPointBeforeOrAfter(position, false); }
-    private Waypoint GetClosestPointBeforeOrAfter(Vector3 position, bool before)
-    { 
+
+    public List<Waypoint> GetNPointsBeforeOrAfter(Vector3 position, int n, bool before)
+    {
         // Find the two consecutive points such that the ship is between them.
         // Amongst these, take the closest ones (there can be many, take only into
         // those that belong to the track pieces around the player (before, over and after))
 
-        TrackPiece trackPieceBelow  = GetTrackPieceBelow(position);
+        TrackPiece trackPieceBelow = GetTrackPieceBelow(position);
         TrackPiece trackPieceBefore = GetTrackPieceBefore(trackPieceBelow);
-        TrackPiece trackPieceAfter  = GetTrackPieceAfter(trackPieceBelow);
+        TrackPiece trackPieceAfter = GetTrackPieceAfter(trackPieceBelow);
 
         List<Waypoint> waypoints = trackBuilder.GetWaypointsList();
+        List<Waypoint> resultList = new List<Waypoint>();
 
         Waypoint wpBefore = waypoints[waypoints.Count - 1], wpAfter = wpBefore;
         for (int i = 0; i < waypoints.Count - 1; ++i)
         {
             Waypoint wp1 = waypoints[i], wp2 = waypoints[i + 1];
             bool wp1Before = Vector3.Dot(wp1.GetForward(), (position - wp1.transform.position)) > 0;
-            bool wp2After  = Vector3.Dot(wp2.GetForward(), (position - wp2.transform.position)) < 0; 
+            bool wp2After = Vector3.Dot(wp2.GetForward(), (position - wp2.transform.position)) < 0;
             if (wp1Before && wp2After)
             {
-                if (wp1.GetTrackPiece() == trackPieceBefore || 
-                    wp1.GetTrackPiece() == trackPieceBelow  || 
+                if (wp1.GetTrackPiece() == trackPieceBefore ||
+                    wp1.GetTrackPiece() == trackPieceBelow ||
                     wp1.GetTrackPiece() == trackPieceAfter)
                 {
-                    return before ? wp1 : wp2;
+                    if (before)
+                    {
+                        for (int j = i; j >= Mathf.Max(i - n + 1, 0); --j)
+                        {
+                            resultList.Add(waypoints[j]);
+                        }
+                    }
+                    else
+                    {
+                        for (int j = i + 1; j < Mathf.Min(i + 1 + n, waypoints.Count); ++j)
+                        {
+                            resultList.Add(waypoints[j]);
+                        }
+                    }
+                    return resultList;
                 }
             }
         }
-        return waypoints[waypoints.Count - 1];
+        return resultList;
     }
+    public List<Waypoint> GetNPointsBefore(Vector3 position, int n) { return GetNPointsBeforeOrAfter(position, n, true); }
+    public List<Waypoint> GetNPointsAfter(Vector3 position, int n) { return GetNPointsBeforeOrAfter(position, n, false); }
+    public Waypoint GetPointBefore(Vector3 position) { List<Waypoint> l = GetNPointsBeforeOrAfter(position, 1, true); return l.Count > 0 ? l[0] : null; }
+    public Waypoint GetPointAfter(Vector3 position) { List<Waypoint> l = GetNPointsBeforeOrAfter(position, 1, false); return l.Count > 0 ? l[0] : null; }
 
     // Returns the travelled distance on the track (considering waypoints)
     public float GetTravelledDistance(Vector3 position)
     {
         List<Waypoint> waypoints = trackBuilder.GetWaypointsList();
         float travelledDistance = 0.0f;
-        Waypoint closestWaypointBefore = GetClosestPointBefore(position);
+        Waypoint closestWaypointBefore = GetPointBefore(position);
         int indexOfClosestWaypointBefore = waypoints.IndexOf(closestWaypointBefore);
         for (int i = 0; i < waypoints.Count - 1; ++i)
         {

@@ -38,7 +38,7 @@ public class GameFlowController : MonoBehaviour
         else if (currentState == State.CountDown)
         {
             countDownChrono += Time.deltaTime;
-            if (countDownChrono < 3)
+            if (countDownChrono < 0)
             {
                 countDownText.text = (3 - ((int)countDownChrono)).ToString();
 

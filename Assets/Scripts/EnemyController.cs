@@ -6,6 +6,9 @@ public class EnemyController : MonoBehaviour {
 	public ShipPhysicsController shipPhysicsController;
 	public float turnSpeed = 1.5f;
     public float tilt = 30f;
+    public float turnSmoothing = 5.0f;
+    public float nextWPOrthogonalityTresh = 0.5f;
+    public float forwardPredictionDistance = 2.0f;
 
 	private Rigidbody rb;
 	private TrackInformer trackInformer;
@@ -35,18 +38,29 @@ public class EnemyController : MonoBehaviour {
         info = trackInformer.GetTrackInfo(transform.position, transform.right, transform.up, 100f);
         if (!info.overTheTrack) return;
 
-        Waypoint targetBefore = trackInformer.GetClosestPointBefore(transform.position);
-        Waypoint targetAfter = trackInformer.GetClosestPointAfter(transform.position);
-        Waypoint targetAfterAfter = trackInformer.GetPointAfter(targetAfter);
-        if (Vector3.Distance(targetAfter.transform.position, targetAfterAfter.transform.position) < 0.5f)
+        Vector3 forwardedPosition = transform.position + transform.forward * forwardPredictionDistance;
+        Waypoint targetAfterWP = trackInformer.GetPointAfter(forwardedPosition);
+        Waypoint targetAfterAfterWP = trackInformer.GetPointAfter(targetAfterWP);
+        Vector3 targetAfter = targetAfterWP.transform.position;
+        Vector3 targetAfterAfter = targetAfterAfterWP.transform.position;
+        if (Vector3.Distance(targetAfter, targetAfterAfter) < 0.5f)
         {
-            targetAfterAfter = trackInformer.GetPointAfter(targetAfter);
+            targetAfterAfterWP = trackInformer.GetPointAfter(targetAfterAfterWP);
+            targetAfterAfter = targetAfterAfterWP.transform.position;
         }
 
-        Vector3 direction = targetAfterAfter.transform.position - transform.position;
+        Vector3 v1 = Vector3.ProjectOnPlane(targetAfterAfter - targetAfter, Vector3.up).normalized;
+        Vector3 v2 = Vector3.ProjectOnPlane(targetAfter - forwardedPosition, Vector3.up).normalized;
+        float nextWPOrthogonality = Vector3.Dot(v1, v2);
+        if (!name.Contains("1")) { Debug.Log(nextWPOrthogonality); }
+
+        Vector3 target = nextWPOrthogonality < nextWPOrthogonalityTresh ? targetAfterAfter : targetAfter;
+        Vector3 direction = target - transform.position;
         direction.y = transform.forward.y;
         direction.Normalize();
-        Debug.DrawRay(transform.position, direction, Color.blue, 0.0f, false);
+        //Debug.DrawLine(transform.position, transform.position + v1 * 5f, Color.red, 0.0f, false);
+        //Debug.DrawLine(transform.position, transform.position + v2*5f, Color.green, 0.0f, false);
+       // Debug.DrawLine(transform.position, target, Color.blue, 0.0f, false);
 
         // Turn
         //Quaternion rotation = Quaternion.LookRotation(direction, info.normal);
@@ -56,17 +70,19 @@ public class EnemyController : MonoBehaviour {
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position,  transform.right, out hitInfo, 999.9f, shipPhysicsController.trackLayer))
         {
-            rb.AddForce(hitInfo.normal * 3.0f * (1.0f / hitInfo.distance));
+            rb.AddForce(hitInfo.normal * 8.0f * (1.0f / hitInfo.distance));
         }
 
         if (Physics.Raycast(transform.position, -transform.right, out hitInfo, 999.9f, shipPhysicsController.trackLayer))
         {
-            rb.AddForce(hitInfo.normal * 3.0f * (1.0f / hitInfo.distance));
+            rb.AddForce(hitInfo.normal * 8.0f * (1.0f / hitInfo.distance));
         }
 
-        float turn = 1.0f - Vector3.Dot(direction, transform.forward);
-        turn *= Mathf.Sign( AngleAroundAxis(transform.forward, direction, transform.up) );
-        shipPhysicsController.SetTurn(turn * 8.0f);
+        float prevTurn = shipPhysicsController.getTurn();
+        float s = Mathf.Sign(AngleAroundAxis(transform.forward, direction, transform.up));
+        float endTurn = s * (1.0f - Vector3.Dot(direction, transform.forward)) * 15.0f;
+        float turn = Mathf.Lerp(prevTurn, endTurn, Time.fixedDeltaTime * turnSmoothing);
+        shipPhysicsController.SetTurn(turn);
 
         // Thrust
         shipPhysicsController.SetThrust(1f);
