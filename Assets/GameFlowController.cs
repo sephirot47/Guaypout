@@ -12,7 +12,9 @@ public class GameFlowController : MonoBehaviour
         RaceFinished
     };
 
-    State currentState;
+    public CameraController camera;
+
+    private State currentState;
     public float raceBeginTime;
     private float raceBeginChrono, countDownChrono, raceFinishedChrono;
 
@@ -38,7 +40,7 @@ public class GameFlowController : MonoBehaviour
         else if (currentState == State.CountDown)
         {
             countDownChrono += Time.deltaTime;
-            if (countDownChrono < 0)
+            if (countDownChrono < 3)
             {
                 countDownText.text = (3 - ((int)countDownChrono)).ToString();
 
@@ -70,10 +72,12 @@ public class GameFlowController : MonoBehaviour
         countDownText.enabled = false;
         if (currentState == State.RaceBegin)
         {
+            camera.GetComponent<CameraController>().SetMode(CameraController.CameraMode.RaceBegin);
             SetShipControllersEnabled(false);
         }
         else if (currentState == State.CountDown)
         {
+            camera.GetComponent<CameraController>().SetMode(CameraController.CameraMode.AfterRaceBegin);
             countDownText.enabled = true;
             SetShipControllersEnabled(false);
         }

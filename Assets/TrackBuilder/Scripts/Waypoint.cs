@@ -32,6 +32,6 @@ public class Waypoint : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(transform.position, 3.0f);
+        //Gizmos.DrawSphere(transform.position, 3.0f);
     }
 }

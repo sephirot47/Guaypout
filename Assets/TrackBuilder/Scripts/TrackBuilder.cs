@@ -16,6 +16,7 @@ public class TrackBuilder : MonoBehaviour
     void Start () 
     {
         trackPieces = new List<TrackPiece>();
+        trackPieces.Add(initialPiece);
         while (trackPieces.Count <= numPieces)
         {
             AddRandomPiece();
@@ -33,28 +34,13 @@ public class TrackBuilder : MonoBehaviour
         GameObject newTrackPieceGO = null;
         while (--maximumTries != 0)
         {
-            if (trackPieces.Count > 0)
-            {
-                newTrackPieceGO = GameObject.Instantiate(GetRandomTrackPiecePrefab()) as GameObject;
-            }
-            else
-            {
-                newTrackPieceGO = GameObject.Instantiate(initialPiece.gameObject) as GameObject;
-            }
+            newTrackPieceGO = GameObject.Instantiate(GetRandomTrackPiecePrefab()) as GameObject;
             newTrackPieceGO.transform.localScale = Vector3.one * trackScale;
 
             TrackPiece newTrackPiece = newTrackPieceGO.GetComponent<TrackPiece>();
-            if (trackPieces.Count > 0)
-            {
-                // Align with the previous track piece
-                TrackPiece prevTrackPiece = trackPieces[trackPieces.Count - 1];
-                newTrackPiece.ConcatenateWithPreviousTrackPiece(prevTrackPiece);
-            }
-            else // First piece
-            {
-                newTrackPiece.transform.position = player.transform.position - player.transform.up * 4;
-                newTrackPiece.transform.LookAt(newTrackPiece.transform.position + Vector3.forward, Vector3.up);
-            }
+            // Align with the previous track piece
+            TrackPiece prevTrackPiece = trackPieces[trackPieces.Count - 1];
+            newTrackPiece.ConcatenateWithPreviousTrackPiece(prevTrackPiece);
 
             if (CollidesWithTrack(newTrackPieceGO))
             {
@@ -69,21 +55,20 @@ public class TrackBuilder : MonoBehaviour
                 newTrackPiece.transform.parent = transform;
                 break;
             }
-            Debug.DebugBreak();
         }
 
         trackPieces.Add(newTrackPieceGO.GetComponent<TrackPiece>());
 
         if (!foundCompatibleTrackPiece)
         {
-            Debug.LogWarning("HAVENT FOUND COMPATIBLE TRACK PIECE, backtracking");
+            //Debug.LogWarning("HAVENT FOUND COMPATIBLE TRACK PIECE, backtracking");
             Backtrack();
         }
     }
 
     void BacktrackPiece(int i)
     {
-        if (i >= 0 && i < trackPieces.Count)
+        if (i > 0 && i < trackPieces.Count)
         {
             Destroy(trackPieces[i].gameObject);
             trackPieces.RemoveAt(i);

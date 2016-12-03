@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 	void Update() 
     {
 		float verticalAxis = Input.GetAxis ("Vertical");
-		float horizontalAxis = Input.GetAxis("Horizontal");
+		float horizontalAxis = Input.GetAxis ("Horizontal");
 		shipPhysicsController.SetThrust (verticalAxis);
 		shipPhysicsController.SetTurn (horizontalAxis);
 	}
