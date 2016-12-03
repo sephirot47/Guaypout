@@ -22,7 +22,7 @@ GameObject:
   - 33: {fileID: 33000011830323574}
   - 23: {fileID: 23000011194002040}
   - 95: {fileID: 95000013612040466}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - 4: {fileID: 4000013784155536}
   - 198: {fileID: 198000012307576424}
   - 199: {fileID: 199000014076308606}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireParticlesStatic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - 4: {fileID: 4000012231426488}
   - 64: {fileID: 64000012559894024}
   - 136: {fileID: 136000013779201076}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ModelCollider
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013527475272}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HoverPoint3
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013238364438}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HoverPoint1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011989211754}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HoverPoint2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012011926824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HoverPoint4
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -134,7 +134,8 @@ GameObject:
   - 54: {fileID: 54000012260659158}
   - 114: {fileID: 114000010364709244}
   - 114: {fileID: 114000013371682844}
-  m_Layer: 0
+  - 114: {fileID: 114000014170446530}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -149,7 +150,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010731430974}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ModelWrapper
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -166,7 +167,7 @@ GameObject:
   - 4: {fileID: 4000012003369272}
   - 198: {fileID: 198000010215418734}
   - 199: {fileID: 199000012128275712}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +184,7 @@ GameObject:
   - 4: {fileID: 4000011748672628}
   - 198: {fileID: 198000010663889490}
   - 199: {fileID: 199000013036693592}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireParticlesBurst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +294,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012821945606}
   m_LocalRotation: {x: -0, y: 0.0000029653306, z: -0, w: -1}
-  m_LocalPosition: {x: -0.0013788941, y: 0, z: 0.49}
+  m_LocalPosition: {x: 6.87, y: 0, z: -7.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 360, z: 0}
   m_Children:
@@ -388,7 +389,7 @@ Rigidbody:
   m_GameObject: {fileID: 1000012821945606}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 2
+  m_Drag: 3
   m_AngularDrag: 20
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -435,15 +436,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b640616763914e5438b1fd1b8a50a929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fwdAcceleration: 90
+  fwdAcceleration: 140
   bwdAcceleration: 30
   turnStrength: 15
   tilt: 30
+  tiltSmooth: 999
   trackLayer:
     serializedVersion: 2
     m_Bits: 256
-  hoverForce: 130
-  hoverHeight: 3.5
+  hoverForce: 100
+  hoverHeight: 2.5
   hoverPoints:
   - {fileID: 1000011031344824}
   - {fileID: 1000011292232856}
@@ -461,6 +463,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipPhysicsController: {fileID: 114000010364709244}
+--- !u!114 &114000014170446530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012821945606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85125f478a9719d48a15c1d7e99cf178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  minDistance: 0
+  maxDistance: 0
+  moveSpeed: 0
+  rotSpeed: 0
 --- !u!136 &136000013779201076
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -524,7 +542,7 @@ ParticleSystem:
   moveWithTransform: 0
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -391935159
+  randomSeed: 679723572
   InitialModule:
     serializedVersion: 2
     enabled: 1

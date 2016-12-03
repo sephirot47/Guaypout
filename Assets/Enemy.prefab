@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000012699856598}
   - 198: {fileID: 198000010424479026}
   - 199: {fileID: 199000011766768892}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireParticlesStatic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - 4: {fileID: 4000012429707728}
   - 198: {fileID: 198000014188740398}
   - 199: {fileID: 199000012916635694}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireParticlesBurst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013810298226}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ModelWrapper
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - 33: {fileID: 33000012827656984}
   - 23: {fileID: 23000012629232146}
   - 95: {fileID: 95000013079617706}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010661124944}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HoverPoint1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013660515964}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HoverPoint3
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - 4: {fileID: 4000013953893410}
   - 64: {fileID: 64000011366253604}
   - 136: {fileID: 136000013786638916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ModelCollider
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010139691960}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HoverPoint4
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -151,7 +151,8 @@ GameObject:
   - 54: {fileID: 54000013611118976}
   - 114: {fileID: 114000013454588280}
   - 114: {fileID: 114000010262886250}
-  m_Layer: 0
+  - 114: {fileID: 114000011055133672}
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -168,7 +169,7 @@ GameObject:
   - 4: {fileID: 4000013681364036}
   - 198: {fileID: 198000012439753454}
   - 199: {fileID: 199000013880891812}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +184,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014143078630}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HoverPoint2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -319,7 +320,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013139770892}
   m_LocalRotation: {x: -0, y: 0.0000029653306, z: -0, w: -1}
-  m_LocalPosition: {x: -0.001390636, y: 0.08, z: 1.9799999}
+  m_LocalPosition: {x: -5.48, y: 0.08, z: 1.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 360, z: 0}
   m_Children:
@@ -388,7 +389,7 @@ Rigidbody:
   m_GameObject: {fileID: 1000013139770892}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 2
+  m_Drag: 3
   m_AngularDrag: 20
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -437,7 +438,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPhysicsController: {fileID: 114000013454588280}
   turnSpeed: 1.5
-  tilt: 30
+  tilt: 60
+  turnSmoothing: 5
+  nextWPOrthogonalityTresh: 0.98
+  numWPForward: 6
+--- !u!114 &114000011055133672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013139770892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85125f478a9719d48a15c1d7e99cf178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  minDistance: 0
+  maxDistance: 0
+  moveSpeed: 0
+  rotSpeed: 0
 --- !u!114 &114000013454588280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,15 +469,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b640616763914e5438b1fd1b8a50a929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fwdAcceleration: 90
+  fwdAcceleration: 140
   bwdAcceleration: 30
   turnStrength: 15
   tilt: 30
+  tiltSmooth: 1
   trackLayer:
     serializedVersion: 2
     m_Bits: 256
-  hoverForce: 130
-  hoverHeight: 3.5
+  hoverForce: 100
+  hoverHeight: 2.5
   hoverPoints:
   - {fileID: 1000011328488922}
   - {fileID: 1000013640454262}
@@ -526,7 +547,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -960801304
+  randomSeed: -1360436748
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -2285,7 +2306,7 @@ ParticleSystem:
   moveWithTransform: 0
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -1196014065
+  randomSeed: -1088748522
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -4034,7 +4055,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -54417253
+  randomSeed: -211101039
   InitialModule:
     serializedVersion: 2
     enabled: 1

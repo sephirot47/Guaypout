@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour {
         direction.Normalize();
         //Debug.DrawLine(transform.position, transform.position + v1 * 5f, Color.red, 0.0f, false);
         //Debug.DrawLine(transform.position, transform.position + v2*5f, Color.green, 0.0f, false);
-        Debug.DrawLine(transform.position, target, Color.blue, 0.0f, false);
+        //Debug.DrawLine(transform.position, target, Color.blue, 0.0f, false);
 
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position,  transform.right, out hitInfo, 999.9f, shipPhysicsController.trackLayer))
