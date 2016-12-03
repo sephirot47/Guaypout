@@ -35,6 +35,8 @@ public class EnemyController : MonoBehaviour {
         if (!info.overTheTrack) return;
 
         List<Waypoint> waypointsAfter = trackInformer.GetNPointsAfter(transform.position, numWPForward);
+        if (waypointsAfter.Count < numWPForward) return;
+        
         Waypoint targetAfterWP = waypointsAfter[numWPForward - 1];
         Waypoint targetAfterAfterWP = waypointsAfter[numWPForward - 2];
         Vector3 targetAfter = targetAfterWP.transform.position;

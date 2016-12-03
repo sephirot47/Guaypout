@@ -1305,6 +1305,8 @@ MonoBehaviour:
   numPieces: 150
   player: {fileID: 1773784284}
   initialPiece: {fileID: 1863227518}
+  lastTrackPiecePrefab: {fileID: 114000012900897490, guid: 17a95bdea8a4a9f44971c2e4db89b855,
+    type: 2}
   trackPiecesPrefabs:
   - {fileID: 114000011855027482, guid: 8c7f3d3bbd667034289df233684ab87d, type: 2}
   - {fileID: 114000011855027482, guid: 20e8431565f063f4882f5ce5626d6c85, type: 2}

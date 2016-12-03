@@ -178,7 +178,10 @@ public class TrackInformer : MonoBehaviour
         } 
 
         // Add the last bit of distance between the last point behind and position
-        travelledDistance += Vector3.Distance(closestWaypointBefore.transform.position, position);
+        if (closestWaypointBefore != null)
+        {
+            travelledDistance += Vector3.Distance(closestWaypointBefore.transform.position, position);
+        }
         return travelledDistance;
     }
 

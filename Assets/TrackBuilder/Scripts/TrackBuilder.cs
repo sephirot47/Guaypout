@@ -9,6 +9,7 @@ public class TrackBuilder : MonoBehaviour
     public int numPieces;
     public GameObject player;
     public TrackPiece initialPiece;
+    public TrackPiece lastTrackPiecePrefab;
     public TrackPiece[] trackPiecesPrefabs;
 
     private List<TrackPiece> trackPieces;
@@ -34,7 +35,14 @@ public class TrackBuilder : MonoBehaviour
         GameObject newTrackPieceGO = null;
         while (--maximumTries != 0)
         {
-            newTrackPieceGO = GameObject.Instantiate(GetRandomTrackPiecePrefab()) as GameObject;
+            if (trackPieces.Count <= numPieces - 1)
+            {
+                newTrackPieceGO = GameObject.Instantiate(GetRandomTrackPiecePrefab()) as GameObject;
+            }
+            else
+            {
+                newTrackPieceGO = GameObject.Instantiate(lastTrackPiecePrefab.gameObject) as GameObject;
+            }
             newTrackPieceGO.transform.localScale = Vector3.one * trackScale;
 
             TrackPiece newTrackPiece = newTrackPieceGO.GetComponent<TrackPiece>();
