@@ -75,4 +75,10 @@ public class EnemyController : MonoBehaviour {
 
         shipPhysicsController.SetThrust(1f);
     }
+
+    public void OnGoalPassed()
+    {
+        GetComponentInChildren<Animator>().SetTrigger("Boosting");
+        this.enabled = false;
+    }
 }

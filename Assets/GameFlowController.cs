@@ -77,7 +77,7 @@ public class GameFlowController : MonoBehaviour
         }
         else if (currentState == State.CountDown)
         {
-            camera.GetComponent<CameraController>().SetMode(CameraController.CameraMode.AfterRaceBegin);
+            camera.GetComponent<CameraController>().SetMode(CameraController.CameraMode.InRace);
             countDownText.enabled = true;
             SetShipControllersEnabled(false);
         }

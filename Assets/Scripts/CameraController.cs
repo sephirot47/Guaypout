@@ -6,7 +6,8 @@ public class CameraController : MonoBehaviour
     public enum CameraMode
     {
         RaceBegin,
-        AfterRaceBegin
+        InRace,
+        AfterRace
     };
 
 	public GameObject player;
@@ -21,7 +22,8 @@ public class CameraController : MonoBehaviour
 
 	void FixedUpdate () 
     {
-        if (currentMode == CameraMode.AfterRaceBegin)
+        // Movement handling
+        if (currentMode == CameraMode.InRace || currentMode == CameraMode.AfterRace)
         {
             float endDistance = Mathf.Clamp(player.GetComponent<Rigidbody>().velocity.magnitude * 0.5f, minDistance, maxDistance);
             distance = Mathf.Lerp(distance, endDistance, Time.deltaTime);
@@ -30,20 +32,21 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, 
                 player.transform.position + offsetDir * distance,
                 Time.fixedDeltaTime * moveSpeed);
+        }
 
+        // Rotation handling
+        if (currentMode == CameraMode.InRace || currentMode == CameraMode.AfterRace)
+        {
             Vector3 lookPoint = player.transform.position + player.transform.forward * 2.0f;
             Quaternion endRotation = Quaternion.LookRotation(lookPoint - transform.position, player.transform.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, Time.fixedDeltaTime * rotSpeed);
-        }
-        else
-        {
-        }
+        } 
 	}
 
     public void SetMode(CameraMode mode)
     {
         currentMode = mode;
-        if (currentMode == CameraMode.AfterRaceBegin)
+        if (currentMode == CameraMode.InRace)
         {
             GetComponent<Animator>().enabled = false;
         }

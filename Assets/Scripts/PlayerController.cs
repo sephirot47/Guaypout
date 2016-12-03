@@ -11,5 +11,11 @@ public class PlayerController : MonoBehaviour {
 		float horizontalAxis = Input.GetAxis ("Horizontal");
 		shipPhysicsController.SetThrust (verticalAxis);
 		shipPhysicsController.SetTurn (horizontalAxis);
-	}
+    }
+
+    public void OnGoalPassed()
+    {
+        GetComponentInChildren<Animator>().SetTrigger("Boosting");
+        this.enabled = false;
+    }
 }

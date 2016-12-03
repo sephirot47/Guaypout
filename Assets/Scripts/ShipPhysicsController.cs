@@ -20,6 +20,7 @@ public class ShipPhysicsController : MonoBehaviour {
 	public float hoverHeight = 5f;
 	public GameObject[] hoverPoints;
 
+    private bool hasFinishedTheRace = false;
 	private TrackInformer trackInformer;
 	private GameObject model;
 
@@ -44,14 +45,19 @@ public class ShipPhysicsController : MonoBehaviour {
 			}
 		}
 
-		// Forward
-		if (thrust != 0)
-			rb.AddForce(transform.forward * thrust, ForceMode.Acceleration);
+        // Forward
+        if (thrust != 0)
+            rb.AddForce(transform.forward * thrust, ForceMode.Acceleration);
 
-		// Turn
-		if (turn != 0)
-			rb.AddRelativeTorque (transform.up * turn * turnStrength);
-        
+        // Turn
+        if (turn != 0)
+            rb.AddRelativeTorque(transform.up * turn * turnStrength);
+
+        if (hasFinishedTheRace)
+        {
+            thrust *= 0.97f;
+            //rb.AddForce(-transform.forward * 5.0f); // Brake
+        }
 	}
 
     void Update()
@@ -72,7 +78,6 @@ public class ShipPhysicsController : MonoBehaviour {
         }
 
         // Tilt
-        // Quaternion endTilt = Quaternion.AngleAxis (rb.angularVelocity.y * -tilt, Vector3.forward);
         Quaternion endTilt = Quaternion.AngleAxis (turn * -tilt, Vector3.forward);
         model.transform.localRotation = Quaternion.Slerp(model.transform.localRotation, endTilt, Time.deltaTime * tiltSmooth);
     }
@@ -82,7 +87,8 @@ public class ShipPhysicsController : MonoBehaviour {
 		rb.AddForce (direction * boost, ForceMode.Impulse);
 	}
 
-	public void SetThrust(float verticalAxis) {
+    public void SetThrust(float verticalAxis) 
+    {
 		// Main thrust
 		if (verticalAxis > 0)
 			thrust = verticalAxis * fwdAcceleration;
@@ -90,7 +96,8 @@ public class ShipPhysicsController : MonoBehaviour {
 			thrust = verticalAxis * bwdAcceleration;
 	}
 
-	public void SetTurn(float horizontalAxis) {
+	public void SetTurn(float horizontalAxis) 
+    {
 		// Turning
 		if (horizontalAxis != 0)
 			turn = horizontalAxis;
@@ -104,5 +111,15 @@ public class ShipPhysicsController : MonoBehaviour {
     public float getTurn()
     {
         return turn;
+    }
+
+    public void OnGoalPassed()
+    {
+        hasFinishedTheRace = true;
+    }
+
+    public bool HasFinishedTheRace()
+    {
+        return hasFinishedTheRace;
     }
 }
