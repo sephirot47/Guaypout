@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameFlowController : MonoBehaviour 
@@ -19,11 +20,18 @@ public class GameFlowController : MonoBehaviour
     private float raceBeginChrono, countDownChrono, raceFinishedChrono;
 
     public Text countDownText, goText;
+    private Text positionText;
+    private Button backToMenuButton;
+    private const float maxPositionTextSize = 250.0f;
 
 	void Start () 
     {
         raceBeginChrono = countDownChrono = raceFinishedChrono = 0;
         goText.enabled = false;
+        positionText = GameObject.Find("HUD_InGame/Classification/PositionText").GetComponent<Text>();
+        backToMenuButton = GameObject.Find("HUD_InGame/BackToMenuButton").GetComponent<Button>();
+        backToMenuButton.gameObject.SetActive(false);
+        positionText.GetComponent<Animator>().enabled = false;
         SetState(State.RaceBegin);
 	}
 	
@@ -63,6 +71,7 @@ public class GameFlowController : MonoBehaviour
         }
         else if (currentState == State.RaceFinished)
         {
+            positionText.fontSize = ((int) Mathf.Lerp(positionText.fontSize, maxPositionTextSize, 5.0f * Time.deltaTime) );
         }
 	}
 
@@ -88,6 +97,9 @@ public class GameFlowController : MonoBehaviour
         else if (currentState == State.RaceFinished)
         {
             SetShipControllersEnabled(false);
+            backToMenuButton.gameObject.SetActive(true);
+            positionText.GetComponent<Animator>().enabled = true;
+            //Camera.main.GetComponent<CameraController>().SetMode(CameraController.CameraMode.AfterRace);
         }
     }
 
@@ -101,5 +113,10 @@ public class GameFlowController : MonoBehaviour
         {
             pc.enabled = enabled;
         }
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

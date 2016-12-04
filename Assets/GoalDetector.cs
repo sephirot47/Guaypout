@@ -4,23 +4,9 @@ using System.Collections;
 
 public class GoalDetector : MonoBehaviour 
 {
-    private const float maxPositionTextSize = 250.0f;
-    private Text positionText;
-
-    private bool playerFinished = false;
 
 	void Start () 
     {
-        positionText = GameObject.Find("HUD_InGame/Classification/PositionText").GetComponent<Text>();
-        positionText.GetComponent<Animator>().enabled = false;
-	}
-	
-	void Update () 
-    {
-        if (playerFinished)
-        {
-            positionText.fontSize = ((int) Mathf.Lerp(positionText.fontSize, maxPositionTextSize, 5.0f * Time.deltaTime) );
-        }
 	}
 
     void OnTriggerEnter(Collider col)
@@ -33,9 +19,8 @@ public class GoalDetector : MonoBehaviour
         if (player) 
         { 
             player.OnGoalPassed();
-            playerFinished = true;
-            positionText.GetComponent<Animator>().enabled = true;
-            //Camera.main.GetComponent<CameraController>().SetMode(CameraController.CameraMode.AfterRace);
+            GameObject.Find("GameFlowController").GetComponent<GameFlowController>().
+                    SetState(GameFlowController.State.RaceFinished);
         }
     }
 }
