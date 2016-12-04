@@ -32,7 +32,7 @@ public class ShipSelectionController : MonoBehaviour
 
     public void AcceptSelection()
     {
-        SceneManager.LoadScene("InRace");
+        SceneManager.LoadScene("TrackCreation");
     }
 
     public void BackToMenu()

@@ -11,28 +11,31 @@ public class TrackBuilder : MonoBehaviour
     public TrackPiece lastTrackPiecePrefab;
     public TrackPiece[] trackPiecesPrefabs;
 
-    [Range (0.1f, 1.0f)]
+    [HideInInspector]
     public float[] piecesProbabilities;
 
     private List<TrackPiece> trackPieces;
 
-    void Start () 
+    void Awake () 
     {
         trackPieces = new List<TrackPiece>();
+        piecesProbabilities = NormalizedProbabilities(new float[] {1.0f, 1.0f, 1.0f, 1.0f, 1.0f});
         GenerateTrack();
     }
 
-    public void NormalizeProbabilities()
+    public float[] NormalizedProbabilities(float[] probs)
     {
         float totalProb = 0.0f;
-        for (int i = 0; i < piecesProbabilities.Length; ++i)
+        for (int i = 0; i < probs.Length; ++i)
         {
-            totalProb += piecesProbabilities[i];
+            totalProb += probs[i];
         }
-        for (int i = 0; i < piecesProbabilities.Length; ++i)
+        for (int i = 0; i < probs.Length; ++i)
         {
-            piecesProbabilities[i] /= totalProb;
+            probs[i] /= totalProb;
         }
+
+        return probs;
     }
 
     public void ClearTrack()
@@ -44,10 +47,26 @@ public class TrackBuilder : MonoBehaviour
         trackPieces.Clear();
     }
 
-    public void GenerateTrack()
+    public void GenerateTrack(int seed = -1)
     {
+        if (seed != -1)
+        {
+            // Called from track creator
+            Random.InitState(seed); 
+        }
+        else
+        {
+            // Called from InRace scene.
+            // Get all the used parameters in the track creator to create the exact same track.
+            Random.InitState(PreviewTrackController.lastUsedRandomSeed);
+            piecesProbabilities[0] = piecesProbabilities[1] = PreviewTrackController.curveProbabilities;
+            piecesProbabilities[2] = piecesProbabilities[3] = PreviewTrackController.slopesProbabilities;
+            piecesProbabilities[4] = PreviewTrackController.straightProbabilities;
+            numPieces = PreviewTrackController.numPieces;
+        }
+
         ClearTrack();
-        NormalizeProbabilities();
+        piecesProbabilities = NormalizedProbabilities(piecesProbabilities);
         trackPieces.Add(initialPiece);
         while (trackPieces.Count <= numPieces)
         {

@@ -10,4 +10,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ShipSelection/ShipSelection.unity
   - enabled: 1
-    path: Assets/Scenes/InRace.unity
+    path: Assets/TrackCreation/TrackCreation.unity
+  - enabled: 1
+    path: Assets/InRace/InRace.unity
