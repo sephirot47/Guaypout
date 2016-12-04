@@ -13,7 +13,7 @@ public class PreviewTrackController : MonoBehaviour
     public static float curveProbabilities = 1.0f;
     public static float slopesProbabilities = 1.0f;
     public static float straightProbabilities = 1.0f;
-    public static int numPieces = 5;
+    public static int numPieces = 15;
 
 	void Awake ()
     {
