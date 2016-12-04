@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/MainMenu/MainMenu.unity
   - enabled: 1
-    path: Assets/Scenes/ShipSelection.unity
+    path: Assets/ShipSelection/ShipSelection.unity
   - enabled: 1
     path: Assets/Scenes/InRace.unity
