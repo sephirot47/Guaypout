@@ -1309,7 +1309,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackScale: 30
-  numPieces: 40
   initialPiece: {fileID: 1863227518}
   lastTrackPiecePrefab: {fileID: 114000012900897490, guid: 17a95bdea8a4a9f44971c2e4db89b855,
     type: 2}
@@ -1320,6 +1319,8 @@ MonoBehaviour:
   - {fileID: 114000012458375968, guid: 1fd28acaae514484fba2b7813a8e7bad, type: 2}
   - {fileID: 114000012900897490, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}
   - {fileID: 114000012900897490, guid: 7049b40aa18b5ad4381a9dd2ae81ddde, type: 2}
+  - {fileID: 114000012900897490, guid: 4f47c67b181449d4795fcc000ebc0203, type: 2}
+  numPieces: 40
   piecesProbabilities: []
 --- !u!1 &847423596
 GameObject:
@@ -2757,6 +2758,22 @@ Prefab:
     - target: {fileID: 4000010057619846, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.4519463
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011845796092, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.643
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011845796092, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 2.6499996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011103752402, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011103752402, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 2.750002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}

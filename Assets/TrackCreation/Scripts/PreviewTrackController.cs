@@ -44,7 +44,9 @@ public class PreviewTrackController : MonoBehaviour
 
         trackBuilder.piecesProbabilities[0] = trackBuilder.piecesProbabilities[1] = curvesSlider.value;
         trackBuilder.piecesProbabilities[2] = trackBuilder.piecesProbabilities[3] = slopesSlider.value;
-        trackBuilder.piecesProbabilities[4] = straightSlider.value;
+        trackBuilder.piecesProbabilities[4] = trackBuilder.piecesProbabilities[5] = 
+            trackBuilder.piecesProbabilities[6] = straightSlider.value;
+        
         trackBuilder.numPieces = ((int) (longitudeSlider.value  * (maxTrackLongitude - minTrackLongitude))) + minTrackLongitude;
     }
 

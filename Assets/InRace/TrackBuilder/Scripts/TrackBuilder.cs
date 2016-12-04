@@ -19,7 +19,7 @@ public class TrackBuilder : MonoBehaviour
     void Awake () 
     {
         trackPieces = new List<TrackPiece>();
-        piecesProbabilities = NormalizedProbabilities(new float[] {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f});
+        piecesProbabilities = NormalizedProbabilities(new float[] {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f});
         GenerateTrack();
     }
 
@@ -61,7 +61,9 @@ public class TrackBuilder : MonoBehaviour
             Random.InitState(PreviewTrackController.lastUsedRandomSeed);
             piecesProbabilities[0] = piecesProbabilities[1] = PreviewTrackController.curveProbabilities;
             piecesProbabilities[2] = piecesProbabilities[3] = PreviewTrackController.slopesProbabilities;
-            piecesProbabilities[4] = piecesProbabilities[5] = PreviewTrackController.straightProbabilities;
+            piecesProbabilities[4] = piecesProbabilities[5] =
+                piecesProbabilities[6] = PreviewTrackController.straightProbabilities;
+            
             numPieces = PreviewTrackController.numPieces;
         }
 
