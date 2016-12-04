@@ -7,25 +7,52 @@ public class TrackBuilder : MonoBehaviour
     public float trackScale;
 
     public int numPieces;
-    public GameObject player;
     public TrackPiece initialPiece;
     public TrackPiece lastTrackPiecePrefab;
     public TrackPiece[] trackPiecesPrefabs;
+
+    [Range (0.1f, 1.0f)]
+    public float[] piecesProbabilities;
 
     private List<TrackPiece> trackPieces;
 
     void Start () 
     {
         trackPieces = new List<TrackPiece>();
+        GenerateTrack();
+    }
+
+    public void NormalizeProbabilities()
+    {
+        float totalProb = 0.0f;
+        for (int i = 0; i < piecesProbabilities.Length; ++i)
+        {
+            totalProb += piecesProbabilities[i];
+        }
+        for (int i = 0; i < piecesProbabilities.Length; ++i)
+        {
+            piecesProbabilities[i] /= totalProb;
+        }
+    }
+
+    public void ClearTrack()
+    {
+        for (int i = 1; i < trackPieces.Count; ++i)
+        {
+            GameObject.DestroyObject(trackPieces[i].gameObject);
+        }
+        trackPieces.Clear();
+    }
+
+    public void GenerateTrack()
+    {
+        ClearTrack();
+        NormalizeProbabilities();
         trackPieces.Add(initialPiece);
         while (trackPieces.Count <= numPieces)
         {
             AddRandomPiece();
         }
-    }
-
-    void Update () 
-    {
     }
 
     void AddRandomPiece()
@@ -115,7 +142,16 @@ public class TrackBuilder : MonoBehaviour
 
     private GameObject GetRandomTrackPiecePrefab()
     {
-        return trackPiecesPrefabs[Random.Range(0, trackPiecesPrefabs.Length)].gameObject;
+        float cumulativeProbability = 0.0f;
+        for (int i = 0; i < trackPiecesPrefabs.Length; i++)
+        {
+            cumulativeProbability += piecesProbabilities[i];
+            if (Random.Range(0.0f, 1.0f) < cumulativeProbability)
+            {
+                return trackPiecesPrefabs[i].gameObject;
+            }
+        }
+        return null;
     }
 
 	public List<Waypoint> GetWaypointsList() // Returns the ordered list of waypoints
