@@ -57,3 +57,4 @@ MonoBehaviour:
   RaysNumber: 32
   showRays: 0
   showForwardAndNormal: 0
+  trackBuilder: {fileID: 0}
