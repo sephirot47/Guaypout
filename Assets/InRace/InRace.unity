@@ -1264,6 +1264,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010262886250, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
+        type: 2}
+      propertyPath: hitDisableTime
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23fdbf52d37ec5e49a0a1b20bd558fde, type: 2}
   m_IsPrefabParent: 0
@@ -1463,6 +1468,11 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.size3D
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010262886250, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
+        type: 2}
+      propertyPath: hitDisableTime
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2498,6 +2508,31 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4000012626076090, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012626076090, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012626076090, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012626076090, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012626076090, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013371682844, guid: 9c698c67cdd39704a8486f319433fed3,
+        type: 2}
+      propertyPath: hitDisableTime
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
   m_IsPrefabParent: 0
@@ -2528,7 +2563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa4d821bf325c14aba4096415416c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1153218577}
+  camController: {fileID: 1153218577}
   raceBeginTime: 0
   countDownText: {fileID: 1903688131}
   goText: {fileID: 935105741}
