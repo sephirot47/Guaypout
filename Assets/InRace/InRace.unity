@@ -1264,6 +1264,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010262886250, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
+        type: 2}
+      propertyPath: hitDisableTime
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23fdbf52d37ec5e49a0a1b20bd558fde, type: 2}
   m_IsPrefabParent: 0
@@ -1463,6 +1468,11 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.size3D
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010262886250, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
+        type: 2}
+      propertyPath: hitDisableTime
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2508,7 +2518,13 @@ Prefab:
       value: 
       objectReference: {fileID: 1000014137289800, guid: 410b3338893ce3d4aa82c3d54b0a5e31,
         type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 114000013371682844, guid: 9c698c67cdd39704a8486f319433fed3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000013371682844, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1732712799
@@ -2538,7 +2554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa4d821bf325c14aba4096415416c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1153218577}
+  camController: {fileID: 1153218577}
   raceBeginTime: 0
   countDownText: {fileID: 1903688131}
   goText: {fileID: 935105741}
@@ -2566,6 +2582,20 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1623366827}
   m_Script: {fileID: 11500000, guid: b640616763914e5438b1fd1b8a50a929, type: 3}
+--- !u!114 &1773784286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1773784284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee61d69b0a0428499b04e0b16e88f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitDisableTime: 0.75
+  projectile: {fileID: 114000014183150636, guid: 410b3338893ce3d4aa82c3d54b0a5e31,
+    type: 2}
 --- !u!1 &1806779257
 GameObject:
   m_ObjectHideFlags: 0

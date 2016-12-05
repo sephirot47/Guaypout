@@ -12,8 +12,8 @@ public class GoalDetector : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         ShipPhysicsController ship = col.GetComponentInParent<ShipPhysicsController>();
-        EnemyController enemy = col.GetComponentInParent<EnemyController>();
-        PlayerController player = col.GetComponentInParent<PlayerController>();
+        EnemyInputController enemy = col.GetComponentInParent<EnemyInputController>();
+        PlayerInputController player = col.GetComponentInParent<PlayerInputController>();
         if (ship) { ship.OnGoalPassed(); }
         if (enemy) { enemy.OnGoalPassed(); }
         if (player) 

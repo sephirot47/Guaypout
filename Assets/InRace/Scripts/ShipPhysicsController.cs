@@ -90,17 +90,17 @@ public class ShipPhysicsController : MonoBehaviour {
     public void SetThrust(float verticalAxis) 
     {
 		// Main thrust
-		if (verticalAxis > 0)
-			thrust = verticalAxis * fwdAcceleration;
-		else if (verticalAxis < 0)
-			thrust = verticalAxis * bwdAcceleration;
+        if (verticalAxis > 0)
+            thrust = verticalAxis * fwdAcceleration;
+        else if (verticalAxis < 0)
+            thrust = verticalAxis * bwdAcceleration;
+        else thrust = 0.0f;
 	}
 
 	public void SetTurn(float horizontalAxis) 
     {
 		// Turning
-		if (horizontalAxis != 0)
-			turn = horizontalAxis;
+        turn = horizontalAxis;
 	}
 
 	public Rigidbody GetRigidbody() 
@@ -108,9 +108,13 @@ public class ShipPhysicsController : MonoBehaviour {
         return GetComponent<Rigidbody> ();
 	}
 
-    public float getTurn()
+    public float GetTurn()
     {
         return turn;
+    }
+    public float GetThrust()
+    {
+        return thrust;
     }
 
     public void OnGoalPassed()

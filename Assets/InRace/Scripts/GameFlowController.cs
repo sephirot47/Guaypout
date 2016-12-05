@@ -13,7 +13,7 @@ public class GameFlowController : MonoBehaviour
         RaceFinished
     };
 
-    public CameraController camera;
+    public CameraController camController;
 
     private State currentState;
     public float raceBeginTime;
@@ -81,12 +81,12 @@ public class GameFlowController : MonoBehaviour
         countDownText.enabled = false;
         if (currentState == State.RaceBegin)
         {
-            camera.GetComponent<CameraController>().SetMode(CameraController.CameraMode.RaceBegin);
+            camController.SetMode(CameraController.CameraMode.RaceBegin);
             SetShipControllersEnabled(false);
         }
         else if (currentState == State.CountDown)
         {
-            camera.GetComponent<CameraController>().SetMode(CameraController.CameraMode.InRace);
+            camController.SetMode(CameraController.CameraMode.InRace);
             countDownText.enabled = true;
             SetShipControllersEnabled(false);
         }
@@ -105,13 +105,9 @@ public class GameFlowController : MonoBehaviour
 
     private void SetShipControllersEnabled(bool enabled)
     {
-        foreach (EnemyController ec in FindObjectsOfType<EnemyController>())
+        foreach (ShipInputController sic in FindObjectsOfType<ShipInputController>())
         {
-            ec.enabled = enabled;
-        }
-        foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
-        {
-            pc.enabled = enabled;
+            sic.enabled = enabled;
         }
     }
 
