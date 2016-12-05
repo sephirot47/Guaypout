@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
-  previewTrackImage: {fileID: 0}
+  previewTrackImage: {fileID: 132414392}
   previewTrack: {fileID: 467266252}
 --- !u!124 &1169823527
 Behaviour:
@@ -1725,7 +1725,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 10000
+  far clip plane: 100000
   field of view: 60
   orthographic: 0
   orthographic size: 500
