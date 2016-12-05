@@ -1912,8 +1912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1773784284}
-  minDistance: 3
-  maxDistance: 5
+  minDistance: 2
+  maxDistance: 3
   moveSpeed: 10
   rotSpeed: 10
 --- !u!95 &1153218578
@@ -1923,7 +1923,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153218571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a82fd3e9376432e46b93d41319d88885, type: 2}
   m_CullingMode: 0
@@ -2498,6 +2498,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4000010731430974, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013371682844, guid: 9c698c67cdd39704a8486f319433fed3,
+        type: 2}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1000014137289800, guid: 410b3338893ce3d4aa82c3d54b0a5e31,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c698c67cdd39704a8486f319433fed3, type: 2}
   m_IsPrefabParent: 0

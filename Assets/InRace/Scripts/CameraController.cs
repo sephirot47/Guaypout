@@ -28,10 +28,12 @@ public class CameraController : MonoBehaviour
             float endDistance = Mathf.Clamp(player.GetComponent<Rigidbody>().velocity.magnitude * 0.5f, minDistance, maxDistance);
             distance = Mathf.Lerp(distance, endDistance, Time.deltaTime);
 
-            Vector3 offsetDir = Vector3.Normalize(-player.transform.forward + player.transform.up * 0.25f);
-            transform.position = Vector3.Lerp(transform.position, 
+            Vector3 offsetDir = Vector3.Normalize(-player.transform.forward + 0.5f*player.transform.up);
+            Vector3 newPosition = transform.position = Vector3.Lerp(
+                transform.position, 
                 player.transform.position + offsetDir * distance,
-                Time.fixedDeltaTime * moveSpeed);
+                Time.fixedDeltaTime * moveSpeed
+            );
         }
 
         // Rotation handling
