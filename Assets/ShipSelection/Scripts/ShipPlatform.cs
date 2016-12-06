@@ -8,7 +8,7 @@ public class ShipPlatform : MonoBehaviour
     private float speed, control, resilience;
 
     [SerializeField]
-    private string name;
+    private string shipName;
 
 	void Start () 
     {
@@ -35,6 +35,6 @@ public class ShipPlatform : MonoBehaviour
 
     public string GetName()
     {
-        return name;
+        return shipName;
     }
 }
