@@ -4,8 +4,9 @@ using System.Collections;
 public class NavSceneMainMenu : INavScene
 {
     private GameObject canvas;
-    void Awake()
+    new void Awake()
     {
+        base.Awake();
         canvas = transform.FindChild("Canvas").gameObject;
     }
 

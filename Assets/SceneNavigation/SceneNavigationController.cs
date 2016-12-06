@@ -71,7 +71,6 @@ public class SceneNavigationController : MonoBehaviour
     }
     public void CommonNavigationHandlingAfter()
     {
-        currentNavScene.Activate();
-        navCamera.NavigateTo(currentNavScene.GetNavigationPointTransform());
+        navCamera.NavigateTo(currentNavScene);
     }
 }

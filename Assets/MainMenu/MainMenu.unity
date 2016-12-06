@@ -238,7 +238,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013693501660, guid: 389071baabf498e44bcdaf6c85b5b51b, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1000012052038524, guid: 389071baabf498e44bcdaf6c85b5b51b, type: 2}
       propertyPath: m_Name
@@ -275,7 +275,7 @@ MonoBehaviour:
   speed: 1
   control: 0.614
   resilience: 0.228
-  shipName: 
+  shipName: Vector
 --- !u!1 &122550796
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,10 +297,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 122550796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -5.1, y: 0.97, z: -10.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children: []
   m_Father: {fileID: 1811484431}
   m_RootOrder: 0
@@ -681,7 +681,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013693501660, guid: 389071baabf498e44bcdaf6c85b5b51b, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1000012052038524, guid: 389071baabf498e44bcdaf6c85b5b51b, type: 2}
       propertyPath: m_Name
@@ -739,7 +739,7 @@ MonoBehaviour:
   speed: 0.643
   control: 0.638
   resilience: 0.633
-  shipName: 
+  shipName: Oscar
 --- !u!1 &264770244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3222,6 +3222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5724cd74439dee34f8b94dd4bea96911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navigationSpeed: 2
 --- !u!1 &1537965390
 GameObject:
   m_ObjectHideFlags: 0
@@ -3243,10 +3244,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1537965390}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.87, y: -0.07092273, z: 0.19869137}
+  m_LocalRotation: {x: 0.09762955, y: 0.7099051, z: -0.10041219, w: 0.6902323}
+  m_LocalPosition: {x: 2.22, y: 2.56, z: 0.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 16.050001, y: 91.563, z: 0}
   m_Children: []
   m_Father: {fileID: 1615647208}
   m_RootOrder: 0
@@ -3480,9 +3481,9 @@ Transform:
   - {fileID: 650205792}
   - {fileID: 1998130459}
   - {fileID: 353043445}
-  - {fileID: 1961423421}
   - {fileID: 61661889}
   - {fileID: 244220753}
+  - {fileID: 1961423421}
   - {fileID: 2060129984}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -4457,7 +4458,7 @@ MonoBehaviour:
   speed: 0.371
   control: 0.891
   resilience: 0.871
-  shipName: 
+  shipName: Sanic
 --- !u!114 &1961423418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4523,7 +4524,7 @@ Transform:
   m_Children:
   - {fileID: 1734794800}
   m_Father: {fileID: 1615647208}
-  m_RootOrder: 8
+  m_RootOrder: 10
 --- !u!1 &1970533895
 GameObject:
   m_ObjectHideFlags: 0
