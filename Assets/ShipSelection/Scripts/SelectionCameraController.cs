@@ -12,6 +12,7 @@ public class SelectionCameraController : MonoBehaviour
 
 	void Start () 
     {
+        smoothDampCurrentVelocity = Vector3.zero;
         shipSelectionController = GameObject.Find("ShipSelectionController").GetComponent<ShipSelectionController>();
         initialOffset = transform.position - shipSelectionController.GetCurrentShipPlatform().transform.position;
 	}
@@ -19,8 +20,10 @@ public class SelectionCameraController : MonoBehaviour
 	void Update () 
     {
         ShipPlatform currentShipPlatform = shipSelectionController.GetCurrentShipPlatform();
+        Debug.Log(currentShipPlatform);
         Vector3 destinyPos = currentShipPlatform.transform.position + initialOffset;
         transform.position = Vector3.SmoothDamp(transform.position, destinyPos, ref smoothDampCurrentVelocity, 0.3f);
+        Debug.Log(destinyPos);
 
         Quaternion destinyRot = Quaternion.LookRotation(currentShipPlatform.transform.position - transform.position, Vector3.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, destinyRot, Time.deltaTime * lookAtShipPlatformRotationSpeed);

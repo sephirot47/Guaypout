@@ -7,15 +7,19 @@ public class GameFlowController : MonoBehaviour
 {
     public enum State
     {
+        Empty,
         RaceBegin,
         CountDown,
         InRace,
+        Paused,
         RaceFinished
     };
+    private State currentState = State.Empty;
+    private State previousState = State.Empty;
 
     public CameraController camController;
+    public Canvas pauseCanvas;
 
-    private State currentState;
     public float raceBeginTime;
     private float raceBeginChrono, countDownChrono, raceFinishedChrono;
 
@@ -34,6 +38,8 @@ public class GameFlowController : MonoBehaviour
         replayButton.gameObject.SetActive(false);
         backToMenuButton = GameObject.Find("HUD_InGame/BackToMenuButton").GetComponent<Button>();
         backToMenuButton.gameObject.SetActive(false);
+
+        pauseCanvas.gameObject.SetActive(false);
 
         positionText.GetComponent<Animator>().enabled = false;
         SetState(State.RaceBegin);
@@ -77,11 +83,28 @@ public class GameFlowController : MonoBehaviour
         {
             positionText.fontSize = ((int) Mathf.Lerp(positionText.fontSize, maxPositionTextSize, 5.0f * Time.deltaTime) );
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            if (currentState == State.Paused)
+            {
+                UnPause();
+            }
+            else
+            {
+                SetState(State.Paused);
+            }
+        }
 	}
 
     public void SetState(State st)
     {
+        if (currentState == st)
+            return;
+        
+        previousState = currentState;
         currentState = st;
+
         countDownText.enabled = false;
         if (currentState == State.RaceBegin)
         {
@@ -106,6 +129,29 @@ public class GameFlowController : MonoBehaviour
             positionText.GetComponent<Animator>().enabled = true;
             //Camera.main.GetComponent<CameraController>().SetMode(CameraController.CameraMode.AfterRace);
         }
+
+        if (currentState == State.Paused)
+        {
+            Time.timeScale = 0.0f;
+            pauseCanvas.gameObject.SetActive(true);
+            SetShipControllersEnabled(false);
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+            pauseCanvas.gameObject.SetActive(false);
+        }
+    }
+
+
+    public void UnPause()
+    {
+        SwitchToPreviousState();
+    }
+
+    private void SwitchToPreviousState()
+    {
+        SetState(previousState);
     }
 
     private void SetShipControllersEnabled(bool enabled)
