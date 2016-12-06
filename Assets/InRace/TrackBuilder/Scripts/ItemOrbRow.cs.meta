@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7768897a7c2188847a5294d4c1aa6635
+timeCreated: 1481010680
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - orbPrefab: {fileID: 1000010760191786, guid: acb7253acaf13a94e9a36a5494768f3e,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
