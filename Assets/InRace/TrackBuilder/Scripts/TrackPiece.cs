@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TrackPiece : MonoBehaviour 
 {
+    public GameObject itemOrbRow;
     public GameObject speedBoosterPrefab;
 
     [SerializeField]
