@@ -13,7 +13,6 @@ public class SelectionCameraController : MonoBehaviour
 	void Start () 
     {
         smoothDampCurrentVelocity = Vector3.zero;
-        Debug.Log(GameObject.Find("ShipSelection"));
         shipSelectionController = GameObject.Find("ShipSelection/ShipSelectionController").GetComponent<ShipSelectionController>();
         initialOffset = transform.position - shipSelectionController.GetCurrentShipPlatform().transform.position;
 	}

@@ -14,10 +14,10 @@ public class SceneNavigationController : MonoBehaviour
         navCamera = GameObject.Find("SceneNavigationCamera").GetComponent<SceneNavigationCameraController>();
         mainMenuNS.Deactivate();
         shipSelectionNS.Deactivate();
-        //trackCreationNS.Deactivate();
+        trackCreationNS.Deactivate();
         //inRaceNS.Deactivate();
-        //creditsNS.Deactivate();
-        //instructionsNS.Deactivate();
+        creditsNS.Deactivate();
+        instructionsNS.Deactivate();
 
         currentNavScene = mainMenuNS;
         GoToMainMenuNS();
