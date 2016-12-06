@@ -7,21 +7,25 @@ public class GameFlowController : MonoBehaviour
 {
     public enum State
     {
+        Empty,
         RaceBegin,
         CountDown,
         InRace,
+        Paused,
         RaceFinished
     };
+    private State currentState = State.Empty;
+    private State previousState = State.Empty;
 
     public CameraController camController;
+    public Canvas pauseCanvas;
 
-    private State currentState;
     public float raceBeginTime;
     private float raceBeginChrono, countDownChrono, raceFinishedChrono;
 
     public Text countDownText, goText;
     private Text positionText;
-    private Button backToMenuButton;
+    private Button replayButton, backToMenuButton;
     private const float maxPositionTextSize = 250.0f;
 
 	void Start () 
@@ -29,8 +33,14 @@ public class GameFlowController : MonoBehaviour
         raceBeginChrono = countDownChrono = raceFinishedChrono = 0;
         goText.enabled = false;
         positionText = GameObject.Find("HUD_InGame/Classification/PositionText").GetComponent<Text>();
+
+        replayButton = GameObject.Find("HUD_InGame/ReplayButton").GetComponent<Button>();
+        replayButton.gameObject.SetActive(false);
         backToMenuButton = GameObject.Find("HUD_InGame/BackToMenuButton").GetComponent<Button>();
         backToMenuButton.gameObject.SetActive(false);
+
+        pauseCanvas.gameObject.SetActive(false);
+
         positionText.GetComponent<Animator>().enabled = false;
         SetState(State.RaceBegin);
 	}
@@ -73,11 +83,28 @@ public class GameFlowController : MonoBehaviour
         {
             positionText.fontSize = ((int) Mathf.Lerp(positionText.fontSize, maxPositionTextSize, 5.0f * Time.deltaTime) );
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            if (currentState == State.Paused)
+            {
+                UnPause();
+            }
+            else
+            {
+                SetState(State.Paused);
+            }
+        }
 	}
 
     public void SetState(State st)
     {
+        if (currentState == st)
+            return;
+        
+        previousState = currentState;
         currentState = st;
+
         countDownText.enabled = false;
         if (currentState == State.RaceBegin)
         {
@@ -97,10 +124,34 @@ public class GameFlowController : MonoBehaviour
         else if (currentState == State.RaceFinished)
         {
             SetShipControllersEnabled(false);
+            replayButton.gameObject.SetActive(true);
             backToMenuButton.gameObject.SetActive(true);
             positionText.GetComponent<Animator>().enabled = true;
             //Camera.main.GetComponent<CameraController>().SetMode(CameraController.CameraMode.AfterRace);
         }
+
+        if (currentState == State.Paused)
+        {
+            Time.timeScale = 0.0f;
+            pauseCanvas.gameObject.SetActive(true);
+            SetShipControllersEnabled(false);
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+            pauseCanvas.gameObject.SetActive(false);
+        }
+    }
+
+
+    public void UnPause()
+    {
+        SwitchToPreviousState();
+    }
+
+    private void SwitchToPreviousState()
+    {
+        SetState(previousState);
     }
 
     private void SetShipControllersEnabled(bool enabled)
@@ -111,8 +162,15 @@ public class GameFlowController : MonoBehaviour
         }
     }
 
+    public void Replay()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("InRace");
+    }
+
     public void BackToMenu()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
     }
 }

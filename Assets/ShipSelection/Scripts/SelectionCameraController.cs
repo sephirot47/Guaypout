@@ -4,7 +4,7 @@ using System.Collections;
 public class SelectionCameraController : MonoBehaviour 
 {
     private Vector3 initialOffset;
-    private Vector3 smoothDampCurrentVelocity;
+    private Vector3 smoothDampCurrentVelocity = Vector3.zero;
 
     public float lookAtShipPlatformRotationSpeed;
 
@@ -12,6 +12,7 @@ public class SelectionCameraController : MonoBehaviour
 
 	void Start () 
     {
+        smoothDampCurrentVelocity = Vector3.zero;
         shipSelectionController = GameObject.Find("ShipSelectionController").GetComponent<ShipSelectionController>();
         initialOffset = transform.position - shipSelectionController.GetCurrentShipPlatform().transform.position;
 	}
