@@ -23,6 +23,9 @@ public class PlayerInputController : ShipInputController
         else if (currentState == ShipInputController.State.Hit)
         {
         }
+
+		if (Input.GetKeyDown (KeyCode.F))
+			fireProjectile ();
     }
 
     public void OnGoalPassed()
@@ -33,11 +36,9 @@ public class PlayerInputController : ShipInputController
 
     void fireProjectile()
     {
-        Debug.Log("Fire!");
-        Projectile proj = Instantiate(
-            projectile,
-            transform.position + transform.forward * 2f,
-            Quaternion.identity
-        ) as Projectile;
+		Vector3 spawn = transform.position + transform.forward * 1.5f;
+		Projectile proj = Instantiate(projectile, spawn, Quaternion.identity) as Projectile;
+		proj.transform.forward = transform.forward;
+		proj.GetComponent<Rigidbody>().velocity = rb.velocity;
     }
 }

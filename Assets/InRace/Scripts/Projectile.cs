@@ -3,21 +3,20 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
-    [HideInInspector]
-    public GameObject player;
-
+	public float speed = 20f;
     private Rigidbody rb;
 
-	// Use this for initialization
 	void Start () {
-        rb = GetComponentInChildren<Rigidbody>();
-        rb.velocity = player.transform.forward * 20f;
+		rb = GetComponentInChildren<Rigidbody> ();
+        rb.velocity += transform.forward * speed;
 
         Destroy(gameObject, 10f);
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+	void OnTriggerEnter(Collider other) {
+		if (other.tag == "Enemy") {
+			other.gameObject.GetComponentInParent<ShipInputController>().OnHit();
+			Destroy (gameObject);
+		}
 	}
 }

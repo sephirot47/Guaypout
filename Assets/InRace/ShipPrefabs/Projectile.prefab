@@ -22,7 +22,7 @@ GameObject:
   - 33: {fileID: 33000010779670950}
   - 136: {fileID: 136000010810842200}
   - 23: {fileID: 23000011186953652}
-  - 54: {fileID: 54000012789354602}
+  - 122: {fileID: 122000010244466796}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -38,6 +38,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011877526086}
+  - 54: {fileID: 54000014172464916}
   - 114: {fileID: 114000014183150636}
   m_Layer: 0
   m_Name: Projectile
@@ -86,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f0a508c17a9c3574ba68a7f4143cfb5c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -109,12 +110,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013558158664}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54000012789354602
+--- !u!54 &54000014172464916
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013558158664}
+  m_GameObject: {fileID: 1000014137289800}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -135,7 +136,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ed0b3e12fca5a45b655e6c051abf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  speed: 30
+--- !u!122 &122000010244466796
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013558158664}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_Size: 0.25
 --- !u!136 &136000010810842200
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -143,7 +155,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013558158664}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
