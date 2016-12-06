@@ -9,14 +9,14 @@ public class PlayerInputController : ShipInputController
 	private bool fireEnabled;
 	private Timer timer;
 
-    void Start()
+    new void Start()
     {
         base.Start();
 		fireEnabled = false;
 		timer = gameObject.AddComponent<Timer>();
     }
 
-	void Update()
+    new void Update()
     {
         base.Update();
         if (currentState == ShipInputController.State.Moving)
