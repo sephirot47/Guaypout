@@ -6,10 +6,12 @@ using System.Collections.Generic;
 
 public class PreviewTrackCameraController : MonoBehaviour
 {
+    public float zoomSpeed;
     public float rotationSpeed;
     public Image previewTrackImage;
     public TrackBuilder previewTrack;
 
+    private float zoom = 0.0f;
     private Vector3 trackCentroid;
     private Vector2 rotationAngles;
     private bool mouseDown = false;
@@ -36,6 +38,12 @@ public class PreviewTrackCameraController : MonoBehaviour
         if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
         {
             mouseDown = false;
+        }
+
+        if (mouseOverPreviewImage)
+        {
+            float zoom = Input.GetAxis("Mouse ScrollWheel");
+            transform.position += transform.forward * zoom * zoomSpeed;
         }
 
         if (mouseDown)

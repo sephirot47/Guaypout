@@ -1698,6 +1698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51226024e9a87134b9263fe9fccb4f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoomSpeed: 1500
   rotationSpeed: 10
   previewTrackImage: {fileID: 132414392}
   previewTrack: {fileID: 467266252}
