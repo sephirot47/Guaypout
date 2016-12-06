@@ -21,7 +21,7 @@ public class GameFlowController : MonoBehaviour
 
     public Text countDownText, goText;
     private Text positionText;
-    private Button backToMenuButton;
+    private Button replayButton, backToMenuButton;
     private const float maxPositionTextSize = 250.0f;
 
 	void Start () 
@@ -29,8 +29,12 @@ public class GameFlowController : MonoBehaviour
         raceBeginChrono = countDownChrono = raceFinishedChrono = 0;
         goText.enabled = false;
         positionText = GameObject.Find("HUD_InGame/Classification/PositionText").GetComponent<Text>();
+
+        replayButton = GameObject.Find("HUD_InGame/ReplayButton").GetComponent<Button>();
+        replayButton.gameObject.SetActive(false);
         backToMenuButton = GameObject.Find("HUD_InGame/BackToMenuButton").GetComponent<Button>();
         backToMenuButton.gameObject.SetActive(false);
+
         positionText.GetComponent<Animator>().enabled = false;
         SetState(State.RaceBegin);
 	}
@@ -97,6 +101,7 @@ public class GameFlowController : MonoBehaviour
         else if (currentState == State.RaceFinished)
         {
             SetShipControllersEnabled(false);
+            replayButton.gameObject.SetActive(true);
             backToMenuButton.gameObject.SetActive(true);
             positionText.GetComponent<Animator>().enabled = true;
             //Camera.main.GetComponent<CameraController>().SetMode(CameraController.CameraMode.AfterRace);
@@ -109,6 +114,11 @@ public class GameFlowController : MonoBehaviour
         {
             sic.enabled = enabled;
         }
+    }
+
+    public void Replay()
+    {
+        SceneManager.LoadScene("InRace");
     }
 
     public void BackToMenu()
