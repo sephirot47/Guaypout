@@ -729,6 +729,13 @@ MonoBehaviour:
   - {fileID: 114000012900897490, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}
   - {fileID: 114000012900897490, guid: 7049b40aa18b5ad4381a9dd2ae81ddde, type: 2}
   - {fileID: 114000012900897490, guid: 4f47c67b181449d4795fcc000ebc0203, type: 2}
+  possibleSkyboxesList:
+  - {fileID: 2100000, guid: e980bc7fbb00dc34b86b95ac842d1920, type: 2}
+  - {fileID: 2100000, guid: b8f20d5ca50d16143afc11f5e4af6fc1, type: 2}
+  - {fileID: 2100000, guid: a07fadb24ea940240afba3afc1a692cc, type: 2}
+  - {fileID: 2100000, guid: 5b21c6a8ce40f9641bd1204324b90b2c, type: 2}
+  - {fileID: 2100000, guid: 966766f4829d6ad419eaaf7cf0712f85, type: 2}
+  - {fileID: 2100000, guid: 19e2485c6f92d6944ad20466ac77b04c, type: 2}
   numPieces: 50
   piecesProbabilities:
   - 1

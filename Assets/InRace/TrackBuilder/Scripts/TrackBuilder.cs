@@ -9,9 +9,12 @@ public class TrackBuilder : MonoBehaviour
     public TrackPiece initialPiece;
     public TrackPiece lastTrackPiecePrefab;
     public TrackPiece[] trackPiecesPrefabs;
+    public List<Material> possibleSkyboxesList;
 
     [HideInInspector]
     public int numPieces;
+
+    [HideInInspector]
     public float[] piecesProbabilities;
 
     private List<TrackPiece> trackPieces;
@@ -68,6 +71,7 @@ public class TrackBuilder : MonoBehaviour
         }
 
         ClearTrack();
+        RenderSettings.skybox = possibleSkyboxesList[Random.Range(0, possibleSkyboxesList.Count)];
         piecesProbabilities = NormalizedProbabilities(piecesProbabilities);
         trackPieces.Add(initialPiece);
         while (trackPieces.Count <= numPieces)
