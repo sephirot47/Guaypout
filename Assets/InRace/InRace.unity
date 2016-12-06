@@ -1481,45 +1481,7 @@ Prefab:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1000010987025646, guid: 23fdbf52d37ec5e49a0a1b20bd558fde, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010659760282, guid: 23fdbf52d37ec5e49a0a1b20bd558fde, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013305276226, guid: 23fdbf52d37ec5e49a0a1b20bd558fde, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000012439753454, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
-        type: 2}
-      propertyPath: randomSeed
-      value: 111279157
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000012439753454, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
-        type: 2}
-      propertyPath: ShapeModule.type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 199000013880891812, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000012439753454, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
-        type: 2}
-      propertyPath: InitialModule.size3D
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010262886250, guid: 23fdbf52d37ec5e49a0a1b20bd558fde,
-        type: 2}
-      propertyPath: hitDisableTime
-      value: 0.75
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23fdbf52d37ec5e49a0a1b20bd558fde, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &889728558 stripped
