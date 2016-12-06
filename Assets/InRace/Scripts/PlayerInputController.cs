@@ -5,12 +5,12 @@ public class PlayerInputController : ShipInputController
 {
     public Projectile projectile;
 
-    void Start()
+    new void Start()
     {
         base.Start();
     }
 
-	void Update()
+    new void Update()
     {
         base.Update();
         if (currentState == ShipInputController.State.Moving)
