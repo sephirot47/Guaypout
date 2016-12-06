@@ -23,6 +23,7 @@ GameObject:
   - 135: {fileID: 135000013637615438}
   - 23: {fileID: 23000011807859794}
   - 114: {fileID: 114000012766590152}
+  - 122: {fileID: 122000010384611004}
   m_Layer: 0
   m_Name: ItemOrb
   m_TagString: Untagged
@@ -90,6 +91,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6356a56a176315840954cd97b798b7c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  halo: {fileID: 122000010384611004}
+  refillTime: 3
+--- !u!122 &122000010384611004
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010760191786}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294639360
+  m_Size: 1
 --- !u!135 &135000013637615438
 SphereCollider:
   m_ObjectHideFlags: 1

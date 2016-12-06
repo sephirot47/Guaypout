@@ -4,10 +4,16 @@ using System.Collections;
 public class PlayerInputController : ShipInputController 
 {
     public Projectile projectile;
+	public float fireTime = 5f;
+
+	private bool fireEnabled;
+	private Timer timer;
 
     void Start()
     {
         base.Start();
+		fireEnabled = false;
+		timer = gameObject.AddComponent<Timer>();
     }
 
 	void Update()
@@ -24,8 +30,10 @@ public class PlayerInputController : ShipInputController
         {
         }
 
-		if (Input.GetKeyDown (KeyCode.F))
+		if (fireEnabled && Input.GetKeyDown (KeyCode.F))
 			fireProjectile ();
+
+		if (timer.Ended ()) disableFire ();
     }
 
     public void OnGoalPassed()
@@ -34,7 +42,16 @@ public class PlayerInputController : ShipInputController
         this.enabled = false;
     }
 
-    void fireProjectile()
+	public void enableFire() {
+		fireEnabled = true;
+		timer.Set (fireTime);
+	}
+
+	public void disableFire() {
+		fireEnabled = false;
+	}
+
+    private void fireProjectile()
     {
 		Vector3 spawn = transform.position + transform.forward * 1.5f;
 		Projectile proj = Instantiate(projectile, spawn, Quaternion.identity) as Projectile;
