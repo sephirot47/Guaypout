@@ -8,6 +8,7 @@ public class PlayerInputController : ShipInputController
 
 	private bool fireEnabled;
 	private Timer timer;
+	private FireTimeBar bar;
 
     void Start()
     {
@@ -45,10 +46,13 @@ public class PlayerInputController : ShipInputController
 	public void enableFire() {
 		fireEnabled = true;
 		timer.Set (fireTime);
+		bar = gameObject.AddComponent<FireTimeBar> ();
+		bar.SetTimer (timer);
 	}
 
 	public void disableFire() {
 		fireEnabled = false;
+		if (bar) bar.enabled = false;
 	}
 
     private void fireProjectile()
