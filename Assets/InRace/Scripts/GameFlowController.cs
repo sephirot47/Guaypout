@@ -164,11 +164,13 @@ public class GameFlowController : MonoBehaviour
 
     public void Replay()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("InRace");
     }
 
     public void BackToMenu()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
     }
 }
