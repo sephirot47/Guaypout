@@ -89,7 +89,7 @@ public class PreviewTrackCameraController : MonoBehaviour
         Camera cam = GetComponent<Camera>();
         float fov2 = cam.fieldOfView;
         transform.position = trackCentroid + Vector3.up * (sizeZ / Mathf.Tan(fov2));
-        cam.aspect = sizeX / sizeZ;
+        cam.aspect = Mathf.Clamp(sizeX / sizeZ, 0.5f, 1.5f);
 
         //GetComponent<Camera>().orthographicSize = Mathf.Max(sizeX, sizeZ) * 1.5f;
         transform.LookAt(trackCentroid);
