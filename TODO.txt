@@ -1,0 +1,12 @@
+TODO:
+- Posar Sanic com pj jugable
+- HUD definitiva
+- Arma/es i powerup
+- Seleccio de nau
+- UVs circuit i afegir algunes peces més guays
+- Grabar veus pjs i narrador
+- Fer instruccions i credits
+- Solucionar problema input de vegades (es perque nau xoca amb el terra)
+- Mirar daplicar forces als trackboundaries en comptes de amb colisions
+- Efectes de so i musica
+- Escriure memòria
