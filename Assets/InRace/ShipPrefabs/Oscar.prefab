@@ -23,7 +23,7 @@ GameObject:
   - 136: {fileID: 136000014246403664}
   m_Layer: 10
   m_Name: ModelCollider
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,22 @@ GameObject:
   - 4: {fileID: 4000011018600066}
   m_Layer: 10
   m_Name: HoverPoint1
-  m_TagString: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000011503161170
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010591407852}
+  m_Layer: 10
+  m_Name: ModelWrapper2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +85,7 @@ GameObject:
   - 199: {fileID: 199000011964687136}
   m_Layer: 10
   m_Name: FireParticlesBurst
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +100,7 @@ GameObject:
   - 4: {fileID: 4000011718122454}
   m_Layer: 10
   m_Name: HoverPoint3
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +115,7 @@ GameObject:
   - 4: {fileID: 4000010216351230}
   m_Layer: 10
   m_Name: HoverPoint4
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +132,8 @@ GameObject:
   - 114: {fileID: 114000011442368128}
   - 114: {fileID: 114000011930641660}
   - 114: {fileID: 114000012804932392}
+  - 82: {fileID: 82000013460187608}
+  - 114: {fileID: 114000012188332508}
   m_Layer: 10
   m_Name: Oscar
   m_TagString: Enemy
@@ -136,7 +153,7 @@ GameObject:
   - 199: {fileID: 199000013216679654}
   m_Layer: 10
   m_Name: FireParticles
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,7 +168,7 @@ GameObject:
   - 4: {fileID: 4000012566339878}
   m_Layer: 10
   m_Name: HoverPoint2
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,7 +183,7 @@ GameObject:
   - 4: {fileID: 4000010537965714}
   m_Layer: 10
   m_Name: ModelWrapper
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,7 +216,7 @@ GameObject:
   - 95: {fileID: 95000012809435206}
   m_Layer: 10
   m_Name: Model
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +233,7 @@ GameObject:
   - 199: {fileID: 199000011266371968}
   m_Layer: 10
   m_Name: FireParticlesStatic
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,6 +279,20 @@ Transform:
   - {fileID: 4000010015926314}
   m_Father: {fileID: 4000012882727398}
   m_RootOrder: 4
+--- !u!4 &4000010591407852
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011503161170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 4000013707625556}
+  m_Father: {fileID: 4000013909783156}
+  m_RootOrder: 0
 --- !u!4 &4000010889231554
 Transform:
   m_ObjectHideFlags: 1
@@ -378,7 +409,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013878961054}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -386,7 +417,7 @@ Transform:
   - {fileID: 4000012418223684}
   - {fileID: 4000012766390318}
   - {fileID: 4000011381897424}
-  m_Father: {fileID: 4000013909783156}
+  m_Father: {fileID: 4000010591407852}
   m_RootOrder: 0
 --- !u!4 &4000013909783156
 Transform:
@@ -399,7 +430,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 4000013707625556}
+  - {fileID: 4000010591407852}
   m_Father: {fileID: 4000010537965714}
   m_RootOrder: 0
 --- !u!23 &23000013742819018
@@ -466,6 +497,80 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300002, guid: 5282f20eba4d44213820e21af8481932, type: 3}
+--- !u!82 &82000013460187608
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012175631706}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95000012809435206
 Animator:
   serializedVersion: 3
@@ -524,6 +629,25 @@ MonoBehaviour:
   projectile: {fileID: 114000014183150636, guid: 410b3338893ce3d4aa82c3d54b0a5e31,
     type: 2}
   fireTime: 5
+--- !u!114 &114000012188332508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012175631706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9f0c6548e2d53428276bc5c10d9674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostAudioPlayProbability: 0.5
+  damageAudioPlayProbability: 0.5
+  hitAudioPlayProbability: 0.5
+  weaponAudioPlayProbability: 0.5
+  boostAudioClips: []
+  damageAudioClips: []
+  hitAudioClips: []
+  weaponAudioClips: []
 --- !u!114 &114000012804932392
 MonoBehaviour:
   m_ObjectHideFlags: 1

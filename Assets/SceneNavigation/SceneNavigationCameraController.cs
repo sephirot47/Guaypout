@@ -4,8 +4,10 @@ using System.Collections;
 public class SceneNavigationCameraController : MonoBehaviour 
 {
     public float navigationSpeed;
+    public AudioSource navigationAudioSource;
 
     private INavScene sceneNavigatingTo;
+    private bool firstNavigation = true;
 
 	void Start () 
     {
@@ -26,6 +28,15 @@ public class SceneNavigationCameraController : MonoBehaviour
 
     public void NavigateTo(INavScene navScene)
     {
+        if (firstNavigation)
+        {
+            firstNavigation = false;
+        }
+        else
+        {
+            navigationAudioSource.PlayDelayed(0.1f);
+        }
+
         sceneNavigatingTo = navScene;
         Transform navPoint = navScene.GetNavigationPointTransform();
         //transform.rotation = navPoint.rotation;

@@ -91,6 +91,7 @@ public class GameFlowController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
+            InRaceSoundManager.PlayPauseSound();
             if (currentState == State.Paused)
             {
                 UnPause();
@@ -118,6 +119,7 @@ public class GameFlowController : MonoBehaviour
         }
         else if (currentState == State.CountDown)
         {
+            GetComponent<AudioSource>().Play();
             camController.SetMode(CameraController.CameraMode.InRace);
             countDownText.enabled = true;
             SetShipControllersEnabled(false);

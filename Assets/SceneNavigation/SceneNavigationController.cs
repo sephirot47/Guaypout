@@ -5,6 +5,8 @@ public class SceneNavigationController : MonoBehaviour
 {
     private SceneNavigationCameraController navCamera;
 
+    public AudioSource menuButtonClickAudioSource;
+    public AudioSource menuButtonOverAudioSource;
     public INavScene mainMenuNS, shipSelectionNS, trackCreationNS, inRaceNS, creditsNS,  instructionsNS;
 
     private INavScene currentNavScene;
@@ -72,5 +74,15 @@ public class SceneNavigationController : MonoBehaviour
     public void CommonNavigationHandlingAfter()
     {
         navCamera.NavigateTo(currentNavScene);
+    }
+
+
+    public void PlayMenuButtonClick()
+    {
+        menuButtonClickAudioSource.Play();
+    }
+    public void PlayMenuButtonOver()
+    {
+        menuButtonOverAudioSource.Play();
     }
 }
