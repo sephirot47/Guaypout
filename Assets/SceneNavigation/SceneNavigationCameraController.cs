@@ -12,7 +12,7 @@ public class SceneNavigationCameraController : MonoBehaviour
 	
 	}
 	
-	void Update () 
+	void Update ()
     {
         Transform navPoint = sceneNavigatingTo.GetNavigationPointTransform();
 

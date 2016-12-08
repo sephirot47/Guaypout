@@ -14,11 +14,13 @@ public class NavSceneShipSelection : INavScene
     {
         canvas.SetActive(true);
         navCamera.GetComponent<SelectionCameraController>().enabled = true;
+        navCamera.GetComponent<SceneNavigationCameraController>().enabled = false;
     }
 
     override public void Deactivate ()
     {
         canvas.SetActive(false);
         navCamera.GetComponent<SelectionCameraController>().enabled = false;
+        navCamera.GetComponent<SceneNavigationCameraController>().enabled = true;
     }
 }
