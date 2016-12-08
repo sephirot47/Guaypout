@@ -18,7 +18,7 @@ public class ShipSelectionController : MonoBehaviour
 
 	void Start () 
     {
-        HandleSelection();
+        HandleSelection(false);
 	}
 	
 	void Update () 
@@ -73,7 +73,7 @@ public class ShipSelectionController : MonoBehaviour
         HandleSelection();
     }
 
-    public void HandleSelection()
+    public void HandleSelection(bool playSound = true)
     {
         if (currentShipIndex == 0)
         {
@@ -90,6 +90,11 @@ public class ShipSelectionController : MonoBehaviour
         else if (currentShipIndex == 3)
         {
             selectedShip = ShipSelection.Cristina;
+        }
+
+        if (playSound)
+        {
+            shipPlatforms[currentShipIndex].GetComponent<AudioSource>().Play();
         }
     }
 }
