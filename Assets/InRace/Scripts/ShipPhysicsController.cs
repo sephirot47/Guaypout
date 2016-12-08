@@ -27,18 +27,31 @@ public class ShipPhysicsController : MonoBehaviour {
 	void Start() 
     {
 		rb = GetComponent<Rigidbody> ();
-        model = transform.FindChild("ModelWrapper").gameObject;
+        model = transform.FindChild("ModelWrapper/ModelTilter").gameObject;
 		trackInformer = GameObject.Find("TrackInformer").GetComponent<TrackInformer>();
 	}
 	
-	void FixedUpdate() {
+	void FixedUpdate() 
+    {
+        RaycastHit hit;
+        if (Physics.Raycast (transform.position, Vector3.down, out hit, 999.9f, trackLayer))
+        {
+            Vector3 fixedPositionUpwards = 
+                new Vector3(
+                    transform.position.x, 
+                    Mathf.Max(hit.point.y + 1.0f, transform.position.y), 
+                    transform.position.z);
+            transform.position = fixedPositionUpwards;
+        }
+
 		// Hover force
-		RaycastHit hit;
-		for (int i = 0; i < hoverPoints.Length; ++i) {
+		for (int i = 0; i < hoverPoints.Length; ++i) 
+        {
 			GameObject hoverPoint = hoverPoints[i];
 			Ray ray = new Ray(hoverPoint.transform.position, -transform.up);
 			//Debug.DrawRay (ray.origin, ray.direction, Color.red, 0f);
-			if (Physics.Raycast (ray, out hit, hoverHeight, trackLayer)) {
+			if (Physics.Raycast (ray, out hit, hoverHeight, trackLayer)) 
+            { 
 				float proportionalHeight = (hoverHeight - hit.distance) / hoverHeight;
 				rb.AddForceAtPosition (transform.up * hoverForce * proportionalHeight, hoverPoint.transform.position);
 				//Debug.DrawRay (ray.origin, ray.direction, Color.green, 0f);

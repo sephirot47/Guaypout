@@ -35,11 +35,6 @@ public class ShipInputController : MonoBehaviour
             timeFromLastHit = 0.0f;
             currentState = State.Moving;
         }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            OnHit();
-        }
     }
 
     public void OnHit()

@@ -37,7 +37,7 @@ GameObject:
   - 4: {fileID: 4000012147242068}
   - 65: {fileID: 65000012323988730}
   - 114: {fileID: 114000012712371102}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GoalDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
