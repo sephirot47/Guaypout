@@ -9,7 +9,8 @@ public class SpeedBooster : MonoBehaviour
     {
 		if (col.GetComponentInParent<ShipPhysicsController>()) // If it's a ship
         {
-			ShipPhysicsController ship = col.GetComponentInParent<ShipPhysicsController>();
+            ShipPhysicsController ship = col.GetComponentInParent<ShipPhysicsController>();
+            ship.GetComponentInParent<ShipSoundManager>().OnBoost();
 			ship.GetComponentInChildren<Animator>().SetTrigger("Boosting");
 			ship.ApplyBoost(boost, transform.forward);
         }
