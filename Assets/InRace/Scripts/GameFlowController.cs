@@ -186,7 +186,6 @@ public class GameFlowController : MonoBehaviour
         GameObject sanicShip = GameObject.Find("Sanic");
         GameObject cristinaShip = GameObject.Find("Cristina");
 
-        Debug.Log("WHOS SELECTED? " + ShipSelectionController.selectedShip);
         victorShip.tag = "Enemy"; oscarShip.tag = "Enemy";
         sanicShip.tag = "Enemy"; cristinaShip.tag = "Enemy";
         if (ShipSelectionController.selectedShip == ShipSelectionController.ShipSelection.Victor)

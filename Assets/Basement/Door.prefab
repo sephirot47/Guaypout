@@ -36,8 +36,8 @@ GameObject:
   - 4: {fileID: 4000012593966396}
   - 33: {fileID: 33000011643988792}
   - 23: {fileID: 23000013019369360}
-  - 64: {fileID: 64000013210493578}
   - 114: {fileID: 114000011686549602}
+  - 65: {fileID: 65000010537022698}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -355,18 +355,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: e63dd9175d8b1954cafd0679808bb39c, type: 3}
---- !u!64 &64000013210493578
-MeshCollider:
+--- !u!65 &65000010537022698
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010614016404}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300014, guid: e63dd9175d8b1954cafd0679808bb39c, type: 3}
+  m_Size: {x: 8.48, y: 5, z: 6.29}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114000011686549602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -378,7 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fe4f4f3522abb41bc7e94dca0dd1b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensorDistance: 6
   openSpeed: 5
   leftDoor: {fileID: 1000011110834216}
   rightDoor: {fileID: 1000010915665556}

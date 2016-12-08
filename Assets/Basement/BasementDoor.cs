@@ -3,7 +3,6 @@ using System.Collections;
 
 public class BasementDoor : MonoBehaviour 
 {
-    public float sensorDistance;
     public float openSpeed;
     public GameObject leftDoor, rightDoor;
     public Transform leftDoorOpenFinishPoint, leftDoorCloseFinishPoint, 
@@ -20,20 +19,12 @@ public class BasementDoor : MonoBehaviour
 	void Start () 
     {
         currentState = DoorState.Closing;
+        leftDoor.transform.position = leftDoorCloseFinishPoint.position;
+        rightDoor.transform.position = rightDoorCloseFinishPoint.position;
 	}
 	
 	void Update () 
     {
-        float d = Vector3.Distance(transform.position, navCamera.transform.position);
-        if (d <= sensorDistance)
-        {
-            currentState = (currentState == DoorState.Opening ? DoorState.Closing : DoorState.Opening);
-        }
-        else
-        {
-            currentState = DoorState.Closing;
-        }
-
         if (currentState == DoorState.Closing)
         {
             leftDoor.transform.position = Vector3.Lerp(leftDoor.transform.position,
@@ -49,4 +40,14 @@ public class BasementDoor : MonoBehaviour
                 rightDoorOpenFinishPoint.position, openSpeed * Time.deltaTime);
         }
 	}
+
+    void OnTriggerEnter(Collider col)
+    {
+        currentState = DoorState.Opening;
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        currentState = DoorState.Closing;
+    }
 }
