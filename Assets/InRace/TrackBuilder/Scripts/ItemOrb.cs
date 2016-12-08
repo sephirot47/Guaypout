@@ -9,21 +9,21 @@ public class ItemOrb : MonoBehaviour {
 	private GameObject player;
 	private Timer timer;
 
-	// Use this for initialization
-	void Start () {
-		player = GameObject.Find ("Player");
+
+    void Start () {
+        player = GameObject.FindGameObjectWithTag("Player"); 
 		timer = gameObject.AddComponent<Timer>();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if (timer.Ended())
 			Enabled(true);
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.tag == "Player") {
-			player.GetComponent<PlayerInputController> ().enableFire ();
+        if (other.transform.root.tag == "Player") 
+        {
+            player.GetComponent<PlayerInputController>().enableFire();
 
 			timer.Set (refillTime);
 			Enabled(false);

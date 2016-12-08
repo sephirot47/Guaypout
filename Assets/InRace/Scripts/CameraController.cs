@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
         AfterRace
     };
 
-	public GameObject player;
 	public float minDistance;
 	public float maxDistance;
 	private float distance;
@@ -18,8 +17,14 @@ public class CameraController : MonoBehaviour
     public float moveSpeed;
     public float rotSpeed;
 
+    private GameObject player;
     private bool inFirstPerson = false;
     private CameraMode currentMode = CameraMode.RaceBegin;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player"); // There should be only one ship like this
+    }
 
     void Update ()
     {

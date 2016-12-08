@@ -7,9 +7,18 @@ public class ShipSelectionController : MonoBehaviour
     public int currentShipIndex;
     public ShipPlatform[] shipPlatforms;
 
+    public enum ShipSelection
+    {
+        Victor,
+        Oscar,
+        Sanic,
+        Cristina
+    }
+    public static ShipSelection selectedShip;
+
 	void Start () 
     {
-	
+        HandleSelection();
 	}
 	
 	void Update () 
@@ -54,11 +63,33 @@ public class ShipSelectionController : MonoBehaviour
     {
         currentShipIndex--;
         currentShipIndex = (currentShipIndex + shipPlatforms.Length) % shipPlatforms.Length;
+        HandleSelection();
     }
 
     public void GoToNextShip()
     {
         currentShipIndex++;
         currentShipIndex = (currentShipIndex + shipPlatforms.Length) % shipPlatforms.Length;
+        HandleSelection();
+    }
+
+    public void HandleSelection()
+    {
+        if (currentShipIndex == 0)
+        {
+            selectedShip = ShipSelection.Victor;
+        }
+        else if (currentShipIndex == 1)
+        {
+            selectedShip = ShipSelection.Oscar;
+        }
+        else if (currentShipIndex == 2)
+        {
+            selectedShip = ShipSelection.Sanic;
+        }
+        else if (currentShipIndex == 3)
+        {
+            selectedShip = ShipSelection.Cristina;
+        }
     }
 }

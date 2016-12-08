@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,13 +11,17 @@ public class ItemOrbRow : MonoBehaviour
 
 	void Start () 
     {
-        orbs = new List<ItemOrb>();
-
-        Transform[] orbPositions = GetComponentsInChildren<Transform>();
-        foreach (Transform orbPos in orbPositions)
+        if (SceneManager.GetActiveScene().name == "InRace")
         {
-            GameObject orb = GameObject.Instantiate(orbPrefab, orbPos.position, orbPos.rotation) as GameObject;
-            orbs.Add( orb.GetComponent<ItemOrb>() );
+            orbs = new List<ItemOrb>();
+
+            Transform[] orbPositions = GetComponentsInChildren<Transform>();
+            foreach (Transform orbPos in orbPositions)
+            {
+                GameObject orb = GameObject.Instantiate(orbPrefab, orbPos.position, orbPos.rotation) as GameObject;
+                orb.transform.parent = transform;
+                orbs.Add(orb.GetComponent<ItemOrb>());
+            }
         }
 	}
 	

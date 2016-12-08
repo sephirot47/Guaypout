@@ -28,7 +28,12 @@ public class GameFlowController : MonoBehaviour
     private Button replayButton, backToMenuButton;
     private const float maxPositionTextSize = 250.0f;
 
-	void Start () 
+    void Awake ()
+    {
+        HandleSelection();
+    }
+
+    void Start () 
     {
         raceBeginChrono = countDownChrono = raceFinishedChrono = 0;
         goText.enabled = false;
@@ -172,5 +177,49 @@ public class GameFlowController : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    private void HandleSelection()
+    {
+        GameObject victorShip = GameObject.Find("Victor");
+        GameObject oscarShip = GameObject.Find("Oscar");
+        GameObject sanicShip = GameObject.Find("Sanic");
+        GameObject cristinaShip = GameObject.Find("Cristina");
+
+        Debug.Log("WHOS SELECTED? " + ShipSelectionController.selectedShip);
+        victorShip.tag = "Enemy"; oscarShip.tag = "Enemy";
+        sanicShip.tag = "Enemy"; cristinaShip.tag = "Enemy";
+        if (ShipSelectionController.selectedShip == ShipSelectionController.ShipSelection.Victor)
+        {
+            Destroy(victorShip.GetComponent<EnemyInputController>());
+            Destroy(oscarShip.GetComponent<PlayerInputController>());
+            Destroy(sanicShip.GetComponent<PlayerInputController>());
+            Destroy(cristinaShip.GetComponent<PlayerInputController>());
+            victorShip.tag = "Player"; 
+        }
+        else if (ShipSelectionController.selectedShip == ShipSelectionController.ShipSelection.Oscar)
+        {
+            Destroy(victorShip.GetComponent<PlayerInputController>());
+            Destroy(oscarShip.GetComponent<EnemyInputController>());
+            Destroy(sanicShip.GetComponent<PlayerInputController>());
+            Destroy(cristinaShip.GetComponent<PlayerInputController>());
+            oscarShip.tag = "Player"; 
+        }
+        else if (ShipSelectionController.selectedShip == ShipSelectionController.ShipSelection.Sanic)
+        {
+            Destroy(victorShip.GetComponent<PlayerInputController>());
+            Destroy(oscarShip.GetComponent<PlayerInputController>());
+            Destroy(sanicShip.GetComponent<EnemyInputController>());
+            Destroy(cristinaShip.GetComponent<PlayerInputController>());
+            sanicShip.tag = "Player"; 
+        }
+        else if (ShipSelectionController.selectedShip == ShipSelectionController.ShipSelection.Cristina)
+        {
+            Destroy(victorShip.GetComponent<PlayerInputController>());
+            Destroy(oscarShip.GetComponent<PlayerInputController>());
+            Destroy(sanicShip.GetComponent<PlayerInputController>());
+            Destroy(cristinaShip.GetComponent<EnemyInputController>());
+            cristinaShip.tag = "Player"; 
+        }
     }
 }
