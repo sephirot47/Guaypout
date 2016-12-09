@@ -10,6 +10,9 @@ public class ShipPlatform : MonoBehaviour
     [SerializeField]
     private string shipName;
 
+    [SerializeField]
+    private Sprite characterFaceSprite;
+
 	void Start () 
     {
 	}
@@ -36,5 +39,10 @@ public class ShipPlatform : MonoBehaviour
     public string GetName()
     {
         return shipName;
+    }
+
+    public Sprite GetCharacterFaceSprite()
+    {
+        return characterFaceSprite;
     }
 }
