@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ShipSelectionController : MonoBehaviour 
 {
     public int currentShipIndex;
+    public Image characterFaceImage; 
     public ShipPlatform[] shipPlatforms;
 
     public enum ShipSelection
@@ -75,6 +77,7 @@ public class ShipSelectionController : MonoBehaviour
 
     public void HandleSelection(bool playSound = true)
     {
+        characterFaceImage.sprite = shipPlatforms[currentShipIndex].GetCharacterFaceSprite();
         if (currentShipIndex == 0)
         {
             selectedShip = ShipSelection.Victor;

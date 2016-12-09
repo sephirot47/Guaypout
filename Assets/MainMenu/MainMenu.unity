@@ -302,6 +302,8 @@ MonoBehaviour:
   control: 0.542
   resilience: 0.642
   shipName: Cristina
+  characterFaceSprite: {fileID: 21300000, guid: 9ea1d6f6aeb781e4db07bc0aa6a407ab,
+    type: 3}
 --- !u!114 &36442297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +552,8 @@ MonoBehaviour:
   control: 0.614
   resilience: 0.228
   shipName: Vector
+  characterFaceSprite: {fileID: 21300000, guid: 0c6c4e906ce33814da7a45b632615238,
+    type: 3}
 --- !u!114 &61661892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1942,6 +1946,8 @@ MonoBehaviour:
   control: 0.638
   resilience: 0.633
   shipName: Oscar
+  characterFaceSprite: {fileID: 21300000, guid: 7177ff2af7dcff048b15b4413b2a96e3,
+    type: 3}
 --- !u!114 &244220756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12447,6 +12453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentShipIndex: 1
+  characterFaceImage: {fileID: 786135325}
   shipPlatforms:
   - {fileID: 61661891}
   - {fileID: 244220755}
@@ -12982,6 +12989,8 @@ MonoBehaviour:
   control: 0.891
   resilience: 0.871
   shipName: Sanic
+  characterFaceSprite: {fileID: 21300000, guid: bdf62cd795d7e00438110a3996fbb691,
+    type: 3}
 --- !u!114 &1961423418
 MonoBehaviour:
   m_ObjectHideFlags: 0
