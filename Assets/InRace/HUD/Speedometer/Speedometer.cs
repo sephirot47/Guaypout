@@ -7,11 +7,12 @@ public class Speedometer : MonoBehaviour
     public float upperSpeedLimit;
     public Image speedometerFill;
     public Text speedText;
-    public ShipPhysicsController player;
+
+    private ShipPhysicsController player;
 
 	void Start () 
     {
-	    
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<ShipPhysicsController>();
 	}
 	
 	void Update () 
