@@ -1676,6 +1676,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011442368128, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: trackBoundaryLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85d0bd35a1b1352458e90bb65f383fbc, type: 2}
   m_IsPrefabParent: 0
@@ -3244,6 +3249,11 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011130808642, guid: a2b2ad3f2befb584f8e81e1f56ab6a12,
+        type: 2}
+      propertyPath: trackBoundaryLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2b2ad3f2befb584f8e81e1f56ab6a12, type: 2}
   m_IsPrefabParent: 0
@@ -3929,6 +3939,11 @@ Prefab:
     - target: {fileID: 1000013172654966, guid: 2812a8aaf013d36458ef84e129362d2b, type: 2}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010194234026, guid: 2812a8aaf013d36458ef84e129362d2b,
+        type: 2}
+      propertyPath: trackBoundaryLayer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2812a8aaf013d36458ef84e129362d2b, type: 2}
@@ -5135,6 +5150,11 @@ Prefab:
     - target: {fileID: 1000014015151476, guid: 7870dd96ce64f9b4a9343be848913146, type: 2}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012132155466, guid: 7870dd96ce64f9b4a9343be848913146,
+        type: 2}
+      propertyPath: trackBoundaryLayer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7870dd96ce64f9b4a9343be848913146, type: 2}
