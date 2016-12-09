@@ -3,9 +3,12 @@ using System.Collections;
 
 public class PlayerInputController : ShipInputController 
 {
+    WeaponController weaponController;
+
     new void Start()
     {
         base.Start();
+        weaponController = GetComponent<WeaponController>();
     }
 
     new void Update()
@@ -21,11 +24,21 @@ public class PlayerInputController : ShipInputController
         else if (currentState == ShipInputController.State.Hit)
         {
         }
+
+        CheckInput();
     }
 
     public void OnGoalPassed()
     {
         GetComponentInChildren<Animator>().SetTrigger("Boosting");
         this.enabled = false;
+    }
+
+    private void CheckInput()
+    {
+        if (Input.GetKeyDown("space"))
+            weaponController.FireProjectile();
+        if (Input.GetKeyDown(KeyCode.X))
+            weaponController.ThrowMine();
     }
 }

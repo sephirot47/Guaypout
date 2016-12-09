@@ -22,7 +22,9 @@ public class ItemOrb : MonoBehaviour {
         if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy")
         {
             GameObject ship = other.transform.root.gameObject;
-            ship.GetComponent<WeaponController>().enableFire();
+            WeaponController weaponController = ship.GetComponent<WeaponController>();
+            weaponController.EnableFire();
+            weaponController.EnableMine();
 
 			timer.Set (refillTime);
 			Enabled(false);

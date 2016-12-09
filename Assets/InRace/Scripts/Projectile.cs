@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-        if (other.transform.root.tag == "Enemy") {
+        if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy") {
 			other.gameObject.GetComponentInParent<ShipInputController>().OnHit();
 			Destroy (gameObject);
 		}
