@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
     void Update ()
     {
         // FP / no-FP handling
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             inFirstPerson = !inFirstPerson;
         }
