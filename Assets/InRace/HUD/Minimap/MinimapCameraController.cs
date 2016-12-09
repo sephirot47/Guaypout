@@ -3,13 +3,14 @@ using System.Collections;
 
 public class MinimapCameraController : MonoBehaviour 
 {
-	public GameObject player;
-
+	private GameObject player;
 	private float initialOffsetY;
 
-	void Start () 
-	{
+	void Start ()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
 		initialOffsetY = transform.position.y + player.transform.position.y;
+        player.transform.position = Vector3.zero;
 	}
 
 	void Update () 

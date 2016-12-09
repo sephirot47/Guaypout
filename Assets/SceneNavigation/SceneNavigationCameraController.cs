@@ -20,7 +20,7 @@ public class SceneNavigationCameraController : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, navPoint.position, Time.deltaTime * navigationSpeed);
         transform.rotation = Quaternion.Slerp(transform.rotation, navPoint.rotation, Time.deltaTime * navigationSpeed);
-        if (Vector3.Distance(navPoint.position, transform.position) <= 1.0f)
+        if (Vector3.Distance(navPoint.position, transform.position) <= 10.0f)
         {
             sceneNavigatingTo.Activate();
         }
