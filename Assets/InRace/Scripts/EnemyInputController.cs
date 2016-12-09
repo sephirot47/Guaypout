@@ -9,6 +9,7 @@ public class EnemyInputController : ShipInputController
     public float turnSmoothing = 5.0f;
     public float nextWPOrthogonalityTresh = 0.98f;
     public int numWPForward = 6;
+    public float lane = 0;
 
 	private TrackInformer trackInformer;
     private TrackInformer.TrackInfo info;
@@ -55,12 +56,14 @@ public class EnemyInputController : ShipInputController
             float nextWPOrthogonality = Vector3.Dot(v1, v2);
 
             Vector3 target = nextWPOrthogonality < nextWPOrthogonalityTresh ? targetAfterAfter : targetAfter;
+            Waypoint targetWP = nextWPOrthogonality < nextWPOrthogonalityTresh ? targetAfterAfterWP : targetAfterWP;
+            target += lane * targetWP.transform.right;
             Vector3 direction = target - transform.position;
             direction.y = transform.forward.y;
             direction.Normalize();
             //Debug.DrawLine(transform.position, transform.position + v1 * 5f, Color.red, 0.0f, false);
             //Debug.DrawLine(transform.position, transform.position + v2*5f, Color.green, 0.0f, false);
-            //Debug.DrawLine(transform.position, target, Color.blue, 0.0f, false);
+            Debug.DrawLine(transform.position, target, Color.blue, 0.0f, false);
 
             RaycastHit hitInfo;
             if (Physics.Raycast(transform.position, transform.right, out hitInfo, 999.9f, shipPhysicsController.trackLayer))

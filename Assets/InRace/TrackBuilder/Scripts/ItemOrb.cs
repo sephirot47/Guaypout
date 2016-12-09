@@ -6,12 +6,10 @@ public class ItemOrb : MonoBehaviour {
 	public Behaviour halo;
 	public float refillTime = 3f;
 
-	private GameObject player;
 	private Timer timer;
 
 
-    void Start () {
-        player = GameObject.FindGameObjectWithTag("Player"); 
+    void Start () { 
 		timer = gameObject.AddComponent<Timer>();
 	}
 
@@ -21,9 +19,10 @@ public class ItemOrb : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-        if (other.transform.root.tag == "Player") 
+        if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy")
         {
-            player.GetComponent<PlayerInputController>().enableFire();
+            GameObject ship = other.transform.root.gameObject;
+            ship.GetComponent<WeaponController>().enableFire();
 
 			timer.Set (refillTime);
 			Enabled(false);
