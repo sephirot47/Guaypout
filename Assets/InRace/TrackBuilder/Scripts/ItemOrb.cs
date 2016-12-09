@@ -4,10 +4,18 @@ using System.Collections;
 public class ItemOrb : MonoBehaviour {
 
 	public Behaviour halo;
+    public Material blue;
+    public Material purple;
 	public float refillTime = 3f;
 
 	private Timer timer;
+    private OrbType type;
 
+    public enum OrbType
+    {
+        FIRE,
+        MINE
+    };
 
     void Start () { 
 		timer = gameObject.AddComponent<Timer>();
@@ -23,8 +31,16 @@ public class ItemOrb : MonoBehaviour {
         {
             GameObject ship = other.transform.root.gameObject;
             WeaponController weaponController = ship.GetComponent<WeaponController>();
-            weaponController.EnableFire();
-            weaponController.EnableMine();
+
+            switch (type)
+            {
+                case OrbType.FIRE:
+                    weaponController.EnableFire();
+                    break;
+                case OrbType.MINE:
+                    weaponController.EnableMine();
+                    break;
+            }
 
 			timer.Set (refillTime);
 			Enabled(false);
@@ -36,4 +52,18 @@ public class ItemOrb : MonoBehaviour {
 		halo.enabled = b;
 		GetComponent<Collider>().enabled = b;
 	}
+
+    public void SetType(OrbType t)
+    {
+        type = t;
+        switch (type)
+        {
+            case OrbType.FIRE:
+                GetComponent<Renderer>().material = blue;
+                break;
+            case OrbType.MINE:
+                GetComponent<Renderer>().material = purple;
+                break;
+        }
+    }
 }

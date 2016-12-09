@@ -16,11 +16,19 @@ public class ItemOrbRow : MonoBehaviour
             orbs = new List<ItemOrb>();
 
             Transform[] orbPositions = GetComponentsInChildren<Transform>();
+            int i = 0;
             foreach (Transform orbPos in orbPositions)
             {
+                if (orbPos == transform) continue;
+
                 GameObject orb = GameObject.Instantiate(orbPrefab, orbPos.position, orbPos.rotation) as GameObject;
                 orb.transform.parent = transform;
+                if (i % 2 == 0)
+                    orb.GetComponent<ItemOrb>().SetType(ItemOrb.OrbType.FIRE);
+                else
+                    orb.GetComponent<ItemOrb>().SetType(ItemOrb.OrbType.MINE);
                 orbs.Add(orb.GetComponent<ItemOrb>());
+                ++i;
             }
         }
 	}

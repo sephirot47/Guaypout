@@ -29,7 +29,7 @@ public class Mine : MonoBehaviour {
             if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy")
             {
                 float power = 5000f;
-                float radius = 20f;
+                float radius = 10f;
                 Vector3 explosionPos = transform.position;
                 Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
                 foreach (Collider hit in colliders)
