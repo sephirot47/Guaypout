@@ -54,5 +54,7 @@ public class WeaponController : MonoBehaviour {
     {
         Vector3 spawn = transform.position + transform.forward * 1.5f;
         Mine mine = Instantiate(projectile, spawn, Quaternion.identity) as Mine;
+        mine.transform.forward = transform.forward;
+        mine.GetComponent<Rigidbody>().velocity = rb.velocity;
     }
 }
