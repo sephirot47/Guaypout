@@ -44,6 +44,10 @@ public class WeaponController : MonoBehaviour {
         if (bar) Destroy(bar);
     }
 
+	public bool FireEnabled() {
+		return fireEnabled;
+	}
+
     public void FireProjectile()
     {
         if (!fireEnabled) return;
@@ -64,7 +68,11 @@ public class WeaponController : MonoBehaviour {
         mineEnabled = false;
     }
 
-    public void ThrowMine()
+	public bool MineEnabled() {
+		return mineEnabled;
+	}
+
+	public void ThrowMine(Vector3 direction)
     {
         if (!mineEnabled) return;
 
@@ -72,6 +80,7 @@ public class WeaponController : MonoBehaviour {
         Mine m = Instantiate(mine, spawn, Quaternion.identity) as Mine;
         m.transform.forward = transform.forward;
         m.GetComponent<Rigidbody>().velocity = rb.velocity;
+		m.direction = direction;
         mineEnabled = false;
     }
 }

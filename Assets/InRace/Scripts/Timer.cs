@@ -5,10 +5,12 @@ public class Timer : MonoBehaviour {
 
 	private float totalTime;
 	private float timeLeft;
+	private bool enabled;
 
 	void Start () {
 		totalTime = 0f;
 		timeLeft = 0f;
+		enabled = false;
 	}
 
 	void Update () {
@@ -18,6 +20,7 @@ public class Timer : MonoBehaviour {
 	public void Set(float t) {
 		totalTime = t;
 		timeLeft = t;
+		enabled = true;
 	}
 
 	public bool Ended() {
@@ -30,5 +33,13 @@ public class Timer : MonoBehaviour {
 
 	public float TotalTime() {
 		return totalTime;
+	}
+
+	public bool Enabled() {
+		return enabled;
+	}
+
+	public void Disable() {
+		enabled = false;
 	}
 }

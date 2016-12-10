@@ -13,11 +13,15 @@ public class EnemyInputController : ShipInputController
 
 	private TrackInformer trackInformer;
     private TrackInformer.TrackInfo info;
+	private WeaponController weaponController;
+	private Timer timer;
 
     new void Start() 
     {
         base.Start();
 		trackInformer = GameObject.Find("TrackInformer").GetComponent<TrackInformer>();
+		weaponController = GetComponent<WeaponController>();
+		timer = gameObject.AddComponent<Timer> ();
 	}
 
     public static float AngleAroundAxis(Vector3 dirA, Vector3 dirB, Vector3 axis)
@@ -27,6 +31,37 @@ public class EnemyInputController : ShipInputController
         float angle = Vector3.Angle(dirA, dirB);
         return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
     }
+
+	void Update() {
+		// If a enemy has a mine, just throws it
+		if (!timer.Enabled() && weaponController.MineEnabled ())
+			timer.Set (0.5f);
+
+		if (timer.Enabled() && timer.Ended()) {
+			timer.Disable ();
+
+			RaycastHit hitRight, hitLeft;
+			Physics.Raycast (transform.position, transform.right, out hitRight, 100f);
+			Physics.Raycast (transform.position, -transform.right, out hitLeft, 100f);
+			int s = hitRight.distance < hitLeft.distance ? -1 : 1;
+
+			Vector3 direction = transform.forward + transform.up;
+			direction = Quaternion.Euler (0, s*Random.Range(20,60), 0) * direction;
+			Debug.DrawRay(transform.position, direction * 10f, Color.magenta, 5f);
+			weaponController.ThrowMine (direction);
+		}
+
+		// If any other ship is aligned with the vertical plane of the enemy's forward, fire!
+		RaycastHit hit;
+		for (int a = -45; a <= 45; a += 3) {
+			Vector3 rayDirection = Quaternion.Euler(a,0,0) * transform.forward;
+			if (Physics.Raycast (transform.position, rayDirection, out hit, 500f)) {
+				string tag = hit.collider.transform.root.tag;
+				if (tag == "Player" || tag == "Enemy")
+					weaponController.FireProjectile ();
+			}
+		}
+	}
 
     void FixedUpdate()
     {

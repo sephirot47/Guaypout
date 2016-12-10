@@ -1730,6 +1730,11 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 4.6124988
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012804932392, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: numWPForward
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85d0bd35a1b1352458e90bb65f383fbc, type: 2}
   m_IsPrefabParent: 0
@@ -3343,6 +3348,11 @@ Prefab:
       propertyPath: m_CollisionDetection
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011333468608, guid: a2b2ad3f2befb584f8e81e1f56ab6a12,
+        type: 2}
+      propertyPath: numWPForward
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2b2ad3f2befb584f8e81e1f56ab6a12, type: 2}
   m_IsPrefabParent: 0
@@ -4055,6 +4065,16 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 3.1500006
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010194234026, guid: 2812a8aaf013d36458ef84e129362d2b,
+        type: 2}
+      propertyPath: fwdAcceleration
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010720840096, guid: 2812a8aaf013d36458ef84e129362d2b,
+        type: 2}
+      propertyPath: numWPForward
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2812a8aaf013d36458ef84e129362d2b, type: 2}
   m_IsPrefabParent: 0
@@ -4519,6 +4539,10 @@ Prefab:
     - target: {fileID: 4000011103752402, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}
       propertyPath: m_LocalScale.z
       value: 2.750002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012651938200, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.134
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53d8b226650e8c94c9f1bc1dc1efc2a1, type: 2}
@@ -5305,6 +5329,11 @@ Prefab:
         type: 2}
       propertyPath: turnStrength
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013217017896, guid: 7870dd96ce64f9b4a9343be848913146,
+        type: 2}
+      propertyPath: numWPForward
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7870dd96ce64f9b4a9343be848913146, type: 2}

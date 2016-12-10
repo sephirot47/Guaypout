@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerInputController : ShipInputController 
 {
-    WeaponController weaponController;
+    private WeaponController weaponController;
 
     new void Start()
     {
@@ -39,6 +39,6 @@ public class PlayerInputController : ShipInputController
         if (Input.GetKeyDown("space"))
             weaponController.FireProjectile();
         if (Input.GetKeyDown(KeyCode.X))
-            weaponController.ThrowMine();
+			weaponController.ThrowMine(transform.forward + transform.up);
     }
 }

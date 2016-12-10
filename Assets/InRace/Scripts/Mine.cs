@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Mine : MonoBehaviour {
 
+	public Vector3 direction;
+
     private Rigidbody rb;
     Timer timer;
 
@@ -12,8 +14,7 @@ public class Mine : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
-        Vector3 direction = (transform.forward + transform.up).normalized;
-        rb.AddForce(1000f*direction);
+		rb.AddForce(1000f*direction.normalized);
 	}
 	
 	// Update is called once per frame
