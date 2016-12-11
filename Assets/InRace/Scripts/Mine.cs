@@ -9,23 +9,22 @@ public class Mine : MonoBehaviour
 	public Vector3 direction;
 
     private Rigidbody rb;
-    Timer timer;
 
-    private float lastPositionY;
     private bool canExplode = false;
 	private InRaceSoundManager soundManager;
 
-	// Use this for initialization
-	void Start () {
+    private float timeSinceCreated = 0.0f;
+	void Start () 
+    {
         rb = GetComponent<Rigidbody>();
 		rb.AddForce(1000f*direction.normalized);
 		soundManager = GameObject.Find ("InRaceSoundPlayer").GetComponent<InRaceSoundManager>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        canExplode = canExplode || (transform.position.y < lastPositionY);
-        lastPositionY = transform.position.y;
+	void Update () 
+    {
+        timeSinceCreated += Time.deltaTime;
+        canExplode = canExplode || (timeSinceCreated >= 1.0f);
 	}
 
     void OnTriggerEnter(Collider other)
