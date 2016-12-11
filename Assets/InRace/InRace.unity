@@ -2234,7 +2234,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7177ff2af7dcff048b15b4413b2a96e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33ca6ed1b6541694bb53cf93df6f2ff0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2453,7 +2453,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: bdf62cd795d7e00438110a3996fbb691, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 691f50e2f52d53848abade0956470941, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2649,10 +2649,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1838521827}
   m_RootOrder: 6
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -77.7, y: 124.99011}
-  m_SizeDelta: {x: 31.1, y: 40.6}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -77.7, y: -115}
+  m_SizeDelta: {x: 31.1, y: 40.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880091493
 MonoBehaviour:
@@ -3035,7 +3035,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0c6c4e906ce33814da7a45b632615238, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 41a0a88616453b7459b043b1ea9b1754, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3237,10 +3237,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1838521827}
   m_RootOrder: 4
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -78.549995, y: 213.79}
-  m_SizeDelta: {x: 29.4, y: 40.6}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -74, y: -26}
+  m_SizeDelta: {x: 29.4, y: 40.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1091117503
 MonoBehaviour:
@@ -4755,10 +4755,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1838521827}
   m_RootOrder: 7
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -77.7, y: 80.59}
-  m_SizeDelta: {x: 31.1, y: 40.6}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -77.7, y: -160}
+  m_SizeDelta: {x: 31.1, y: 40.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604423010
 MonoBehaviour:
@@ -4867,7 +4867,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9ea1d6f6aeb781e4db07bc0aa6a407ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d423f9edcae5214a8d4ff06e748e192, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5547,10 +5547,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1838521827}
   m_RootOrder: 5
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -78.549995, y: 170.29015}
-  m_SizeDelta: {x: 29.4, y: 40.6}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -78.549995, y: -70}
+  m_SizeDelta: {x: 29.4, y: 40.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1720936476
 MonoBehaviour:
@@ -5650,7 +5650,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!82 &1732712802
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6682,7 +6682,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012469167842, guid: 01599c173b40dfe4aa3835821cec65fa, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000012072458962, guid: 01599c173b40dfe4aa3835821cec65fa,
         type: 2}
