@@ -26,6 +26,23 @@ public class Projectile : MonoBehaviour
 
 	void Update() 
     {
+        if (originShip.name == "Victor")
+        {
+            GetComponentInChildren<Light>().color = Color.red;
+        }
+        if (originShip.name == "Oscar")
+        {
+            GetComponentInChildren<Light>().color = Color.green;
+        }
+        if (originShip.name == "Cristina")
+        {
+            GetComponentInChildren<Light>().color = Color.magenta;
+        }
+        if (originShip.name == "Sanic")
+        {
+            GetComponentInChildren<Light>().color = Color.blue;
+        }
+
 		TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo(transform.position, transform.right, transform.up, 100f);
         if (trackInfo.overTheTrack)
         {

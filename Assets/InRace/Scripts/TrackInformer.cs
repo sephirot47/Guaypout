@@ -205,7 +205,21 @@ public class TrackInformer : MonoBehaviour
         {
             return hitInfo.collider.gameObject.GetComponentInParent<TrackPiece>();
         }
-        return null;
+        else
+        {
+            TrackPiece closestTrackPiece = null;
+            float minDist = Mathf.Infinity;
+            foreach (TrackPiece tp in trackBuilder.GetTrackPieces())
+            {
+                float d = Vector3.Distance(position, tp.transform.position);
+                if (d < minDist)
+                {
+                    closestTrackPiece = tp;
+                    minDist = d;
+                }
+            }
+            return closestTrackPiece;
+        }
     }
     private TrackPiece GetTrackPieceAfter(TrackPiece tp)
     {
