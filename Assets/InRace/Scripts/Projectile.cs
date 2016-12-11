@@ -12,7 +12,8 @@ public class Projectile : MonoBehaviour
 	private float height;
 	private TrackInformer trackInformer;
 
-	void Start () {
+	void Start () 
+    {
 		rb = GetComponentInChildren<Rigidbody> ();
         rb.velocity += transform.forward * speed;
 
@@ -23,15 +24,20 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, 10f);
 	}
 
-	void Update() {
+	void Update() 
+    {
 		TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo(transform.position, transform.right, transform.up, 100f);
-		transform.forward = Vector3.Cross (transform.right,trackInfo.normal);
-		transform.position = trackInfo.groundPoint + trackInfo.normal * height;
-		Debug.DrawRay(transform.position, transform.forward, Color.green, 0);
+        if (trackInfo.overTheTrack)
+        {
+            transform.forward = Vector3.Cross(transform.right, trackInfo.normal);
+            transform.position = trackInfo.groundPoint + trackInfo.normal * height;
+        }
 	}
 
-	void OnTriggerEnter(Collider other) {
-        if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy") {
+	void OnTriggerEnter(Collider other) 
+    {
+        if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy") 
+        {
             other.gameObject.GetComponentInParent<ShipInputController>().OnHit(originShip);
 			Destroy (gameObject);
 		}
