@@ -53,6 +53,7 @@ public class WeaponController : MonoBehaviour {
 
         Vector3 spawn = transform.position + transform.forward * 1.5f;
         Projectile proj = Instantiate(projectile, spawn, Quaternion.identity) as Projectile;
+        proj.originShip = gameObject;
         proj.transform.forward = transform.forward;
         proj.GetComponent<Rigidbody>().velocity = rb.velocity;
     }
@@ -77,6 +78,7 @@ public class WeaponController : MonoBehaviour {
 
         Vector3 spawn = transform.position + transform.forward * 1.5f;
         Mine m = Instantiate(mine, spawn, Quaternion.identity) as Mine;
+        m.originShip = gameObject;
         m.transform.forward = transform.forward;
         m.GetComponent<Rigidbody>().velocity = rb.velocity;
 		m.direction = direction;

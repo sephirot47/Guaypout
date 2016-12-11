@@ -57,7 +57,7 @@ public class ShipSoundManager : MonoBehaviour
 
     public void OnWeaponPicked()
     {
-        if (hitAudioClips.Count <= 0 || Random.Range(0.0f, 1.0f) > weaponAudioPlayProbability)
+        if (weaponAudioClips.Count <= 0 || Random.Range(0.0f, 1.0f) > weaponAudioPlayProbability)
             return;
 
         AudioClip clip = weaponAudioClips[Random.Range(0, weaponAudioClips.Count)];

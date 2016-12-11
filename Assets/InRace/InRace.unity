@@ -186,10 +186,13 @@ MonoBehaviour:
   weaponAudioPlayProbability: 0.5
   boostAudioClips:
   - {fileID: 8300000, guid: dc0a36504e2e5034a8352ca9dc89ecb9, type: 3}
+  - {fileID: 8300000, guid: efdf229a363c8cb4ab399828158eac3e, type: 3}
+  damageAudioClips:
   - {fileID: 8300000, guid: c7ec7cb6242217840aab771334a60089, type: 3}
-  damageAudioClips: []
-  hitAudioClips: []
-  weaponAudioClips: []
+  hitAudioClips:
+  - {fileID: 8300000, guid: efdf229a363c8cb4ab399828158eac3e, type: 3}
+  weaponAudioClips:
+  - {fileID: 8300000, guid: 80a8fbcbf11517e4ca8f6928083f5cef, type: 3}
 --- !u!114 &62877931 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000012132155466, guid: 7870dd96ce64f9b4a9343be848913146,
@@ -1116,9 +1119,14 @@ MonoBehaviour:
   weaponAudioPlayProbability: 0.5
   boostAudioClips:
   - {fileID: 8300000, guid: cc37d577e48740d4887cca262cb8fb74, type: 3}
-  damageAudioClips: []
-  hitAudioClips: []
-  weaponAudioClips: []
+  - {fileID: 8300000, guid: 36aca12ae4c831a4092834873a06fcd7, type: 3}
+  damageAudioClips:
+  - {fileID: 8300000, guid: 27d94d479736d2f468d50adac7e041f5, type: 3}
+  hitAudioClips:
+  - {fileID: 8300000, guid: e9e3953b908c89a44aec098390a78ade, type: 3}
+  - {fileID: 8300000, guid: d58be3bf794545f40bb89408f9247ca8, type: 3}
+  weaponAudioClips:
+  - {fileID: 8300000, guid: e9e3953b908c89a44aec098390a78ade, type: 3}
 --- !u!82 &339941888
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1640,6 +1648,21 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000012188332508, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: hitAudioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012188332508, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: damageAudioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012188332508, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: weaponAudioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012882727398, guid: 85d0bd35a1b1352458e90bb65f383fbc, type: 2}
       propertyPath: m_LocalPosition.x
       value: 3.29
@@ -1735,6 +1758,21 @@ Prefab:
       propertyPath: numWPForward
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012188332508, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: hitAudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e3cfebd5a68010f4f8768a9dced8f773, type: 3}
+    - target: {fileID: 114000012188332508, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: damageAudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: bf042523507697a4391cc175985343f0, type: 3}
+    - target: {fileID: 114000012188332508, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: weaponAudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e3cfebd5a68010f4f8768a9dced8f773, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85d0bd35a1b1352458e90bb65f383fbc, type: 2}
   m_IsPrefabParent: 0
@@ -4563,8 +4601,13 @@ MonoBehaviour:
   boostAudioClips:
   - {fileID: 8300000, guid: d01a3dfb09341c3479eee81f799ea392, type: 3}
   - {fileID: 8300000, guid: 9b52a46efb2027141af9ef7f840ad1d5, type: 3}
-  damageAudioClips: []
-  hitAudioClips: []
+  damageAudioClips:
+  - {fileID: 8300000, guid: 7659853e1895bcf439776702377c8d44, type: 3}
+  - {fileID: 8300000, guid: 480bca4e931fec94eadd5d2882ef61a9, type: 3}
+  hitAudioClips:
+  - {fileID: 8300000, guid: ad95087d31b93ae4da9889f612b2e3f0, type: 3}
+  - {fileID: 8300000, guid: 4094cb711fa6dd64eae6653bf7c16ef1, type: 3}
+  - {fileID: 8300000, guid: 1d890275c52431f4a81a34400144c613, type: 3}
   weaponAudioClips: []
 --- !u!82 &1773784287
 AudioSource:

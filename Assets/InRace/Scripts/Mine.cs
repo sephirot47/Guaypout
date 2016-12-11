@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Mine : MonoBehaviour {
+public class Mine : MonoBehaviour 
+{
+    [HideInInspector]
+    public GameObject originShip;
 
 	public Vector3 direction;
 
@@ -41,7 +44,7 @@ public class Mine : MonoBehaviour {
                     {
 						soundManager.PlayExplosionSound (transform.position);
                         hit.GetComponentInParent<Rigidbody>().AddExplosionForce(power, explosionPos, radius);
-                        hit.GetComponentInParent<ShipInputController>().OnHit();
+                        hit.GetComponentInParent<ShipInputController>().OnHit(originShip);
                     }
 
                 }

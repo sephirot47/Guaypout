@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour {
+public class Projectile : MonoBehaviour 
+{
+    [HideInInspector]
+    public GameObject originShip; 
 
 	public float speed = 20f;
 
@@ -29,7 +32,7 @@ public class Projectile : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
         if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy") {
-			other.gameObject.GetComponentInParent<ShipInputController>().OnHit();
+            other.gameObject.GetComponentInParent<ShipInputController>().OnHit(originShip);
 			Destroy (gameObject);
 		}
 	}

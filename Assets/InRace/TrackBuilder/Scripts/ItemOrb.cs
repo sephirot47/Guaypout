@@ -31,6 +31,7 @@ public class ItemOrb : MonoBehaviour {
         {
 			GetComponent<AudioSource>().Play();
             GameObject ship = other.transform.root.gameObject;
+            ship.GetComponent<ShipSoundManager>().OnWeaponPicked();
             WeaponController weaponController = ship.GetComponent<WeaponController>();
 
             switch (type)

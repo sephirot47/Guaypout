@@ -37,11 +37,13 @@ public class ShipInputController : MonoBehaviour
         }
     }
 
-    public void OnHit()
+    public void OnHit(GameObject originShip)
     {
         currentState = State.Hit;
         shipPhysicsController.SetTurn(0.0f);
         shipPhysicsController.SetThrust(0.0f);
+        GetComponent<ShipSoundManager>().OnDamaged();
+        originShip.GetComponent<ShipSoundManager>().OnHit();
         GetComponentInChildren<Animator>().SetTrigger("Hit");
     }
 
