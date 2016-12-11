@@ -10,7 +10,7 @@ public class Mine : MonoBehaviour
 
     private Rigidbody rb;
 
-    private bool canExplode = false;
+    private bool exploded = false, canExplode = false;
 	private InRaceSoundManager soundManager;
 
     private float timeSinceCreated = 0.0f;
@@ -29,7 +29,7 @@ public class Mine : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (canExplode)
+        if (canExplode && !exploded)
         {
             if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy")
             {
@@ -47,7 +47,12 @@ public class Mine : MonoBehaviour
                     }
 
                 }
-                Destroy(gameObject);
+
+                exploded = true;
+                GetComponentInChildren<MeshRenderer>().enabled = false;
+                GetComponentInChildren<ParticleSystem>().Stop();
+                GetComponentInChildren<ParticleSystem>().Play();
+                Destroy(gameObject, 1.0f);
             }
         }
     }
