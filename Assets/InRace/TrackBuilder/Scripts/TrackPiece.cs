@@ -22,6 +22,7 @@ public class TrackPiece : MonoBehaviour
                 speedBoosterPrefab, 
                 waypoints[0].transform.position + transform.up * 1.5f,
                 waypoints[0].transform.rotation) as GameObject;
+            speedBooster.transform.position += waypoints[0].transform.right * 10.0f * (Random.insideUnitCircle.x);
             speedBooster.transform.parent = transform;
         }
 	}
