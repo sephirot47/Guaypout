@@ -14,6 +14,6 @@ public class MinimapIcon : MonoBehaviour
 	void Update () 
 	{
         transform.position = target.transform.position + Vector3.up * initialYOffset;
-		transform.rotation = Quaternion.LookRotation(Vector3.Cross(target.transform.right, Vector3.up), Vector3.up);
+		transform.rotation = Quaternion.LookRotation(-Vector3.Cross(target.transform.right, Vector3.up), Vector3.up);
 	}
 }

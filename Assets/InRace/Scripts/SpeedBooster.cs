@@ -12,7 +12,13 @@ public class SpeedBooster : MonoBehaviour
             ShipPhysicsController ship = col.GetComponentInParent<ShipPhysicsController>();
             GetComponent<AudioSource>().Play();
             ship.GetComponentInParent<ShipSoundManager>().OnBoost();
-			ship.GetComponentInChildren<Animator>().SetTrigger("Boosting");
+            ship.GetComponentInChildren<Animator>().SetTrigger("Boosting");
+
+            ParticleSystem boostEffect = ship.transform.FindChild("BoostEffect").GetComponentInChildren<ParticleSystem>();
+            boostEffect.loop = false;
+            boostEffect.time = 0;
+            boostEffect.Play();
+
 			ship.ApplyBoost(boost, transform.forward);
         }
     }

@@ -24,7 +24,7 @@ public class Mine : MonoBehaviour
 	void Update () 
     {
         timeSinceCreated += Time.deltaTime;
-        canExplode = canExplode || (timeSinceCreated >= 1.0f);
+        canExplode = canExplode || (timeSinceCreated >= 0.5f);
 	}
 
     void OnTriggerEnter(Collider other)

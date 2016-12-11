@@ -11,6 +11,7 @@ public class ItemOrb : MonoBehaviour {
 	private Timer timer;
     private OrbType type;
 
+    private bool destroyed = false;
     public enum OrbType
     {
         FIRE,
@@ -21,12 +22,14 @@ public class ItemOrb : MonoBehaviour {
 		timer = gameObject.AddComponent<Timer>();
 	}
 
-	void Update () {
-		if (timer.Ended())
+	void Update () 
+    {
+		if (timer.Ended() && !destroyed)
 			Enabled(true);
 	}
 
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerEnter(Collider other) 
+    {
         if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy")
         {
 			GetComponent<AudioSource>().Play();
@@ -44,12 +47,17 @@ public class ItemOrb : MonoBehaviour {
                     break;
             }
 
+            destroyed = true;
 			timer.Set (refillTime);
 			Enabled(false);
 		}
 	}
 
-	private void Enabled(bool b) {
+    private void Enabled(bool b) 
+    {
+        ParticleSystem ps = GetComponentInChildren<ParticleSystem>();
+        ps.gameObject.SetActive(b);
+            
 		GetComponent<Renderer>().enabled = b;
 		halo.enabled = b;
 		GetComponent<Collider>().enabled = b;
