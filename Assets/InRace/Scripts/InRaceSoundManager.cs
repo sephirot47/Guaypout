@@ -5,6 +5,7 @@ public class InRaceSoundManager : MonoBehaviour
 {
     public AudioSource buttonClickSource;
     public AudioSource pauseAudioSource;
+	public AudioSource explosionSound;
 
 	void Start () 
     {
@@ -33,6 +34,10 @@ public class InRaceSoundManager : MonoBehaviour
     {
         GameObject.Find("InRaceSoundPlayer").GetComponent<InRaceSoundManager>().pauseAudioSource.Play();
     }
+
+	public void PlayExplosionSound(Vector3 position) {
+		AudioSource.PlayClipAtPoint(explosionSound.clip,position);
+	}
 
     public void AutoDestroy()
     {

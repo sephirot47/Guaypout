@@ -11,7 +11,7 @@ public class WeaponController : MonoBehaviour {
     
     private bool fireEnabled = false;
     private Timer timer;
-    private FireTimeBar bar;
+	private WeaponTimerBarController bar;
 
     private bool mineEnabled = false;
 
@@ -33,7 +33,7 @@ public class WeaponController : MonoBehaviour {
         timer.Set(fireTime);
         if (tag == "Player")
         {
-            bar = gameObject.AddComponent<FireTimeBar>();
+			bar = GameObject.Find ("WeaponTimerBar").GetComponent<WeaponTimerBarController> ();
             bar.SetTimer(timer);
         }
     }
@@ -41,7 +41,6 @@ public class WeaponController : MonoBehaviour {
     public void DisableFire()
     {
         fireEnabled = false;
-        if (bar) Destroy(bar);
     }
 
 	public bool FireEnabled() {

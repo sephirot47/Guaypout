@@ -10,11 +10,13 @@ public class Mine : MonoBehaviour {
 
     private float lastPositionY;
     private bool canExplode = false;
+	private InRaceSoundManager soundManager;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
 		rb.AddForce(1000f*direction.normalized);
+		soundManager = GameObject.Find ("InRaceSoundPlayer").GetComponent<InRaceSoundManager>();
 	}
 	
 	// Update is called once per frame
@@ -37,6 +39,7 @@ public class Mine : MonoBehaviour {
                 {
                     if (hit.transform.root.tag == "Player" || hit.transform.root.tag == "Enemy")
                     {
+						soundManager.PlayExplosionSound (transform.position);
                         hit.GetComponentInParent<Rigidbody>().AddExplosionForce(power, explosionPos, radius);
                         hit.GetComponentInParent<ShipInputController>().OnHit();
                     }

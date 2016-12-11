@@ -29,6 +29,7 @@ public class ItemOrb : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
         if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy")
         {
+			GetComponent<AudioSource>().Play();
             GameObject ship = other.transform.root.gameObject;
             WeaponController weaponController = ship.GetComponent<WeaponController>();
 
