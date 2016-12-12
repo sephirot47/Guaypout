@@ -3,12 +3,9 @@ using System.Collections;
 
 public class PlayerInputController : ShipInputController 
 {
-    private WeaponController weaponController;
-
     new void Start()
     {
         base.Start();
-        weaponController = GetComponent<WeaponController>();
     }
 
     new void Update()

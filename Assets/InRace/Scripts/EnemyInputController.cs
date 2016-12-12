@@ -13,14 +13,12 @@ public class EnemyInputController : ShipInputController
 
 	private TrackInformer trackInformer;
     private TrackInformer.TrackInfo info;
-	private WeaponController weaponController;
 	private Timer timer;
 
     new void Start() 
     {
         base.Start();
 		trackInformer = GameObject.Find("TrackInformer").GetComponent<TrackInformer>();
-		weaponController = GetComponent<WeaponController>();
 		timer = gameObject.AddComponent<Timer> ();
 	}
 

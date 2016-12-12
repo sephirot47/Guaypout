@@ -16,11 +16,13 @@ public class ShipInputController : MonoBehaviour
 
     public float hitDisableTime;
     private float timeFromLastHit;
+    protected WeaponController weaponController;
 
     public void Start()
     {
         shipPhysicsController = GetComponent<ShipPhysicsController>();
         rb = shipPhysicsController.GetRigidbody();
+        weaponController = GetComponent<WeaponController>();
     }
 
     public void Update()
@@ -39,6 +41,8 @@ public class ShipInputController : MonoBehaviour
 
     public void OnHit(GameObject originShip)
     {
+        if (weaponController.ShieldEnabled()) return;
+
         currentState = State.Hit;
         shipPhysicsController.SetTurn(0.0f);
         shipPhysicsController.SetThrust(0.0f);

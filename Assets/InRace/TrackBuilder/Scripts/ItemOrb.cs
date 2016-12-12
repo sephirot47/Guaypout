@@ -6,6 +6,7 @@ public class ItemOrb : MonoBehaviour {
 	public Behaviour halo;
     public Material blue;
     public Material purple;
+    public Material orange;
 	public float refillTime = 3f;
 
 	private Timer timer;
@@ -15,7 +16,8 @@ public class ItemOrb : MonoBehaviour {
     public enum OrbType
     {
         FIRE,
-        MINE
+        MINE,
+        SHIELD
     };
 
     void Start () { 
@@ -45,6 +47,9 @@ public class ItemOrb : MonoBehaviour {
                 case OrbType.MINE:
                     weaponController.EnableMine();
                     break;
+                case OrbType.SHIELD:
+                    weaponController.EnableShield();
+                    break;
             }
 
             destroyed = true;
@@ -73,6 +78,9 @@ public class ItemOrb : MonoBehaviour {
                 break;
             case OrbType.MINE:
                 GetComponent<Renderer>().material = purple;
+                break;
+            case OrbType.SHIELD:
+                GetComponent<Renderer>().material = orange;
                 break;
         }
     }
