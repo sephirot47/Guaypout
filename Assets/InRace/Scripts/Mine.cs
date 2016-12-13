@@ -13,17 +13,21 @@ public class Mine : MonoBehaviour
     private bool exploded = false, canExplode = false;
 	private InRaceSoundManager soundManager;
 
+    Light beepLight;
     private float timeSinceCreated = 0.0f;
 	void Start () 
     {
+        beepLight = GetComponentInChildren<Light>();
         rb = GetComponent<Rigidbody>();
 		rb.AddForce(1000f*direction.normalized);
 		soundManager = GameObject.Find ("InRaceSoundPlayer").GetComponent<InRaceSoundManager>();
 	}
 	
-	void Update () 
+	void Update ()
     {
         timeSinceCreated += Time.deltaTime;
+        beepLight.enabled = (timeSinceCreated % 0.4f > 0.2f);
+
         canExplode = canExplode || (timeSinceCreated >= 0.5f);
 	}
 
@@ -49,7 +53,10 @@ public class Mine : MonoBehaviour
                 }
 
                 exploded = true;
-                GetComponentInChildren<MeshRenderer>().enabled = false;
+                foreach (MeshRenderer mr in  GetComponentsInChildren<MeshRenderer>())
+                {
+                    mr.enabled = false;
+                }
                 GetComponentInChildren<ParticleSystem>().Stop();
                 GetComponentInChildren<ParticleSystem>().Play();
                 Destroy(gameObject, 1.0f);
