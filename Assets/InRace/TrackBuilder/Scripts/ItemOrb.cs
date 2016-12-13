@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class ItemOrb : MonoBehaviour {
@@ -7,54 +8,83 @@ public class ItemOrb : MonoBehaviour {
     public Material blue;
     public Material purple;
     public Material orange;
-	public float refillTime = 3f;
 
-	private Timer timer;
     private OrbType type;
 
-    private bool destroyed = false;
+    public float itemScrambleTime;
+
+    private ItemFrameController itemFrameController;
+
+    private GameObject shipThatPickedMe = null;
+    private float countdownChrono = 0.0f;
+    private bool countdownStarted = false, destroyed = false;
     public enum OrbType
     {
-        FIRE,
-        MINE,
-        SHIELD
+        FIRE   = 0,
+        MINE   = 1,
+        SHIELD = 2
     };
 
-    void Start () { 
-		timer = gameObject.AddComponent<Timer>();
+    void Start () 
+    { 
+        itemFrameController = GameObject.Find("HUD_InGame/ItemFrame").GetComponent<ItemFrameController>();
+        Debug.Log(itemFrameController);
 	}
 
 	void Update () 
     {
-		if (timer.Ended() && !destroyed)
-			Enabled(true);
+        if (countdownStarted)
+        {
+            countdownChrono += Time.deltaTime;
+            if (countdownChrono >= itemScrambleTime)
+            {
+                ActivateOrb();
+                Destroy(gameObject);
+            }
+        }
 	}
+
+    void ActivateOrb () // Called when the random time has finished
+    {
+        shipThatPickedMe.GetComponent<ShipSoundManager>().OnWeaponPicked();
+        WeaponController weaponController = shipThatPickedMe.GetComponent<WeaponController>();
+
+        SetType( (OrbType) UnityEngine.Random.Range(0, Enum.GetNames(typeof(OrbType)).Length) );
+
+        switch (type)
+        {
+            case OrbType.FIRE:
+                weaponController.EnableFire();
+                break;
+            case OrbType.MINE:
+                weaponController.EnableMine();
+                break;
+            case OrbType.SHIELD:
+                weaponController.EnableShield();
+                break;
+        }
+
+        if (shipThatPickedMe.tag == "Player")
+        {
+            itemFrameController.FinishScrambleAndFixThisWonderfulItem(type);
+        }
+    }
 
 	void OnTriggerEnter(Collider other) 
     {
-        if (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy")
+        GameObject ship = other.transform.root.gameObject;
+        if (!destroyed && (ship.tag == "Player" || ship.tag == "Enemy"))
         {
-			GetComponent<AudioSource>().Play();
-            GameObject ship = other.transform.root.gameObject;
-            ship.GetComponent<ShipSoundManager>().OnWeaponPicked();
-            WeaponController weaponController = ship.GetComponent<WeaponController>();
+            GetComponent<AudioSource>().Play();
+            countdownStarted = true;
+            shipThatPickedMe = ship;
+            Enabled(false);
 
-            switch (type)
+            if (shipThatPickedMe.tag == "Player")
             {
-                case OrbType.FIRE:
-                    weaponController.EnableFire();
-                    break;
-                case OrbType.MINE:
-                    weaponController.EnableMine();
-                    break;
-                case OrbType.SHIELD:
-                    weaponController.EnableShield();
-                    break;
+                itemFrameController.StartRandomScramble(itemScrambleTime);
             }
-
             destroyed = true;
-			timer.Set (refillTime);
-			Enabled(false);
 		}
 	}
 
@@ -71,17 +101,5 @@ public class ItemOrb : MonoBehaviour {
     public void SetType(OrbType t)
     {
         type = t;
-        switch (type)
-        {
-            case OrbType.FIRE:
-                GetComponent<Renderer>().material = blue;
-                break;
-            case OrbType.MINE:
-                GetComponent<Renderer>().material = purple;
-                break;
-            case OrbType.SHIELD:
-                GetComponent<Renderer>().material = orange;
-                break;
-        }
     }
 }

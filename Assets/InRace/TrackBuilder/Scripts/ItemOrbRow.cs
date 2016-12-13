@@ -23,18 +23,6 @@ public class ItemOrbRow : MonoBehaviour
 
                 GameObject orb = GameObject.Instantiate(orbPrefab, orbPos.position, orbPos.rotation) as GameObject;
                 orb.transform.parent = transform;
-                int item = i % 3;
-                switch (item) {
-                    case 0:
-                        orb.GetComponent<ItemOrb>().SetType(ItemOrb.OrbType.FIRE);
-                        break;
-                    case 1:
-                        orb.GetComponent<ItemOrb>().SetType(ItemOrb.OrbType.MINE);
-                        break;
-                    case 2:
-                        orb.GetComponent<ItemOrb>().SetType(ItemOrb.OrbType.SHIELD);
-                        break;
-                }
                 orbs.Add(orb.GetComponent<ItemOrb>());
                 ++i;
             }

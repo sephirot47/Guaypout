@@ -200,7 +200,8 @@ MonoBehaviour:
   halo: {fileID: 122000010384611004}
   blue: {fileID: 2100000, guid: f0b324e99c4ff3148943d12c8e3a9631, type: 2}
   purple: {fileID: 2100000, guid: f28d9c74dee95b14ba4a8038de14210c, type: 2}
-  refillTime: 3
+  orange: {fileID: 0}
+  itemScrambleTime: 3
 --- !u!122 &122000010384611004
 Halo:
   m_ObjectHideFlags: 1
