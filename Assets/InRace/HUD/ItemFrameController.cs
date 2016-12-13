@@ -12,9 +12,10 @@ public class ItemFrameController : MonoBehaviour
     private int lastRandomIndex = -1;
     private float timeSinceLastScrambleChange = 0.0f;
     private bool scrambling = false;
+
     void Start () 
     {
-	    
+        RemoveItemIcon();
 	}
 	
 	void Update () 
@@ -43,8 +44,14 @@ public class ItemFrameController : MonoBehaviour
     public void StartRandomScramble(float scrambleTime)
     {
         scrambling = true;
+        iconImage.enabled = true;
         totalScrambleTime = scrambleTime;
         totalTimeThatHasBeenScrambling = 0.0f;
+    }
+
+    public void RemoveItemIcon()
+    {
+        iconImage.enabled = false;
     }
 
     public void FinishScrambleAndFixThisWonderfulItem(ItemOrb.OrbType itemType)

@@ -28,7 +28,7 @@ public class WeaponTimerBarController : MonoBehaviour {
 		SetEnabled (true);
 	}
 
-	private void SetEnabled(bool b) {
+	public void SetEnabled(bool b) {
 		enabled = b;
 		backgound.gameObject.SetActive (b);
 		foreground.gameObject.SetActive (b);

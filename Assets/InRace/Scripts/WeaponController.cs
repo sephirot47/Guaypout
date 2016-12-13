@@ -19,24 +19,43 @@ public class WeaponController : MonoBehaviour {
     private bool shieldEnabled = false;
     private Timer shieldTimer;
     private ParticleSystem ps;
-    private Light light;
+    private Light shieldLight;
+    private ItemOrb lastPickedOrb = null;
 
-	// Use this for initialization
-	void Start () {
+    private ItemFrameController itemFrameController;
+
+	void Start () 
+    {
         rb = GetComponent<Rigidbody>();
         timer = gameObject.AddComponent<Timer>();
         shieldTimer = gameObject.AddComponent<Timer>();
 
         ps = transform.FindChild("Shield").gameObject.GetComponentInChildren<ParticleSystem>();
-        light = transform.FindChild("Shield").gameObject.GetComponentInChildren<Light>();
+        shieldLight = transform.FindChild("Shield").gameObject.GetComponentInChildren<Light>();
+
+        itemFrameController = GameObject.Find("HUD_InGame/ItemFrame").GetComponent<ItemFrameController>();
+
         DisableShield();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        if (timer.Ended()) DisableFire();
-        if (shieldTimer.Ended()) DisableShield();
+	void Update () 
+    {
+        if (timer.Ended() && FireEnabled()) DisableFire();
+        if (shieldTimer.Ended() && ShieldEnabled()) DisableShield();
 	}
+
+    public void OnOrbPicked(ItemOrb pickedOrb)
+    {
+        if (lastPickedOrb != null)
+        {
+            Destroy(lastPickedOrb.gameObject);
+        }
+        lastPickedOrb = pickedOrb;
+
+        DisableFire();
+        DisableMine();
+        DisableShield();
+    }
 
     public void EnableFire()
     {
@@ -52,9 +71,12 @@ public class WeaponController : MonoBehaviour {
     public void DisableFire()
     {
         fireEnabled = false;
+        GameObject.Find ("WeaponTimerBar").GetComponent<WeaponTimerBarController>().SetEnabled(false);
+        if (tag == "Player") { itemFrameController.RemoveItemIcon(); } 
     }
 
-	public bool FireEnabled() {
+	public bool FireEnabled() 
+    {
 		return fireEnabled;
 	}
 
@@ -77,9 +99,11 @@ public class WeaponController : MonoBehaviour {
     public void DisableMine()
     {
         mineEnabled = false;
+        if (tag == "Player") { itemFrameController.RemoveItemIcon(); }
     }
 
-	public bool MineEnabled() {
+	public bool MineEnabled() 
+    {
 		return mineEnabled;
 	}
 
@@ -101,14 +125,15 @@ public class WeaponController : MonoBehaviour {
         shieldEnabled = true;
         shieldTimer.Set(shieldTime);
         ps.gameObject.SetActive(true);
-        light.gameObject.SetActive(true);
+        shieldLight.gameObject.SetActive(true);
     }
 
     public void DisableShield()
     {
         shieldEnabled = false;
         ps.gameObject.SetActive(false);
-        light.gameObject.SetActive(false);
+        shieldLight.gameObject.SetActive(false);
+        if (tag == "Player") { itemFrameController.RemoveItemIcon(); }
     }
 
     public bool ShieldEnabled()

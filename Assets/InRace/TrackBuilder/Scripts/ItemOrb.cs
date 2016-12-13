@@ -28,7 +28,6 @@ public class ItemOrb : MonoBehaviour {
     void Start () 
     { 
         itemFrameController = GameObject.Find("HUD_InGame/ItemFrame").GetComponent<ItemFrameController>();
-        Debug.Log(itemFrameController);
 	}
 
 	void Update () 
@@ -78,6 +77,7 @@ public class ItemOrb : MonoBehaviour {
             GetComponent<AudioSource>().Play();
             countdownStarted = true;
             shipThatPickedMe = ship;
+            shipThatPickedMe.GetComponent<WeaponController>().OnOrbPicked(this);
             Enabled(false);
 
             if (shipThatPickedMe.tag == "Player")
