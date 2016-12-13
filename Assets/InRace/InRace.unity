@@ -336,6 +336,7 @@ MonoBehaviour:
     type: 2}
   mine: {fileID: 114000013277136520, guid: b89ed2bcf35380b47b180147d2f23522, type: 2}
   fireTime: 5
+  shieldTime: 5
 --- !u!1001 &65762448
 Prefab:
   m_ObjectHideFlags: 0
@@ -1480,6 +1481,7 @@ MonoBehaviour:
     type: 2}
   mine: {fileID: 114000013277136520, guid: b89ed2bcf35380b47b180147d2f23522, type: 2}
   fireTime: 5
+  shieldTime: 5
 --- !u!1 &349442661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,7 +2130,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 1
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2162,11 +2164,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 2
+    cnt0: 1
     cnt1: 1
     cnt2: 1
     cnt3: 30
-    cntmax0: 2
+    cntmax0: 1
     cntmax1: 1
     cntmax2: 1
     cntmax3: 30
@@ -2174,7 +2176,7 @@ ParticleSystem:
     time1: 1
     time2: 2
     time3: 0
-    m_BurstCount: 0
+    m_BurstCount: 1
   SizeModule:
     enabled: 0
     curve:
@@ -5984,7 +5986,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 1
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6018,11 +6020,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 2
+    cnt0: 1
     cnt1: 1
     cnt2: 1
     cnt3: 30
-    cntmax0: 2
+    cntmax0: 1
     cntmax1: 1
     cntmax2: 1
     cntmax3: 30
@@ -6030,7 +6032,7 @@ ParticleSystem:
     time1: 1
     time2: 2
     time3: 0
-    m_BurstCount: 0
+    m_BurstCount: 1
   SizeModule:
     enabled: 0
     curve:
@@ -9540,6 +9542,7 @@ MonoBehaviour:
     type: 2}
   mine: {fileID: 114000013277136520, guid: b89ed2bcf35380b47b180147d2f23522, type: 2}
   fireTime: 5
+  shieldTime: 5
 --- !u!1 &1806779257
 GameObject:
   m_ObjectHideFlags: 0
@@ -9889,9 +9892,9 @@ ParticleSystem:
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   scalingMode: 2
-  randomSeed: 1691889362
+  randomSeed: 1691889408
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -10266,7 +10269,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 1
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10300,11 +10303,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 2
+    cnt0: 1
     cnt1: 1
     cnt2: 1
     cnt3: 30
-    cntmax0: 2
+    cntmax0: 1
     cntmax1: 1
     cntmax2: 1
     cntmax3: 30
@@ -10312,7 +10315,7 @@ ParticleSystem:
     time1: 1
     time2: 2
     time3: 0
-    m_BurstCount: 0
+    m_BurstCount: 1
   SizeModule:
     enabled: 0
     curve:
@@ -12210,7 +12213,6 @@ Light:
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-=======
 --- !u!1001 &1989594376
 Prefab:
   m_ObjectHideFlags: 0
@@ -13326,7 +13328,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 1
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -13360,11 +13362,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 2
+    cnt0: 1
     cnt1: 1
     cnt2: 1
     cnt3: 30
-    cntmax0: 2
+    cntmax0: 1
     cntmax1: 1
     cntmax2: 1
     cntmax3: 30
@@ -13372,7 +13374,7 @@ ParticleSystem:
     time1: 1
     time2: 2
     time3: 0
-    m_BurstCount: 0
+    m_BurstCount: 1
   SizeModule:
     enabled: 0
     curve:
