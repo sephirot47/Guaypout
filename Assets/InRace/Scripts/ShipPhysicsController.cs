@@ -69,22 +69,25 @@ public class ShipPhysicsController : MonoBehaviour {
 
         // Correction of track boundaries with forces
         TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo(transform.position, transform.right, transform.up, hoverHeight);
-        Waypoint wpBefore = trackInformer.GetNPointsBefore(transform.position, 1)[0];
-        Waypoint wpAfter = trackInformer.GetNPointsAfter(transform.position, 1)[0];
-        Vector3 trackForward = (wpAfter.transform.position - wpBefore.transform.position).normalized;
-        Vector3 trackUp = trackInfo.overTheTrack ? trackInfo.normal : transform.up;
+        if (trackInfo.overTheTrack)
+        {
+            Waypoint wpBefore = trackInformer.GetNPointsBefore(transform.position, 1)[0];
+            Waypoint wpAfter = trackInformer.GetNPointsAfter(transform.position, 1)[0];
+            Vector3 trackForward = (wpAfter.transform.position - wpBefore.transform.position).normalized;
+            Vector3 trackUp = trackInfo.overTheTrack ? trackInfo.normal : transform.up;
 
-        Vector3 trackRight = Vector3.Cross(trackForward, trackUp);
-        RaycastHit hitInfo;
-        if (Physics.Raycast(transform.position, trackRight, out hitInfo, 999.9f, trackBoundaryLayer))
-        {
-            float distFactor = (1.0f / hitInfo.distance);
-            rb.AddForce(hitInfo.normal * 999.0f * Mathf.Pow(distFactor, 5.0f));
-        }
-        if (Physics.Raycast(transform.position, -trackRight, out hitInfo, 999.9f, trackBoundaryLayer))
-        {
-            float distFactor = (1.0f / hitInfo.distance);
-            rb.AddForce(hitInfo.normal * 999.0f * Mathf.Pow(distFactor, 5.0f));
+            Vector3 trackRight = Vector3.Cross(trackForward, trackUp);
+            RaycastHit hitInfo;
+            if (Physics.Raycast(transform.position, trackRight, out hitInfo, 999.9f, trackBoundaryLayer))
+            {
+                float distFactor = (1.0f / hitInfo.distance);
+                rb.AddForce(hitInfo.normal * 999.0f * Mathf.Pow(distFactor, 5.0f));
+            }
+            if (Physics.Raycast(transform.position, -trackRight, out hitInfo, 999.9f, trackBoundaryLayer))
+            {
+                float distFactor = (1.0f / hitInfo.distance);
+                rb.AddForce(hitInfo.normal * 999.0f * Mathf.Pow(distFactor, 5.0f));
+            }
         }
         //
 
