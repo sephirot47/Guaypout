@@ -48,7 +48,9 @@ public class Mine : MonoBehaviour
                     if (hit.transform.root.tag == "Player" || hit.transform.root.tag == "Enemy")
                     {
 						soundManager.PlayExplosionSound (transform.position);
-                        hit.GetComponentInParent<Rigidbody>().AddExplosionForce(power, explosionPos, radius);
+						WeaponController wc = hit.GetComponentInParent<WeaponController>();
+						if (!wc.ShieldEnabled())
+							hit.GetComponentInParent<Rigidbody>().AddExplosionForce(power, explosionPos, radius);
                         hit.GetComponentInParent<ShipInputController>().OnHit(originShip);
                     }
 
