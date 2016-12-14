@@ -311,6 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originShip: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
+  mineExplosionSound: {fileID: 8300000, guid: 611fa840ed4751747bdab5563c8e7ac8, type: 3}
 --- !u!135 &135000014122478460
 SphereCollider:
   m_ObjectHideFlags: 1

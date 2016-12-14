@@ -35,7 +35,7 @@ public class PlayerInputController : ShipInputController
     {
         if (Input.GetKeyDown("space"))
             weaponController.FireProjectile();
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown("space"))
 			weaponController.ThrowMine(transform.forward + transform.up);
     }
 }

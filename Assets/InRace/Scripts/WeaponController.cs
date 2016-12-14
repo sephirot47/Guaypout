@@ -22,6 +22,7 @@ public class WeaponController : MonoBehaviour {
     private Light shieldLight;
     private ItemOrb lastPickedOrb = null;
 
+    public AudioClip shieldAudioClip;
     private ItemFrameController itemFrameController;
 
 	void Start () 
@@ -126,6 +127,7 @@ public class WeaponController : MonoBehaviour {
         shieldTimer.Set(shieldTime);
         ps.gameObject.SetActive(true);
         shieldLight.gameObject.SetActive(true);
+        AudioSource.PlayClipAtPoint(shieldAudioClip, transform.position);
     }
 
     public void DisableShield()

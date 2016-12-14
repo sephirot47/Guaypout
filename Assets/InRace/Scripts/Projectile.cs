@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
 	private TrackInformer trackInformer;
 
     public GameObject shotEffect;
+    public AudioClip laserSound;
 
 	void Start () 
     {
@@ -23,6 +24,7 @@ public class Projectile : MonoBehaviour
 		TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo(transform.position, transform.right, transform.up, 100f);
 		height = trackInfo.distanceToGround;
 
+        AudioSource.PlayClipAtPoint(laserSound, transform.position);
         Destroy(gameObject, 10f);
 	}
 
@@ -59,7 +61,8 @@ public class Projectile : MonoBehaviour
             (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy")) 
         {
             GameObject shotParticle = GameObject.Instantiate(shotEffect, transform.position, Quaternion.identity) as GameObject;
-            Destroy(shotParticle, 4.0f);
+            shotParticle.transform.parent = other.transform.root;
+            Destroy(shotParticle, 1.0f);
 
             other.gameObject.GetComponentInParent<ShipInputController>().OnHit(originShip);
 			Destroy (gameObject);

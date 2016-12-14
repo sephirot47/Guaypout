@@ -13,6 +13,8 @@ public class Mine : MonoBehaviour
     private bool exploded = false, canExplode = false;
 	private InRaceSoundManager soundManager;
 
+    public AudioClip mineExplosionSound;
+
     Light beepLight;
     private float timeSinceCreated = 0.0f;
 	void Start () 
@@ -59,6 +61,7 @@ public class Mine : MonoBehaviour
                 }
                 GetComponentInChildren<ParticleSystem>().Stop();
                 GetComponentInChildren<ParticleSystem>().Play();
+                AudioSource.PlayClipAtPoint(mineExplosionSound, transform.position);
                 Destroy(gameObject, 1.0f);
             }
         }

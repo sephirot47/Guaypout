@@ -1157,7 +1157,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -82, y: -57}
+  m_AnchoredPosition: {x: -63.3, y: -76.5}
   m_SizeDelta: {x: 395, y: 39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128747914
@@ -1205,7 +1205,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Z - First person camera
+  m_Text: C - First person camera
 --- !u!222 &128747916
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3965,7 +3965,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: 95}
+  m_AnchoredPosition: {x: -92.3, y: 85.6}
   m_SizeDelta: {x: 337, y: 57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &619191732
@@ -7844,7 +7844,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &1204919787 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: b10dbf1081a91c54d948bfca5f9038ce, type: 3}
+  m_PrefabParentObject: {fileID: 400006, guid: b10dbf1081a91c54d948bfca5f9038ce, type: 3}
   m_PrefabInternal: {fileID: 1204919786}
 --- !u!1 &1207922154
 GameObject:
@@ -13551,8 +13551,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 228, y: 32}
-  m_SizeDelta: {x: 120, y: 39}
+  m_AnchoredPosition: {x: 146.2, y: -0.0000095367}
+  m_SizeDelta: {x: 375.3, y: 38.939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981392468
 MonoBehaviour:
@@ -13599,7 +13599,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: F - fire
+  m_Text: SPACE - Use weapons
 --- !u!222 &1981392470
 CanvasRenderer:
   m_ObjectHideFlags: 0
