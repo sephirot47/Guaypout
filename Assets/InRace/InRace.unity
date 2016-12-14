@@ -5417,7 +5417,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153218571}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a82fd3e9376432e46b93d41319d88885, type: 2}
   m_CullingMode: 0
@@ -9845,7 +9845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camController: {fileID: 1153218577}
   pauseCanvas: {fileID: 2027527528}
-  raceBeginTime: 0
+  raceBeginTime: 7.5
   countDownText: {fileID: 1903688131}
   goText: {fileID: 935105741}
 --- !u!4 &1732712801

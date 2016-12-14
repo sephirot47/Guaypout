@@ -279,7 +279,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 36442294}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 22.52, y: -0.43, z: -0.96}
+  m_LocalPosition: {x: 22.52, y: -0.43, z: -0.23}
   m_LocalScale: {x: 2.7489073, y: 0.11060468, z: 2.748907}
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
   m_Children:
@@ -302,7 +302,7 @@ MonoBehaviour:
   control: 0.542
   resilience: 0.642
   shipName: Cristina
-  characterFaceSprite: {fileID: 21300000, guid: 9ea1d6f6aeb781e4db07bc0aa6a407ab,
+  characterFaceSprite: {fileID: 21300000, guid: 4d423f9edcae5214a8d4ff06e748e192,
     type: 3}
 --- !u!114 &36442297
 MonoBehaviour:
@@ -508,7 +508,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 61661890}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 15.52, y: -0.43, z: 7.41}
+  m_LocalPosition: {x: 15.52, y: -0.43, z: 6.21}
   m_LocalScale: {x: 2.7489073, y: 0.11060468, z: 2.748907}
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
   m_Children:
@@ -552,7 +552,7 @@ MonoBehaviour:
   control: 0.614
   resilience: 0.228
   shipName: Vector
-  characterFaceSprite: {fileID: 21300000, guid: 0c6c4e906ce33814da7a45b632615238,
+  characterFaceSprite: {fileID: 21300000, guid: 41a0a88616453b7459b043b1ea9b1754,
     type: 3}
 --- !u!114 &61661892
 MonoBehaviour:
@@ -1383,15 +1383,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 48.427032
+      value: 48.28
       objectReference: {fileID: 0}
     - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.0818
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 9.8
+      value: 8.26
       objectReference: {fileID: 0}
     - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1428,11 +1428,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.76387054
+      value: 0.94790876
       objectReference: {fileID: 0}
     - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.65480053
+      value: 0.738488
       objectReference: {fileID: 0}
     - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
       propertyPath: m_LocalScale.z
@@ -1500,7 +1500,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalScale.z
-      value: 4.426356
+      value: 5.763598
       objectReference: {fileID: 0}
     - target: {fileID: 189322, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_Name
@@ -1780,6 +1780,10 @@ Prefab:
       propertyPath: m_Name
       value: Corridor_1D (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 420756, guid: def79446480c2df4a86f31e6aaebb356, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.463562
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6442356, guid: def79446480c2df4a86f31e6aaebb356, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: def79446480c2df4a86f31e6aaebb356, type: 2}
@@ -1946,7 +1950,7 @@ MonoBehaviour:
   control: 0.638
   resilience: 0.633
   shipName: Oscar
-  characterFaceSprite: {fileID: 21300000, guid: 7177ff2af7dcff048b15b4413b2a96e3,
+  characterFaceSprite: {fileID: 21300000, guid: 33ca6ed1b6541694bb53cf93df6f2ff0,
     type: 3}
 --- !u!114 &244220756
 MonoBehaviour:
@@ -2344,7 +2348,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 21.27
+      value: 23.85
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2376,7 +2380,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalScale.z
-      value: 4.426356
+      value: 4.680626
       objectReference: {fileID: 0}
     - target: {fileID: 189322, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_Name
@@ -3031,7 +3035,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 4.95
+      value: 2.71
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3063,7 +3067,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalScale.z
-      value: 4.426356
+      value: 4.7904854
       objectReference: {fileID: 0}
     - target: {fileID: 189322, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_Name
@@ -3540,11 +3544,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.77797794
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 13.238167
+      value: 13.55
       objectReference: {fileID: 0}
     - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3580,6 +3584,14 @@ Prefab:
         type: 2}
       propertyPath: m_Size.z
       value: 14.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.7292244
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012593966396, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.2995083
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c83bf860762d0f4cbb8c30a95919932, type: 2}
@@ -5783,7 +5795,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115, y: 83}
+  m_AnchoredPosition: {x: 99, y: 98}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &837652042
@@ -5805,7 +5817,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0c6c4e906ce33814da7a45b632615238, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 41a0a88616453b7459b043b1ea9b1754, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8174,7 +8186,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 17.519
+      value: 19.16
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -10934,7 +10946,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.4
+      value: 5.25
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10962,7 +10974,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalScale.x
-      value: 6.5264707
+      value: 4.9628863
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalScale.y
@@ -10970,7 +10982,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487618, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_LocalScale.z
-      value: 4.426356
+      value: 6.529526
       objectReference: {fileID: 0}
     - target: {fileID: 189322, guid: 89bd4543a5407754f9caa0dbd4e0992d, type: 2}
       propertyPath: m_Name
@@ -11095,7 +11107,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -111, y: 77}
+  m_AnchoredPosition: {x: -94, y: 82}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1719054851
@@ -11117,7 +11129,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7177ff2af7dcff048b15b4413b2a96e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33ca6ed1b6541694bb53cf93df6f2ff0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13148,7 +13160,7 @@ MonoBehaviour:
   control: 0.891
   resilience: 0.871
   shipName: Sanic
-  characterFaceSprite: {fileID: 21300000, guid: bdf62cd795d7e00438110a3996fbb691,
+  characterFaceSprite: {fileID: 21300000, guid: 691f50e2f52d53848abade0956470941,
     type: 3}
 --- !u!114 &1961423418
 MonoBehaviour:
@@ -13209,7 +13221,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1961423416}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 15.52, y: -0.43, z: -8.09}
+  m_LocalPosition: {x: 15.52, y: -0.43, z: -7.04}
   m_LocalScale: {x: 2.7489073, y: 0.11060468, z: 2.748907}
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
   m_Children:
