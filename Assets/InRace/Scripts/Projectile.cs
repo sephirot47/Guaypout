@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
 	private float height;
 	private TrackInformer trackInformer;
 
+    public GameObject shotEffect;
+
 	void Start () 
     {
 		rb = GetComponentInChildren<Rigidbody> ();
@@ -56,6 +58,9 @@ public class Projectile : MonoBehaviour
         if ( originShip != other.transform.root.gameObject &&
             (other.transform.root.tag == "Player" || other.transform.root.tag == "Enemy")) 
         {
+            GameObject shotParticle = GameObject.Instantiate(shotEffect, transform.position, Quaternion.identity) as GameObject;
+            Destroy(shotParticle, 4.0f);
+
             other.gameObject.GetComponentInParent<ShipInputController>().OnHit(originShip);
 			Destroy (gameObject);
 		}

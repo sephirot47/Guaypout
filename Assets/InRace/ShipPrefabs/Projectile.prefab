@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originShip: {fileID: 0}
   speed: 30
+  shotEffect: {fileID: 1000012263509170, guid: 3422dbedfc66a6641912b5eb2cd7d0a1, type: 2}
 --- !u!122 &122000010244466796
 Halo:
   m_ObjectHideFlags: 1
