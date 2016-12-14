@@ -74,18 +74,22 @@ public class ItemOrb : MonoBehaviour {
         GameObject ship = other.transform.root.gameObject;
         if (!destroyed && (ship.tag == "Player" || ship.tag == "Enemy"))
         {
-            GetComponent<AudioSource>().Play();
-            countdownStarted = true;
-            shipThatPickedMe = ship;
-            shipThatPickedMe.GetComponent<WeaponController>().OnOrbPicked(this);
-            Enabled(false);
-
-            if (shipThatPickedMe.tag == "Player")
+            if (ship.GetComponent<WeaponController>().CanPickWeapon())
             {
-                itemFrameController.StartRandomScramble(itemScrambleTime);
+                GetComponent<AudioSource>().Play();
+                countdownStarted = true;
+                shipThatPickedMe = ship;
+                shipThatPickedMe.GetComponent<WeaponController>().OnOrbPicked(this);
+                Enabled(false);
+
+
+                if (shipThatPickedMe.tag == "Player")
+                {
+                    itemFrameController.StartRandomScramble(itemScrambleTime);
+                }
+                destroyed = true;
             }
-            destroyed = true;
-		}
+        }
 	}
 
     private void Enabled(bool b) 

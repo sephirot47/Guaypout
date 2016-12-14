@@ -59,4 +59,9 @@ public class ItemFrameController : MonoBehaviour
         scrambling = false;
         iconImage.sprite = itemIcons[(int) itemType];
     }
+
+    public bool IsScrambling()
+    {
+        return scrambling;
+    }
 }

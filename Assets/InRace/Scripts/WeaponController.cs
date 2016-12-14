@@ -45,6 +45,11 @@ public class WeaponController : MonoBehaviour {
         if (shieldTimer.Ended() && ShieldEnabled()) DisableShield();
 	}
 
+    public bool CanPickWeapon()
+    {
+        return !shieldEnabled && !mineEnabled && !fireEnabled && !itemFrameController.IsScrambling(); 
+    }
+
     public void OnOrbPicked(ItemOrb pickedOrb)
     {
         if (lastPickedOrb != null)
