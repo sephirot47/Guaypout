@@ -298,9 +298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786a30ee7fe1cf94b887d86c893524f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.709
-  control: 0.542
-  resilience: 0.642
+  speed: 0.6
+  control: 0.9
+  resilience: 0.3
   shipName: Cristina
   characterFaceSprite: {fileID: 21300000, guid: 4d423f9edcae5214a8d4ff06e748e192,
     type: 3}
@@ -548,9 +548,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786a30ee7fe1cf94b887d86c893524f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  control: 0.614
-  resilience: 0.228
+  speed: 0.5
+  control: 0.5
+  resilience: 0.5
   shipName: Vector
   characterFaceSprite: {fileID: 21300000, guid: 41a0a88616453b7459b043b1ea9b1754,
     type: 3}
@@ -1946,9 +1946,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786a30ee7fe1cf94b887d86c893524f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.643
-  control: 0.638
-  resilience: 0.633
+  speed: 0.3
+  control: 0.6
+  resilience: 0.9
   shipName: Oscar
   characterFaceSprite: {fileID: 21300000, guid: 33ca6ed1b6541694bb53cf93df6f2ff0,
     type: 3}
@@ -13156,9 +13156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786a30ee7fe1cf94b887d86c893524f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.371
-  control: 0.891
-  resilience: 0.871
+  speed: 1
+  control: 0.4
+  resilience: 0.5
   shipName: Sanic
   characterFaceSprite: {fileID: 21300000, guid: 691f50e2f52d53848abade0956470941,
     type: 3}

@@ -8113,7 +8113,7 @@ Prefab:
     - target: {fileID: 114000011130808642, guid: a2b2ad3f2befb584f8e81e1f56ab6a12,
         type: 2}
       propertyPath: turnStrength
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 114000011130808642, guid: a2b2ad3f2befb584f8e81e1f56ab6a12,
         type: 2}
@@ -8253,6 +8253,16 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.startRotation.minCurve.m_Curve.Array.data[1].time
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012013929882, guid: a2b2ad3f2befb584f8e81e1f56ab6a12,
+        type: 2}
+      propertyPath: hitDisableTime
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011333468608, guid: a2b2ad3f2befb584f8e81e1f56ab6a12,
+        type: 2}
+      propertyPath: hitDisableTime
+      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2b2ad3f2befb584f8e81e1f56ab6a12, type: 2}
@@ -9608,7 +9618,7 @@ Prefab:
     - target: {fileID: 114000010194234026, guid: 2812a8aaf013d36458ef84e129362d2b,
         type: 2}
       propertyPath: fwdAcceleration
-      value: 140
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 114000010720840096, guid: 2812a8aaf013d36458ef84e129362d2b,
         type: 2}
@@ -12477,7 +12487,7 @@ Prefab:
     - target: {fileID: 114000011442368128, guid: 85d0bd35a1b1352458e90bb65f383fbc,
         type: 2}
       propertyPath: turnStrength
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 114000011711381766, guid: 85d0bd35a1b1352458e90bb65f383fbc,
         type: 2}
@@ -12493,7 +12503,7 @@ Prefab:
     - target: {fileID: 114000011442368128, guid: 85d0bd35a1b1352458e90bb65f383fbc,
         type: 2}
       propertyPath: fwdAcceleration
-      value: 140
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 198000011154964204, guid: 85d0bd35a1b1352458e90bb65f383fbc,
         type: 2}
@@ -12594,6 +12604,16 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.startRotation.minCurve.m_Curve.Array.data[1].time
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011930641660, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: hitDisableTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012804932392, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: hitDisableTime
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85d0bd35a1b1352458e90bb65f383fbc, type: 2}
