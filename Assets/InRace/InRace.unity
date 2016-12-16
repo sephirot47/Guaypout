@@ -228,7 +228,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -302,10 +302,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9f0c6548e2d53428276bc5c10d9674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAudioPlayProbability: 0.5
-  damageAudioPlayProbability: 0.5
-  hitAudioPlayProbability: 0.5
-  weaponAudioPlayProbability: 0.5
+  boostAudioPlayProbability: 0.8
+  damageAudioPlayProbability: 0.8
+  hitAudioPlayProbability: 0.8
+  weaponAudioPlayProbability: 0.8
   boostAudioClips:
   - {fileID: 8300000, guid: dc0a36504e2e5034a8352ca9dc89ecb9, type: 3}
   - {fileID: 8300000, guid: efdf229a363c8cb4ab399828158eac3e, type: 3}
@@ -1327,10 +1327,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9f0c6548e2d53428276bc5c10d9674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAudioPlayProbability: 0.5
-  damageAudioPlayProbability: 0.5
-  hitAudioPlayProbability: 0.5
-  weaponAudioPlayProbability: 0.5
+  boostAudioPlayProbability: 0.8
+  damageAudioPlayProbability: 0.8
+  hitAudioPlayProbability: 0.8
+  weaponAudioPlayProbability: 0.8
   boostAudioClips:
   - {fileID: 8300000, guid: cc37d577e48740d4887cca262cb8fb74, type: 3}
   - {fileID: 8300000, guid: 36aca12ae4c831a4092834873a06fcd7, type: 3}
@@ -1352,7 +1352,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5434,12 +5434,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153218571}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97e9b95cf609d96409b6c40519432957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filterType: 2
+  filterType: 1
   preview: 0
   previewScale: {x: 1, y: 1, z: 1}
   movementScale: 0
@@ -5466,7 +5466,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153218571}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 730475ee64f9a894bbac0d9e6f22e813, type: 3}
   m_Name: 
@@ -5486,7 +5486,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153218571}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 646b5bc27a658f447b1d929fd5ffbd70, type: 3}
   m_Name: 
@@ -7997,7 +7997,7 @@ Prefab:
     - target: {fileID: 114000011130808642, guid: a2b2ad3f2befb584f8e81e1f56ab6a12,
         type: 2}
       propertyPath: turnStrength
-      value: 25
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 114000011130808642, guid: a2b2ad3f2befb584f8e81e1f56ab6a12,
         type: 2}
@@ -9793,7 +9793,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 156c3e9c22c21ef48a85441d43a56862, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9878,10 +9878,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9f0c6548e2d53428276bc5c10d9674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAudioPlayProbability: 0.5
-  damageAudioPlayProbability: 0.5
-  hitAudioPlayProbability: 0.5
-  weaponAudioPlayProbability: 0.5
+  boostAudioPlayProbability: 0.8
+  damageAudioPlayProbability: 0.8
+  hitAudioPlayProbability: 0.8
+  weaponAudioPlayProbability: 0.8
   boostAudioClips:
   - {fileID: 8300000, guid: d01a3dfb09341c3479eee81f799ea392, type: 3}
   - {fileID: 8300000, guid: 9b52a46efb2027141af9ef7f840ad1d5, type: 3}
@@ -9904,7 +9904,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -12389,7 +12389,7 @@ Prefab:
     - target: {fileID: 114000011442368128, guid: 85d0bd35a1b1352458e90bb65f383fbc,
         type: 2}
       propertyPath: turnStrength
-      value: 32
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 114000011711381766, guid: 85d0bd35a1b1352458e90bb65f383fbc,
         type: 2}
@@ -12570,7 +12570,7 @@ Prefab:
     - target: {fileID: 82000013460187608, guid: 85d0bd35a1b1352458e90bb65f383fbc,
         type: 2}
       propertyPath: m_Volume
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 82000013460187608, guid: 85d0bd35a1b1352458e90bb65f383fbc,
         type: 2}
@@ -12581,6 +12581,26 @@ Prefab:
         type: 2}
       propertyPath: MaxDistance
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012188332508, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: boostAudioPlayProbability
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012188332508, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: damageAudioPlayProbability
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012188332508, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: hitAudioPlayProbability
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012188332508, guid: 85d0bd35a1b1352458e90bb65f383fbc,
+        type: 2}
+      propertyPath: weaponAudioPlayProbability
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85d0bd35a1b1352458e90bb65f383fbc, type: 2}
