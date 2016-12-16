@@ -55,10 +55,17 @@ public class GameFlowController : MonoBehaviour
         if (currentState == State.RaceBegin)
         {
             raceBeginChrono += Time.deltaTime;
-            if (raceBeginChrono >= raceBeginTime)
+
+            if (raceBeginChrono >= raceBeginTime - 2 && 
+                camController.currentMode == CameraController.CameraMode.RaceBegin)
+            {
+                camController.SetMode(CameraController.CameraMode.PositionBehindPlayer);
+            }
+            else if (raceBeginChrono >= raceBeginTime)
             {
                 SetState(State.CountDown);
             }
+
         }
         else if (currentState == State.CountDown)
         {

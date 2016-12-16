@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
     public enum CameraMode
     {
         RaceBegin,
+        PositionBehindPlayer,
         InRace,
         AfterRace
     };
@@ -19,11 +20,12 @@ public class CameraController : MonoBehaviour
 
     private GameObject player;
     private bool inFirstPerson = false;
-    private CameraMode currentMode = CameraMode.RaceBegin;
+    public CameraMode currentMode = CameraMode.RaceBegin;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player"); // There should be only one ship like this
+        distance = Vector3.Distance(transform.position, player.transform.position);
     }
 
     void Update ()
@@ -45,17 +47,18 @@ public class CameraController : MonoBehaviour
         // Camera movement handling
         if (!inFirstPerson) // Third person
         {
-            if (currentMode == CameraMode.InRace || currentMode == CameraMode.AfterRace)
-            {
-                float endDistance = Mathf.Clamp(player.GetComponent<Rigidbody>().velocity.magnitude * 0.5f, minDistance, maxDistance);
-                distance = Mathf.Lerp(distance, endDistance, Time.deltaTime);
+            float endDistance = Mathf.Clamp(player.GetComponent<Rigidbody>().velocity.magnitude * 0.5f, minDistance, maxDistance);
+            distance = Mathf.Lerp(distance, endDistance, Time.deltaTime);
 
-                Vector3 offsetDir = Vector3.Normalize(-player.transform.forward + 0.5f * player.transform.up);
-                Vector3 newPosition = transform.position = Vector3.Lerp(
-                                          transform.position, 
-                                          player.transform.position + offsetDir * distance,
-                                          Time.fixedDeltaTime * moveSpeed
-                                      );
+            Vector3 offsetDir = Vector3.Normalize(-player.transform.forward + 0.5f * player.transform.up);
+            Vector3 newPosition = player.transform.position + offsetDir * distance;
+            if (currentMode == CameraMode.PositionBehindPlayer)
+            {
+                transform.position = Vector3.Lerp(transform.position, newPosition, Time.fixedDeltaTime * 3.0f);
+            }
+            else if (currentMode != CameraMode.RaceBegin)
+            {
+                transform.position = Vector3.Lerp(transform.position, newPosition, Time.fixedDeltaTime * moveSpeed);
             }
         }
         else //First person
@@ -69,7 +72,7 @@ public class CameraController : MonoBehaviour
         // Rotation handling
         if (!inFirstPerson) // Third person
         {
-            if (currentMode == CameraMode.InRace || currentMode == CameraMode.AfterRace)
+            if (currentMode == CameraMode.InRace || currentMode == CameraMode.AfterRace || currentMode == CameraMode.PositionBehindPlayer)
             {
                 Vector3 lookPoint = player.transform.position + player.transform.forward * 2.0f;
                 Quaternion endRotation = Quaternion.LookRotation(lookPoint - transform.position, player.transform.up);
@@ -89,7 +92,7 @@ public class CameraController : MonoBehaviour
     public void SetMode(CameraMode mode)
     {
         currentMode = mode;
-        if (currentMode == CameraMode.InRace)
+        if (currentMode == CameraMode.InRace || currentMode == CameraMode.PositionBehindPlayer)
         {
             GetComponent<Animator>().enabled = false;
         }
