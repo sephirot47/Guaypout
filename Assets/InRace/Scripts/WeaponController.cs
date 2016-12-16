@@ -92,7 +92,7 @@ public class WeaponController : MonoBehaviour {
     {
         if (!fireEnabled) return;
 
-        Vector3 spawn = transform.position + transform.forward * 1.5f;
+        Vector3 spawn = transform.position;
         Projectile proj = Instantiate(projectile, spawn, Quaternion.identity) as Projectile;
         proj.originShip = gameObject;
         proj.transform.forward = transform.forward;

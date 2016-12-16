@@ -22,14 +22,10 @@ public class Projectile : MonoBehaviour
 
 		trackInformer = GameObject.Find("TrackInformer").GetComponent<TrackInformer>();
 		TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo(transform.position, transform.right, transform.up, 100f);
-		height = trackInfo.distanceToGround;
+        height = Mathf.Max(trackInfo.distanceToGround, 1.0f);
 
         AudioSource.PlayClipAtPoint(laserSound, transform.position);
-        Destroy(gameObject, 10f);
-	}
 
-	void Update() 
-    {
         if (originShip.name == "Victor")
         {
             GetComponentInChildren<Light>().color = Color.red;
@@ -47,6 +43,11 @@ public class Projectile : MonoBehaviour
             GetComponentInChildren<Light>().color = Color.blue;
         }
 
+        Destroy(gameObject, 5f);
+	}
+
+	void Update() 
+    {
 		TrackInformer.TrackInfo trackInfo = trackInformer.GetTrackInfo(transform.position, transform.right, transform.up, 100f);
         if (trackInfo.overTheTrack)
         {
