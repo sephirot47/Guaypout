@@ -83,12 +83,12 @@ public class ShipPhysicsController : MonoBehaviour {
                 if (Physics.Raycast(transform.position, trackRight, out hitInfo, 999.9f, trackBoundaryLayer))
                 {
                     float distFactor = (1.0f / hitInfo.distance);
-                    rb.AddForce(hitInfo.normal * 99.0f * Mathf.Pow(distFactor, 5.0f));
+                    rb.AddForce(hitInfo.normal * 400.0f * Mathf.Pow(distFactor, 5.0f));
                 }
                 if (Physics.Raycast(transform.position, -trackRight, out hitInfo, 999.9f, trackBoundaryLayer))
                 {
                     float distFactor = (1.0f / hitInfo.distance);
-                    rb.AddForce(hitInfo.normal * 99.0f * Mathf.Pow(distFactor, 5.0f));
+                    rb.AddForce(hitInfo.normal * 400.0f * Mathf.Pow(distFactor, 5.0f));
                 }
             }
         }
