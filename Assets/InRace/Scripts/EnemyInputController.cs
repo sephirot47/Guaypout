@@ -50,15 +50,29 @@ public class EnemyInputController : ShipInputController
 		}
 
 		// If any other ship is aligned with the vertical plane of the enemy's forward, fire!
+        ShipPhysicsController[] otherShips = GameObject.FindObjectsOfType<ShipPhysicsController>();
+        foreach (ShipPhysicsController ship in otherShips)
+        {
+            if (ship.gameObject == gameObject) continue;
+            
+            float dot = Vector3.Dot(transform.forward, (ship.transform.position - transform.position).normalized);
+            if (dot > 0.9f)
+            {
+                if (Vector3.Distance(transform.position, ship.transform.position) < 500.0f)
+                    weaponController.FireProjectile();
+            }
+        }/*
 		RaycastHit hit;
 		for (int a = -45; a <= 45; a += 3) {
 			Vector3 rayDirection = Quaternion.Euler(a,0,0) * transform.forward;
+            Debug.DrawRay(transform.position, rayDirection * 10f, Color.magenta, 0);
 			if (Physics.Raycast (transform.position, rayDirection, out hit, 500f)) {
 				string tag = hit.collider.transform.root.tag;
 				if (tag == "Player" || tag == "Enemy")
 					weaponController.FireProjectile ();
 			}
 		}
+          */
 	}
 
     void FixedUpdate()

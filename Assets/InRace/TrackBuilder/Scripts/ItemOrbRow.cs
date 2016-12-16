@@ -21,7 +21,8 @@ public class ItemOrbRow : MonoBehaviour
             {
                 if (orbPos == transform) continue;
 
-                GameObject orb = GameObject.Instantiate(orbPrefab, orbPos.position, orbPos.rotation) as GameObject;
+                GameObject orb = GameObject.Instantiate(orbPrefab, orbPos.position + Vector3.up, orbPos.rotation) as GameObject;
+                //orb.transform.position += Vector3.forward * Random.insideUnitCircle.x * 3.0f;
                 orb.transform.parent = transform;
                 orbs.Add(orb.GetComponent<ItemOrb>());
                 ++i;

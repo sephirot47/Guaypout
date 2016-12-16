@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010760191786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.500649, y: -1.1278658, z: 11.666378}
+  m_LocalPosition: {x: 35.378006, y: -9.811481, z: 12.076145}
   m_LocalScale: {x: 0.43799955, y: 0.43799955, z: 0.43799955}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -201,7 +201,7 @@ MonoBehaviour:
   blue: {fileID: 2100000, guid: f0b324e99c4ff3148943d12c8e3a9631, type: 2}
   purple: {fileID: 2100000, guid: f28d9c74dee95b14ba4a8038de14210c, type: 2}
   orange: {fileID: 0}
-  itemScrambleTime: 3
+  itemScrambleTime: 1.5
 --- !u!122 &122000010384611004
 Halo:
   m_ObjectHideFlags: 1
@@ -272,10 +272,10 @@ ParticleSystem:
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  moveWithTransform: 0
+  moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 2
-  randomSeed: 1772227739
+  randomSeed: 1890731319
   InitialModule:
     serializedVersion: 2
     enabled: 1

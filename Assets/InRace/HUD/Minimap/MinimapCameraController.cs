@@ -9,8 +9,8 @@ public class MinimapCameraController : MonoBehaviour
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-		initialOffsetY = transform.position.y + player.transform.position.y;
-        player.transform.position = Vector3.zero;
+        initialOffsetY = transform.position.y + player.transform.position.y;
+        transform.position = player.transform.position;
 	}
 
 	void Update () 

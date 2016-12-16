@@ -25,13 +25,20 @@ public class ItemOrb : MonoBehaviour {
         SHIELD = 2
     };
 
+    private float floating = 0.0f, floatingOffset;
+    private Vector3 startPos;
     void Start () 
-    { 
+    {
+        startPos = transform.position;
         itemFrameController = GameObject.Find("HUD_InGame/ItemFrame").GetComponent<ItemFrameController>();
+        floatingOffset = UnityEngine.Random.value * 3.1415f;
 	}
 
 	void Update () 
     {
+        floating += Time.deltaTime;
+        transform.position = startPos + Vector3.up * Mathf.Sin(floatingOffset + floating * 1.5f) * 0.5f;
+        
         if (countdownStarted)
         {
             countdownChrono += Time.deltaTime;

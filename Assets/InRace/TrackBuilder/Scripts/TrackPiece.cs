@@ -18,11 +18,21 @@ public class TrackPiece : MonoBehaviour
     {
         if (Random.Range(0.0f, 1.0f) < speedBoosterChance)
         {
+            int randomBeginIndex = Random.Range(0, waypoints.Length-1);
+            Vector3 boosterPos = Vector3.Lerp(waypoints[randomBeginIndex].transform.position,
+                                              waypoints[randomBeginIndex+1].transform.position,
+                                              Random.value);
+            Vector3 normal = waypoints[randomBeginIndex].transform.up + waypoints[randomBeginIndex+1].transform.up;
+            normal.Normalize();
+            Vector3 forward = waypoints[randomBeginIndex+1].transform.position - waypoints[randomBeginIndex].transform.position;
+            forward.Normalize();
+
             speedBooster = GameObject.Instantiate(
                 speedBoosterPrefab, 
-                waypoints[0].transform.position + transform.up * 1.5f,
-                waypoints[0].transform.rotation) as GameObject;
-            speedBooster.transform.position += waypoints[0].transform.right * 10.0f * (Random.insideUnitCircle.x);
+                boosterPos + normal * 1.5f,
+                Quaternion.LookRotation(forward)) as GameObject;
+
+            speedBooster.transform.position += waypoints[0].transform.right * 10.0f * Random.value;
             speedBooster.transform.parent = transform;
         }
 	}

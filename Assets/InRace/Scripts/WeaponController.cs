@@ -11,7 +11,7 @@ public class WeaponController : MonoBehaviour {
     private Rigidbody rb;
     
     private bool fireEnabled = false;
-    private Timer timer;
+    private Timer fireTimer;
 	private WeaponTimerBarController bar;
 
     private bool mineEnabled = false;
@@ -28,7 +28,7 @@ public class WeaponController : MonoBehaviour {
 	void Start () 
     {
         rb = GetComponent<Rigidbody>();
-        timer = gameObject.AddComponent<Timer>();
+        fireTimer = gameObject.AddComponent<Timer>();
         shieldTimer = gameObject.AddComponent<Timer>();
 
         ps = transform.FindChild("Shield").gameObject.GetComponentInChildren<ParticleSystem>();
@@ -41,13 +41,13 @@ public class WeaponController : MonoBehaviour {
 	
 	void Update () 
     {
-        if (timer.Ended() && FireEnabled()) DisableFire();
+        if (fireTimer.Ended() && FireEnabled()) DisableFire();
         if (shieldTimer.Ended() && ShieldEnabled()) DisableShield();
 	}
 
     public bool CanPickWeapon()
     {
-        return !shieldEnabled && !mineEnabled && !fireEnabled && !itemFrameController.IsScrambling(); 
+        return !mineEnabled && !fireEnabled && !itemFrameController.IsScrambling(); 
     }
 
     public void OnOrbPicked(ItemOrb pickedOrb)
@@ -60,25 +60,27 @@ public class WeaponController : MonoBehaviour {
 
         DisableFire();
         DisableMine();
-        DisableShield();
     }
 
     public void EnableFire()
     {
         fireEnabled = true;
-        timer.Set(fireTime);
+        fireTimer.Set(fireTime);
         if (tag == "Player")
         {
 			bar = GameObject.Find ("WeaponTimerBar").GetComponent<WeaponTimerBarController> ();
-            bar.SetTimer(timer);
+            bar.SetTimer(fireTimer);
         }
     }
 
     public void DisableFire()
     {
         fireEnabled = false;
-        GameObject.Find ("WeaponTimerBar").GetComponent<WeaponTimerBarController>().SetEnabled(false);
-        if (tag == "Player") { itemFrameController.RemoveItemIcon(); } 
+        if (tag == "Player")
+        {
+            GameObject.Find("WeaponTimerBar").GetComponent<WeaponTimerBarController>().SetEnabled(false);
+            itemFrameController.RemoveItemIcon();
+        } 
     }
 
 	public bool FireEnabled() 
@@ -124,6 +126,8 @@ public class WeaponController : MonoBehaviour {
         m.GetComponent<Rigidbody>().velocity = rb.velocity;
 		m.direction = direction;
         mineEnabled = false;
+        if (tag == "Player") 
+            itemFrameController.RemoveItemIcon();
     }
 
     public void EnableShield()
@@ -140,7 +144,10 @@ public class WeaponController : MonoBehaviour {
         shieldEnabled = false;
         ps.gameObject.SetActive(false);
         shieldLight.gameObject.SetActive(false);
-        if (tag == "Player") { itemFrameController.RemoveItemIcon(); }
+        if (tag == "Player" && !fireEnabled && !mineEnabled && !itemFrameController.IsScrambling()) 
+        {
+            itemFrameController.RemoveItemIcon(); 
+        }
     }
 
     public bool ShieldEnabled()
