@@ -20,6 +20,6 @@ public class Speedometer : MonoBehaviour
         Vector3 planarSpeed = Vector3.ProjectOnPlane(player.GetComponent<Rigidbody>().velocity, player.transform.up);
         speedometerFill.fillAmount = planarSpeed.magnitude / upperSpeedLimit;
 
-        speedText.text = ((int)planarSpeed.magnitude) + " Km/h";
+        speedText.text = ((int)planarSpeed.magnitude*4) + " Km/h";
 	}
 }
